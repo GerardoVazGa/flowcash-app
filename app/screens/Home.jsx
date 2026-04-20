@@ -1,7 +1,7 @@
 import { View, Text} from "react-native";
 import Section from "../../components/layouts/Section.jsx";
-import { Button } from "../../components/ui/Buttons";
-import { Title } from "../../components/ui/Typography.jsx";
+import { AppButton } from "../../components/ui/AppButton.jsx";
+import { AppText } from "../../components/ui/AppText.jsx";
 
 const styles = {
     width: 50,
@@ -16,8 +16,8 @@ const styles = {
 export function Home(){
     return (
         <Section>
-            <Title variant="large">Home</Title>
-            <Button text="Click" onAction={() => alert("Click")} styles={styles}/>
+            <AppText variant="display">Home</AppText>
+            <AppButton text="Click me" onAction={() => alert("Click")} styles={styles} size="sm" rounded="lg"/>
         </Section>
     )
 }
