@@ -29,8 +29,8 @@ export const Typography = {
     // Labels - Secondary metadata (timestamps, currency codes)
     label: {
         fontFamily: FontFamily.bodySemiBold,
-        fontSize: 11,
-        letterSpacing: 1,
+        fontSize: 12,
+        letterSpacing: 2,
         textTransform: 'uppercase'
     },
 }
