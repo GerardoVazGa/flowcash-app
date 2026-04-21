@@ -15,6 +15,11 @@ export const COLORS = {
 
         error: '#BA1A1A',
         outline: 'rgba(0,0,0,0.15)',
+
+        chipBackground: 'rgba(255,255,255,0.10)',
+        chipBackgroundStrong: 'rgba(255,255,255,0.16)',
+        onPrimary: '#ffffff',
+        onPrimaryMuted: 'rgba(201, 39, 39, 0.7)',
     },
 
     dark: {
@@ -33,5 +38,33 @@ export const COLORS = {
 
         error: '#ffb4ab',
         outline: 'rgba(63,73,67,0.15)',
+
+        chipBackground: 'rgba(255,255,255,0.08)',
+        chipBackgroundStrong: 'rgba(255,255,255,0.14)',
+        onPrimary: '#ffffff',
+        onPrimaryMuted: 'rgba(255,255,255,0.75)',
     },
-}
+};
+
+export const GRADIENTS = {
+    // Used for primary buttons and high-level summaries
+    light: {
+        primary: {
+            colors: ['#48c1b5', '#006B5F'], // primary to primary-container at 135deg
+            start: { x: 0, y: 0 },
+            end: { x: 1, y: 1 }, // 135 degrees
+            locations: [0, 1],
+        },
+    },
+
+    // Dark Theme: "Jeweled luster" gradient
+    // Provides high-gloss finish for primary actions
+    dark: {
+        primary: {
+            colors: ['#66dd8b', '#006e36'], // primary to primary-container at 135deg
+            start: { x: 0, y: 0 },
+            end: { x: 1, y: 1 }, // 135 degrees
+            locations: [0, 1],
+        },
+    },
+};
