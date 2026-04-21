@@ -8,7 +8,7 @@ export function AppText({children, variant = 'display', color = 'black', style})
             style={
                 [
                     Typography[variant], 
-                    {color: COLORS.light.text || color},
+                    {color: COLORS.light[color] || color},
                     style
                 ]
             }
