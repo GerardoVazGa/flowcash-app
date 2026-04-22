@@ -1,6 +1,6 @@
 import { Text, StyleSheet } from "react-native";
-import { COLORS } from "../../constants/colors";
-import { Typography } from "../../constants/typography";
+import { COLORS } from "../../constants/colors.js";
+import { Typography } from "../../constants/typography.js";
 
 export function AppText({children, variant = 'display', color = 'black', style}){
     return(
