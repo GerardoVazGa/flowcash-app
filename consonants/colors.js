@@ -20,6 +20,16 @@ export const COLORS = {
         chipBackgroundStrong: 'rgba(255,255,255,0.16)',
         onPrimary: '#ffffff',
         onPrimaryMuted: 'rgba(201, 39, 39, 0.7)',
+
+        income: '#16A34A',
+        incomeSoft: '#DCFCE7',
+        incomeContainer: '#86EFAC',
+        incomeStrong: '#166534',
+
+        expenses: '#DC2626',              // rojo principal (más moderno que error)
+        expensesSoft: '#FEE2E2',          // fondo suave
+        expensesContainer: '#FCA5A5',     // intermedio
+        expensesStrong: '#991B1B',        // texto fuerte
     },
 
     dark: {
@@ -43,6 +53,16 @@ export const COLORS = {
         chipBackgroundStrong: 'rgba(255,255,255,0.14)',
         onPrimary: '#ffffff',
         onPrimaryMuted: 'rgba(255,255,255,0.75)',
+
+        income: '#4ADE80',
+        incomeSoft: 'rgba(74,222,128,0.12)',
+        incomeContainer: 'rgba(74,222,128,0.20)',
+        incomeStrong: '#BBF7D0',
+
+        expenses: '#FF6B6B',
+        expensesSoft: 'rgba(255,107,107,0.12)',
+        expensesContainer: 'rgba(255,107,107,0.20)',
+        expensesStrong: '#FFB4B4',
     },
 };
 
