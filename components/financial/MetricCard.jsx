@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native";
 import { AppText } from "../ui/AppText";
-import { SPACING, RADIUS } from "../../consonants/layout";
-import { COLORS } from "../../consonants/colors";
-import { SHADOWS } from "../../consonants/shadows";
+import { SPACING, RADIUS } from "../../constants/layout";
+import { COLORS } from "../../constants/colors";
+import { SHADOWS } from "../../constants/shadows";
 
 export function MetricCard({label = "Total", value, icon, variant, style}) {
     return (

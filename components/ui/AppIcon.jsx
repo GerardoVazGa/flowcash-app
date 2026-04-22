@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { COLORS } from "../../consonants/colors";
+import { COLORS } from "../../constants/colors";
 
 export function AppIcon({name, color, size, style, background}) {
     return (

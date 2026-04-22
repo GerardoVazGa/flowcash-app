@@ -5,8 +5,8 @@ import { AppText } from "../../components/ui/AppText.jsx";
 import { AppIcon } from "../../components/ui/AppIcon.jsx";
 import { BalanceCard } from "../../components/financial/BalanceCard.jsx";
 import { MetricCard } from "../../components/financial/MetricCard.jsx";
-import { COLORS } from "../../consonants/colors.js";
-import { SPACING, RADIUS } from "../../consonants/layout.js";
+import { COLORS } from "../../constants/colors.js";
+import { SPACING, RADIUS } from "../../constants/layout.js";
 
 export function Home(){
 

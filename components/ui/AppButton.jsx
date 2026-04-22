@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text } from "react-native";
-import { COLORS  } from "../../consonants/colors.js";
-import { Typography } from "../../consonants/typography.js";
-import  { SPACING, RADIUS } from "../../consonants/layout.js";
+import { COLORS  } from "../../constants/colors.js";
+import { Typography } from "../../constants/typography.js";
+import  { SPACING, RADIUS } from "../../constants/layout.js";
 
 export function AppButton({
     text, 

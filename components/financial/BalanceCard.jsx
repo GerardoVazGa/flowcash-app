@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 import { View } from "react-native";
 import { AppText } from "../ui/AppText";
-import { COLORS, GRADIENTS } from "../../consonants/colors";
-import { SPACING, RADIUS } from "../../consonants/layout";
+import { COLORS, GRADIENTS } from "../../constants/colors";
+import { SPACING, RADIUS } from "../../constants/layout";
 import { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Stat } from "./MetricCard";
