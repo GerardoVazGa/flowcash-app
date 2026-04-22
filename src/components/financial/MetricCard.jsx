@@ -3,15 +3,45 @@ import { AppText } from "../ui/AppText";
 import { SPACING, RADIUS } from "../../constants/layout.js";
 import { COLORS } from "../../constants/colors.js";
 import { SHADOWS } from "../../constants/shadows.js";
+import { AppIcon } from "../ui/AppIcon.jsx";
+import { getVariantStyle } from "../../utils/getVariantStyle.js";
 
 export function MetricCard({label = "Total", value, icon, variant, style}) {
+    const variantStyle = getVariantStyle(variant)
+
     return (
-        <View style={styles.container}>
-            <View style={styles.header}>
-                {icon}
-                <AppText variant="label" color="text">{label}</AppText>
+        <View style={
+            [
+                styles.container,
+                {backgroundColor: variantStyle.backgroundColor},
+                style
+            ]
+        }>
+            <View 
+                style={styles.header}>
+                <AppIcon 
+                    name={icon} 
+                    size={16} 
+                    color={variantStyle.iconColor}
+                    background={variantStyle.iconBackgroundColor} 
+                    style={[
+                        styles.icon,
+                        {outlineColor: variantStyle.outline}
+                    ]}/>
+                <AppText 
+                    variant="label" 
+                    color={variantStyle.color}
+                >
+                    {label}
+                </AppText>
             </View>
-            <AppText variant="title" color="text" style={styles.text}>{value}</AppText>
+            <AppText 
+                variant="title" 
+                color="text" 
+                style={styles.text}
+            >
+                $ {value}
+            </AppText>
         </View>
     )
 }
@@ -25,7 +55,7 @@ const styles = StyleSheet.create({
         gap: SPACING.md,
         padding: SPACING.md,
         borderRadius: RADIUS.xl,
-        backgroundColor: COLORS.light.surface,
+
         shadowColor: SHADOWS.light.shadowColor,
         shadowOffset: SHADOWS.light.shadowOffset,
         shadowOpacity: SHADOWS.light.shadowOpacity,
@@ -40,5 +70,10 @@ const styles = StyleSheet.create({
     },
     text: {
         padding: SPACING.sm
+    },
+    icon: {
+        borderRadius: RADIUS.full,
+        padding: SPACING.sm,
+        outlineWidth: SPACING.xs
     }
 })
