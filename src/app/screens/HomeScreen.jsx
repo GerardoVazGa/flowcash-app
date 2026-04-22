@@ -7,9 +7,59 @@ import { BalanceCard } from "../../components/financial/BalanceCard.jsx";
 import { MetricCard } from "../../components/financial/MetricCard.jsx";
 import { COLORS } from "../../constants/colors.js";
 import { SPACING, RADIUS } from "../../constants/layout.js";
+import { TransactionsList } from "../../components/financial/TransactionsList.jsx";
 
 export function HomeScreen(){
 
+    const transactions = [
+        {
+            id: 1,
+            label: "Transferencia recibida",
+            category: "Transferencia",
+            account: "Cuenta 1",
+            amount: 1000,
+            type: "income",
+            date: "2026-04-21",
+        },
+        {
+            id: 2,
+            label: "Supermercado",
+            category: "Alimentación",
+            account: "Cuenta 1",
+            amount: 350,
+            type: "expense",
+            date: "2026-04-20",
+        },
+        {
+            id: 3,
+            label: "Pago de nómina",
+            category: "Trabajo",
+            account: "Cuenta 1",
+            amount: 5000,
+            type: "income",
+            date: "2026-04-19",
+        },
+        {
+            id: 4,
+            label: "Transporte público",
+            category: "Transporte",
+            account: "Cuenta 1",
+            amount: 45,
+            type: "expense",
+            date: "2026-04-19",
+        },
+        {
+            id: 5,
+            label: "Suscripción Netflix",
+            category: "Entretenimiento",
+            account: "Cuenta 1",
+            amount: 199,
+            type: "expense",
+            date: "2026-04-18",
+        },
+    ]
+    
+    
     return (
         <ScrollView 
             style={styles.container}
@@ -47,6 +97,12 @@ export function HomeScreen(){
                 />
 
             </Section>
+
+            <Section title="Movimientos Recientes">
+                <TransactionsList transactions={transactions}/>
+            </Section>
+
+
             
             {/* <AppButton text="Click me" onAction={() => alert("Click")} styles={styles} size="sm" rounded="lg"/> */}
         </ScrollView>
