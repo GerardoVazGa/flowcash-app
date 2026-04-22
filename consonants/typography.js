@@ -30,7 +30,7 @@ export const Typography = {
     label: {
         fontFamily: FontFamily.bodySemiBold,
         fontSize: 12,
-        letterSpacing: 2,
+        letterSpacing: 1,
         textTransform: 'uppercase'
     },
 }
