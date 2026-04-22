@@ -1,11 +1,3 @@
-// Centralizado: Importa todas las constantes para acceso global
-export { COLORS } from './colors.js';
-export { SPACING, RADIUS } from './layout.js';
-export { Typography } from './typography.js';
-export { SHADOWS } from './shadows.js';
-export { FontFamily } from './fontFamily.js';
-
-// Alternativa: Crear un objeto theme unificado
 import { COLORS } from './colors.js';
 import { SPACING, RADIUS } from './layout.js';
 import { Typography } from './typography.js';
@@ -31,6 +23,4 @@ const THEME = {
     },
 }
 
-const currentTheme = THEME.light;
-
-export default currentTheme;
+export default THEME
