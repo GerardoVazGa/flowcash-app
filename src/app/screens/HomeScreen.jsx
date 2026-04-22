@@ -8,7 +8,7 @@ import { MetricCard } from "../../components/financial/MetricCard.jsx";
 import { COLORS } from "../../constants/colors.js";
 import { SPACING, RADIUS } from "../../constants/layout.js";
 
-export function Home(){
+export function HomeScreen(){
 
     return (
         <ScrollView 
