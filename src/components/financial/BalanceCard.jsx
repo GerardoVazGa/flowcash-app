@@ -8,8 +8,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Stat } from "./MetricCard";
 import { AppIcon } from "../ui/AppIcon";
 
-export function BalanceCard() {
-    const [balance, setBalance] = useState(0)
+export function BalanceCard({totalBalance}) {
     return (
         <LinearGradient 
             colors={GRADIENTS.light.primary.colors} 
@@ -20,7 +19,7 @@ export function BalanceCard() {
         >
             <View style = {styles.balanceContainer}>
                 <AppText variant="label" color="onPrimary">Balance Total</AppText>
-                <AppText variant="headline" color="onPrimary" style={styles.balanceAmount}> $124,560.85 </AppText>
+                <AppText variant="headline" color="onPrimary" style={styles.balanceAmount}> ${totalBalance} </AppText>
             </View>
             <AppIcon name="wallet-outline" size={34} style={styles.icon}
                 background="primaryContainer" color = "onPrimary"
