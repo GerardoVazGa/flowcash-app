@@ -7,19 +7,24 @@ export function getVariantStyle(variant){
         case "income":
             return {
                 backgroundColor: currentTheme.colors.incomeContainer,
-                color: currentTheme.colors.income,
+                color: currentTheme.colors.incomeStrong,
+                iconBackgroundColor: currentTheme.colors.income,
+                iconColor: currentTheme.colors.onPrimary,
                 outline: currentTheme.colors.incomeSoft
             }
-        case "expenses":
+        case "expense":
             return {
                 backgroundColor: currentTheme.colors.expensesContainer,
-                color: currentTheme.colors.expenses,
+                color: currentTheme.colors.expensesStrong,
+                iconBackgroundColor: currentTheme.colors.expenses,
+                iconColor: currentTheme.colors.onPrimary,
                 outline: currentTheme.colors.expensesSoft
             }
         default:
             return {
                 backgroundColor: currentTheme.colors.surface,
                 color: currentTheme.colors.text,
+                iconColor: currentTheme.colors.text,
                 outline: currentTheme.colors.outline
             }
     }
