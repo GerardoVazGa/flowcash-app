@@ -1,25 +1,42 @@
-import { View, Text} from "react-native";
-import Section from "../../components/layouts/Section.jsx";
+import { View, Text, ScrollView, StyleSheet} from "react-native";
+import { Section } from "../../components/layouts/Section.jsx";
 import { AppButton } from "../../components/ui/AppButton.jsx";
 import { AppText } from "../../components/ui/AppText.jsx";
-
-const styles = {
-    width: 50,
-    margin: 10,
-    height: 50,
-    backgroundColor: "blue",
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center"
-}
+import { AppIcon } from "../../components/ui/AppIcon.jsx";
+import { BalanceCard } from "../../components/financial/BalanceCard.jsx";
+import { MetricCard } from "../../components/financial/MetricCard.jsx";
+import { COLORS } from "../../consonants/colors.js";
+import { SPACING, RADIUS } from "../../consonants/layout.js";
 
 export function Home(){
+
     return (
-        <Section>
-            <AppText variant="display">Home</AppText>
-            <AppButton text="Click me" onAction={() => alert("Click")} styles={styles} size="sm" rounded="lg"/>
-        </Section>
+        <ScrollView 
+            style={styles.container}
+            contentContainerStyle={styles.content}
+        >
+            <BalanceCard/>
+            
+            
+            {/* <AppButton text="Click me" onAction={() => alert("Click")} styles={styles} size="sm" rounded="lg"/> */}
+        </ScrollView>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        
+    },
+    content: {
+        padding: SPACING.lg,
+        gap: SPACING.lg,
+        paddingBottom: SPACING.xl
+    },
+    icon: {
+        borderRadius: RADIUS.full,
+        padding: SPACING.sm,
+    }
+})
 
 
