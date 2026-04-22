@@ -9,7 +9,7 @@ export function TransactionItem({transaction}) {
     const amountColor = isExpense ? COLORS.light.expenses : COLORS.light.income;
     return (
         <View style={styles.container}>
-            <AppIcon name="trending-up-outline" size={14} background="primaryContainer" color = "onPrimary" style={styles.icon}/>
+            <AppIcon name={transaction.icon} size={14} background="primaryContainer" color = "onPrimary" style={styles.icon}/>
             <View >
                 <AppText variant="label" color="text"> {transaction.label} </AppText>
                 <AppText variant="body" color="text"> {transaction.category} - {transaction.account} </AppText>
