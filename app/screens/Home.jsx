@@ -16,7 +16,37 @@ export function Home(){
             contentContainerStyle={styles.content}
         >
             <BalanceCard/>
-            
+            <Section title="Metricas" style={styles.metricSection}>
+                <MetricCard 
+                    label="Ingresos" 
+                    value="$124,560.85" 
+                    icon= {
+                            <AppIcon 
+                                name="trending-up-outline" 
+                                size={14} 
+                                background="primaryContainer" 
+                                color = "onPrimary"
+                                style={styles.icon}
+                            />
+                        } 
+                    variant="total" 
+                />
+                <MetricCard 
+                    label="Gastos" 
+                    value="$124,560.85" 
+                    icon= {
+                            <AppIcon 
+                                name="trending-down-outline" 
+                                size={14} 
+                                background="primaryContainer" 
+                                color = "onPrimary"
+                                style={styles.icon}
+                            />
+                        } 
+                    variant="total"
+                />
+
+            </Section>
             
             {/* <AppButton text="Click me" onAction={() => alert("Click")} styles={styles} size="sm" rounded="lg"/> */}
         </ScrollView>
@@ -32,6 +62,12 @@ const styles = StyleSheet.create({
         padding: SPACING.lg,
         gap: SPACING.lg,
         paddingBottom: SPACING.xl
+    },
+    metricSection: {
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "center",
+        gap: SPACING.md
     },
     icon: {
         borderRadius: RADIUS.full,
