@@ -1,4 +1,4 @@
-function budgetMetrics(budget) {
+export function budgetMetrics(budget) {
     const percent = Math.min(
         Math.round((budget.spent / budget.limit) * 100),
         0
