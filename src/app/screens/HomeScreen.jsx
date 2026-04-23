@@ -10,6 +10,7 @@ import { SPACING, RADIUS } from "../../constants/layout.js";
 import THEME from "../../constants/theme.js";
 import { TransactionsList } from "../../components/financial/TransactionsList.jsx";
 import { useFinances } from "../../hooks/useFinances.js";
+import { BudgetItem } from "../../components/financial/BudgetItem.jsx";
 
 const currentTheme = THEME.light
 
@@ -47,6 +48,10 @@ export function HomeScreen(){
                 <TransactionsList transactions={transactions}/>
             </Section>
 
+            <Section style={styles.budgetSection}>
+                <AppText variant="headline">Presupuesto</AppText>
+                <BudgetItem />
+            </Section>
 
             
             {/* <AppButton text="Click me" onAction={() => alert("Click")} styles={styles} size="sm" rounded="lg"/> */}
@@ -86,6 +91,9 @@ const styles = StyleSheet.create({
         alignItems: "center",
         paddingHorizontal: SPACING.md,
         paddingBottom: SPACING.md
+    },
+    budgetSection: {
+        gap: SPACING.md
     }
 })
 
