@@ -8,7 +8,7 @@ export const budgetsMock = [
     },
     {
         id: "2",
-        category: "Comida",
+        category: "Alimentación",
         period: "Mensual",
         limit: 3000,
         spent: 1200,
@@ -29,7 +29,7 @@ export const budgetsMock = [
     },
     {
         id: "5",
-        category: "Compras",
+        category: "Ventas",
         period: "Mensual",
         limit: 2500,
         spent: 2600,
