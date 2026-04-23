@@ -4,7 +4,7 @@ import { Typography } from "../../constants/typography.js";
 import  { SPACING, RADIUS } from "../../constants/layout.js";
 
 export function AppButton({
-    text, 
+    children,
     onAction, 
     size = 'sm', 
     rounded = "sm", 
@@ -23,15 +23,7 @@ export function AppButton({
                 
             ]}
         >
-            <Text 
-                style = {
-                    {
-                        color: COLORS.light.surface
-                    }
-                }
-            >
-                {text}
-            </Text>
+            {children}
         </Pressable>
     )
 }
