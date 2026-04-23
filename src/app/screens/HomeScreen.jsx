@@ -5,17 +5,16 @@ import { AppText } from "../../components/ui/AppText.jsx";
 import { AppIcon } from "../../components/ui/AppIcon.jsx";
 import { BalanceCard } from "../../components/financial/BalanceCard.jsx";
 import { MetricCard } from "../../components/financial/MetricCard.jsx";
-import { COLORS } from "../../constants/colors.js";
 import { SPACING, RADIUS } from "../../constants/layout.js";
-import THEME from "../../constants/theme.js";
 import { TransactionsList } from "../../components/financial/TransactionsList.jsx";
 import { useFinances } from "../../hooks/useFinances.js";
 import { BudgetItem } from "../../components/financial/BudgetItem.jsx";
 import { useBudgets } from "../../hooks/useBudgets.js";
-
-const currentTheme = THEME.light
+import { useTheme } from "../../hooks/useTheme.js";
 
 export function HomeScreen(){
+    const { theme } = useTheme();
+    const styles = getStyles(theme);
 
     const {transactions, incomes, expenses, totalBalance} = useFinances()
 
@@ -69,7 +68,7 @@ export function HomeScreen(){
     )
 }
 
-const styles = StyleSheet.create({
+const getStyles = (theme) => StyleSheet.create({
     container: {
         flex: 1,
         
@@ -86,14 +85,14 @@ const styles = StyleSheet.create({
         gap: SPACING.md
     },
     recentMovements: {
-        backgroundColor: COLORS.light.surface,
+        backgroundColor: theme.colors.surface,
         borderRadius: RADIUS.xl,
         padding: SPACING.md,
-        shadowColor: currentTheme.shadows.shadowColor,
-        shadowOffset: currentTheme.shadows.shadowOffset,
-        shadowOpacity: currentTheme.shadows.shadowOpacity,
-        shadowRadius: currentTheme.shadows.shadowRadius,
-        elevation: currentTheme.shadows.elevation,
+        shadowColor: theme.shadows.shadowColor,
+        shadowOffset: theme.shadows.shadowOffset,
+        shadowOpacity: theme.shadows.shadowOpacity,
+        shadowRadius: theme.shadows.shadowRadius,
+        elevation: theme.shadows.elevation,
     },
     headerRecentMovements: {
         flexDirection: "row",
