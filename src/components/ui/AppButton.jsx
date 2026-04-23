@@ -8,17 +8,25 @@ export function AppButton({
     onAction, 
     size = 'sm', 
     rounded = "sm", 
+    disabled = false,
     style
 }) {
+    const isDisabled = disabled
+
     return (
         <Pressable 
             onPress={onAction} 
+            disabled={isDisabled}
             style={[
                 styles.button,
                 {
-                    backgroundColor: COLORS.light.primary,
+                    backgroundColor: isDisabled 
+                        ? COLORS.light.disabled 
+                        : COLORS.light.primary,
+
                     borderRadius: RADIUS[rounded],
-                    padding: SPACING[size]
+                    padding: SPACING[size],
+                    opacity: isDisabled ? 0.5 : 1
                 },
                 
             ]}
