@@ -2,7 +2,6 @@ export const budgetsMock = [
     {
         id: "1",
         category: "Entretenimiento",
-        icon: "game-controller-outline",
         period: "Mensual",
         limit: 2000,
         spent: 1870,
@@ -10,7 +9,6 @@ export const budgetsMock = [
     {
         id: "2",
         category: "Comida",
-        icon: "fast-food-outline",
         period: "Mensual",
         limit: 3000,
         spent: 1200,
@@ -18,7 +16,6 @@ export const budgetsMock = [
     {
         id: "3",
         category: "Transporte",
-        icon: "car-outline",
         period: "Mensual",
         limit: 1500,
         spent: 1500,
@@ -26,7 +23,6 @@ export const budgetsMock = [
     {
         id: "4",
         category: "Salud",
-        icon: "medkit-outline",
         period: "Mensual",
         limit: 1000,
         spent: 300,
@@ -34,7 +30,6 @@ export const budgetsMock = [
     {
         id: "5",
         category: "Compras",
-        icon: "cart-outline",
         period: "Mensual",
         limit: 2500,
         spent: 2600,
