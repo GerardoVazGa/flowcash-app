@@ -26,6 +26,16 @@ export const COLORS = {
         incomeContainer: '#86EFAC',
         incomeStrong: '#166534',
 
+        warning: '#FACC15',              // amarillo base
+        warningSoft: '#FEF9C3',          // fondo suave
+        warningContainer: '#FDE68A',     // intermedio
+        warningStrong: '#854D0E',        // texto fuerte
+
+        orange: '#F97316',               // naranja base
+        orangeSoft: '#FFEDD5',           // fondo suave
+        orangeContainer: '#FDBA74',      // intermedio
+        orangeStrong: '#9A3412',         // texto fuerte
+
         expenses: '#DC2626',              // rojo principal (más moderno que error)
         expensesSoft: '#FEE2E2',          // fondo suave
         expensesContainer: '#FCA5A5',     // intermedio
@@ -58,6 +68,16 @@ export const COLORS = {
         incomeSoft: 'rgba(74,222,128,0.12)',
         incomeContainer: 'rgba(74,222,128,0.20)',
         incomeStrong: '#BBF7D0',
+
+        warning: '#FDE047',
+        warningSoft: 'rgba(253,224,71,0.12)',
+        warningContainer: 'rgba(253,224,71,0.20)',
+        warningStrong: '#FEF08A',
+
+        orange: '#FB923C',
+        orangeSoft: 'rgba(251,146,60,0.12)',
+        orangeContainer: 'rgba(251,146,60,0.20)',
+        orangeStrong: '#FED7AA',
 
         expenses: '#FF6B6B',
         expensesSoft: 'rgba(255,107,107,0.12)',
