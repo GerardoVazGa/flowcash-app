@@ -1,7 +1,8 @@
 import { Pressable, StyleSheet, Text } from "react-native";
 import { COLORS  } from "../../constants/colors.js";
 import { Typography } from "../../constants/typography.js";
-import  { SPACING, RADIUS } from "../../constants/layout.js";
+import { SPACING, RADIUS } from "../../constants/layout.js";
+import THEME from "../../constants/theme.js";
 
 export function AppButton({
     children,
@@ -13,6 +14,8 @@ export function AppButton({
 }) {
     const isDisabled = disabled
 
+    const currentTheme = THEME.light
+
     return (
         <Pressable 
             onPress={onAction} 
@@ -21,14 +24,14 @@ export function AppButton({
                 styles.button,
                 {
                     backgroundColor: isDisabled 
-                        ? COLORS.light.disabled 
-                        : COLORS.light.primary,
+                        ? currentTheme.colors.surfaceHigh
+                        : currentTheme.colors.primaryContainer,
 
-                    borderRadius: RADIUS[rounded],
-                    padding: SPACING[size],
-                    opacity: isDisabled ? 0.5 : 1
+                    borderRadius: currentTheme.radius[rounded],
+                    opacity: isDisabled ? 0.5 : 1,
                 },
-                
+                currentTheme.buttonSizes[size],
+                style             
             ]}
         >
             {children}
@@ -40,7 +43,5 @@ const styles = StyleSheet.create({
     button: {
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 10,
-        padding: 10
     }
 })
