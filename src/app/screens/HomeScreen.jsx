@@ -7,8 +7,11 @@ import { BalanceCard } from "../../components/financial/BalanceCard.jsx";
 import { MetricCard } from "../../components/financial/MetricCard.jsx";
 import { COLORS } from "../../constants/colors.js";
 import { SPACING, RADIUS } from "../../constants/layout.js";
+import THEME from "../../constants/theme.js";
 import { TransactionsList } from "../../components/financial/TransactionsList.jsx";
 import { useFinances } from "../../hooks/useFinances.js";
+
+const currentTheme = THEME.light
 
 export function HomeScreen(){
 
@@ -37,7 +40,10 @@ export function HomeScreen(){
 
             </Section>
 
-            <Section title="Movimientos Recientes">
+            <Section style={styles.recentMovements}>
+                <View style={styles.headerRecentMovements}>
+                    <AppText variant="title">Ultimos movimientos</AppText>
+                </View>
                 <TransactionsList transactions={transactions}/>
             </Section>
 
@@ -64,6 +70,23 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         gap: SPACING.md
     },
+    recentMovements: {
+        backgroundColor: COLORS.light.surface,
+        borderRadius: RADIUS.xl,
+        padding: SPACING.md,
+        shadowColor: currentTheme.shadows.shadowColor,
+        shadowOffset: currentTheme.shadows.shadowOffset,
+        shadowOpacity: currentTheme.shadows.shadowOpacity,
+        shadowRadius: currentTheme.shadows.shadowRadius,
+        elevation: currentTheme.shadows.elevation,
+    },
+    headerRecentMovements: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        paddingHorizontal: SPACING.md,
+        paddingBottom: SPACING.md
+    }
 })
 
 
