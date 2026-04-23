@@ -11,12 +11,15 @@ import THEME from "../../constants/theme.js";
 import { TransactionsList } from "../../components/financial/TransactionsList.jsx";
 import { useFinances } from "../../hooks/useFinances.js";
 import { BudgetItem } from "../../components/financial/BudgetItem.jsx";
+import { useBudgets } from "../../hooks/useBudgets.js";
 
 const currentTheme = THEME.light
 
 export function HomeScreen(){
 
     const {transactions, incomes, expenses, totalBalance} = useFinances()
+
+    const {budgets} = useBudgets()
     
     return (
         <ScrollView 
@@ -50,11 +53,18 @@ export function HomeScreen(){
 
             <Section style={styles.budgetSection}>
                 <AppText variant="headline">Presupuesto</AppText>
-                <BudgetItem />
+                {
+                    budgets.map((budget) => (
+                        <BudgetItem key={budget.id} budget={budget} onDelete={() => {}} showDelete={false}/>
+                    ))
+                }
+            </Section>
+
+            <Section>
+                {/* Goals */}
             </Section>
 
             
-            {/* <AppButton text="Click me" onAction={() => alert("Click")} styles={styles} size="sm" rounded="lg"/> */}
         </ScrollView>
     )
 }
