@@ -1,7 +1,5 @@
 import { Pressable, StyleSheet, Text } from "react-native";
-import { COLORS  } from "../../constants/colors.js";
-import { Typography } from "../../constants/typography.js";
-import { SPACING, RADIUS } from "../../constants/layout.js";
+import { BUTTON_SIZES } from "../../constants/buttons.js";
 import THEME from "../../constants/theme.js";
 
 export function AppButton({
@@ -9,6 +7,7 @@ export function AppButton({
     onAction, 
     size = 'sm', 
     rounded = "sm", 
+    backgroundColor = 'primaryContainer',
     disabled = false,
     style
 }) {
@@ -22,15 +21,14 @@ export function AppButton({
             disabled={isDisabled}
             style={[
                 styles.button,
+                BUTTON_SIZES[size],
                 {
                     backgroundColor: isDisabled 
                         ? currentTheme.colors.surfaceHigh
-                        : currentTheme.colors.primaryContainer,
-
+                        : currentTheme.colors?.[backgroundColor] ?? currentTheme.colors.primaryContainer,
                     borderRadius: currentTheme.radius[rounded],
                     opacity: isDisabled ? 0.5 : 1,
                 },
-                currentTheme.buttonSizes[size],
                 style             
             ]}
         >
