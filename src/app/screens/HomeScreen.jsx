@@ -21,34 +21,18 @@ export function HomeScreen(){
             showsVerticalScrollIndicator={false}
         >
             <BalanceCard totalBalance={totalBalance.toFixed(2)}/>
-            <Section title="Metricas" style={styles.metricSection}>
+            <Section title="" style={styles.metricSection}>
                 <MetricCard 
                     label="Ingresos" 
                     value={incomes.toFixed(2)} 
-                    icon= {
-                            <AppIcon 
-                                name="trending-up-outline" 
-                                size={14} 
-                                background="primaryContainer" 
-                                color = "onPrimary"
-                                style={styles.icon}
-                            />
-                        } 
-                    variant="total" 
+                    icon="trending-up-outline"
+                    variant="income" 
                 />
                 <MetricCard 
                     label="Gastos" 
                     value={expenses.toFixed(2)} 
-                    icon= {
-                            <AppIcon 
-                                name="trending-down-outline" 
-                                size={14} 
-                                background="primaryContainer" 
-                                color = "onPrimary"
-                                style={styles.icon}
-                            />
-                        } 
-                    variant="total"
+                    icon= "trending-down-outline"
+                    variant="expense"
                 />
 
             </Section>
@@ -80,10 +64,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         gap: SPACING.md
     },
-    icon: {
-        borderRadius: RADIUS.full,
-        padding: SPACING.sm,
-    }
 })
 
 
