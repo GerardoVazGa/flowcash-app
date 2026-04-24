@@ -14,7 +14,7 @@ export const COLORS = {
         textVariant: '#6B7280',
 
         error: '#BA1A1A',
-        outline: 'rgba(0,0,0,0.15)',
+        outline: '#ffffff80',
 
         chipBackground: 'rgba(255,255,255,0.10)',
         chipBackgroundStrong: 'rgba(255,255,255,0.16)',
