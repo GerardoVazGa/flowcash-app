@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet } from "react-native";
-import THEME from "../../constants/theme";
 import { ICON_BUTTON_SIZES } from "../../constants/buttons";
 import { AppIcon } from "./AppIcon";
+import { useTheme } from "../../hooks/useTheme";
 
 export function IconButton({
     icon,
@@ -13,7 +13,8 @@ export function IconButton({
     disabled = false,
     style
 }) {
-    const currentTheme = THEME.light
+    const { theme } = useTheme()
+    const currentTheme = theme
 
     const backgroundStyle = disabled 
         ? currentTheme.colors.surfaceHigh
