@@ -1,13 +1,14 @@
 import { StyleSheet, View } from "react-native";
 import { AppText } from "../ui/AppText";
-import { SPACING, RADIUS } from "../../constants/layout.js";
-import { COLORS } from "../../constants/colors.js";
-import { SHADOWS } from "../../constants/shadows.js";
 import { AppIcon } from "../ui/AppIcon.jsx";
 import { getVariantStyle } from "../../utils/getVariantStyle.js";
+import { useTheme } from "../../hooks/useTheme.js";
 
 export function MetricCard({label = "Total", value, icon, variant, style}) {
-    const variantStyle = getVariantStyle(variant)
+    const { theme } = useTheme()
+    const variantStyle = getVariantStyle(variant, theme.colors)
+
+    const styles = getStyles(theme)
 
     return (
         <View style={
@@ -26,7 +27,7 @@ export function MetricCard({label = "Total", value, icon, variant, style}) {
                     background={variantStyle.iconBackgroundColor} 
                     style={[
                         styles.icon,
-                        {outlineColor: variantStyle.outline}
+                        {borderColor:variantStyle.borderColor}
                     ]}/>
                 <AppText 
                     variant="label" 
@@ -46,34 +47,34 @@ export function MetricCard({label = "Total", value, icon, variant, style}) {
     )
 }
 
-const styles = StyleSheet.create({
+const getStyles = (theme) => StyleSheet.create({
     container: {
         flex: 1,
         overflow: 'hidden',
         flexDirection: 'column',
         justifyContent: 'space-around',
-        gap: SPACING.md,
-        padding: SPACING.md,
-        borderRadius: RADIUS.xl,
+        gap: theme.spacing.md,
+        padding: theme.spacing.md,
+        borderRadius: theme.radius.xl,
 
-        shadowColor: SHADOWS.light.shadowColor,
-        shadowOffset: SHADOWS.light.shadowOffset,
-        shadowOpacity: SHADOWS.light.shadowOpacity,
-        shadowRadius: SHADOWS.light.shadowRadius,
-        elevation: SHADOWS.light.elevation,
+        shadowColor: theme.shadows.shadowColor,
+        shadowOffset: theme.shadows.shadowOffset,
+        shadowOpacity: theme.shadows.shadowOpacity,
+        shadowRadius: theme.shadows.shadowRadius,
+        elevation: theme.shadows.elevation,
         height: 180
     },
     header: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: SPACING.sm
+        gap: theme.spacing.sm
     },
     text: {
-        padding: SPACING.sm
+        padding: theme.spacing.sm
     },
     icon: {
-        borderRadius: RADIUS.full,
-        padding: SPACING.sm,
-        outlineWidth: SPACING.xs
+        borderRadius: theme.radius.full,
+        padding: theme.spacing.sm,
+        borderWidth: theme.spacing.xs
     }
 })
