@@ -1,17 +1,18 @@
-import { StyleSheet, View } from "react-native";
-import THEME from "../../constants/theme";
-import { AppIcon } from "../ui/AppIcon";
-import { AppText } from "../ui/AppText";
-import { AppButton } from "../ui/AppButton";
-import { ProgressBar } from "../ui/ProgressBar";
-import { IconButton } from "../ui/IconButton";
-import { CATEGORY_ICONS } from "../../constants/categoryIcon";
-import { budgetStatus } from "../../utils/budgetStatus";
+import { StyleSheet, View } from "react-native"
+import { AppIcon } from "../ui/AppIcon"
+import { AppText } from "../ui/AppText"
+import { AppButton } from "../ui/AppButton"
+import { ProgressBar } from "../ui/ProgressBar"
+import { IconButton } from "../ui/IconButton"
+import { CATEGORY_ICONS } from "../../constants/categoryIcon"
+import { budgetStatus } from "../../utils/budgetStatus"
+import { useTheme } from "../../hooks/useTheme"
 
 
 
 export function BudgetItem({showDelete = true, onDelete, budget}) {
-    const currentTheme = THEME.light
+    const { theme } = useTheme()
+    const currentTheme = theme
     const styles = getStyles(currentTheme)
 
     const budgetWithIcon = {...budget, icon: CATEGORY_ICONS[budget.category]}
