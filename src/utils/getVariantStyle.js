@@ -1,31 +1,27 @@
-import THEME from "../constants/theme.js"
-
-const currentTheme = THEME.light
-
-export function getVariantStyle(variant){
+export function getVariantStyle(variant, colors) {
     switch(variant) {
         case "income":
             return {
-                backgroundColor: currentTheme.colors.incomeContainer,
-                color: currentTheme.colors.incomeStrong,
-                iconBackgroundColor: currentTheme.colors.income,
-                iconColor: currentTheme.colors.onPrimary,
-                outline: currentTheme.colors.incomeSoft
+                backgroundColor: colors.incomeContainer,
+                color: colors.incomeStrong,
+                iconBackgroundColor: colors.income,
+                iconColor: colors.onPrimary,
+                borderColor: colors.incomeSoft
             }
         case "expense":
             return {
-                backgroundColor: currentTheme.colors.expensesContainer,
-                color: currentTheme.colors.expensesStrong,
-                iconBackgroundColor: currentTheme.colors.expenses,
-                iconColor: currentTheme.colors.onPrimary,
-                outline: currentTheme.colors.expensesSoft
+                backgroundColor: colors.expensesContainer,
+                color: colors.expensesStrong,
+                iconBackgroundColor: colors.expenses,
+                iconColor: colors.onPrimary,
+                borderColor: colors.expensesSoft
             }
         default:
             return {
-                backgroundColor: currentTheme.colors.surface,
-                color: currentTheme.colors.text,
-                iconColor: currentTheme.colors.text,
-                outline: currentTheme.colors.outline
+                backgroundColor: colors.surface,
+                color: colors.text,
+                iconColor: colors.text,
+                borderColor: colors.outline
             }
     }
 }
