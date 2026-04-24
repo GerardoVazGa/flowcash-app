@@ -1,9 +1,11 @@
 import { StyleSheet, View } from "react-native";
-import THEME from "../../constants/theme";
-
-const currentTheme = THEME.light
+import { useTheme } from "../../hooks/useTheme";
 
 export function ProgressBar({percent = 10, color}) {
+    const {theme} = useTheme()
+
+    const styles = getStyles(theme)
+
     const safePercent = Math.min(Math.max(percent, 0), 100)
 
     return (
@@ -14,7 +16,7 @@ export function ProgressBar({percent = 10, color}) {
                         styles.progressFill,
                         {
                             width: `${safePercent}%`, 
-                            backgroundColor: color || currentTheme.colors.income
+                            backgroundColor: color || theme.colors.income
                         }
                     ]
                 }
@@ -24,7 +26,7 @@ export function ProgressBar({percent = 10, color}) {
     )
 }
 
-const styles = StyleSheet.create({
+const getStyles = (currentTheme) => StyleSheet.create({
     track: {
         overflow: "hidden",
         width: "100%",
