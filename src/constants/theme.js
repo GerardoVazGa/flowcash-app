@@ -1,4 +1,4 @@
-import { COLORS } from './colors.js';
+import { COLORS, GRADIENTS } from './colors.js';
 import { SPACING, RADIUS } from './layout.js';
 import { Typography } from './typography.js';
 import { SHADOWS } from './shadows.js';
@@ -9,6 +9,7 @@ import { BUTTON_SIZES, ICON_BUTTON_SIZES } from './buttons.js';
 const THEME = {
     light: {
         colors: COLORS.light,
+        gradients: GRADIENTS.light,
         spacing: SPACING,
         radius: RADIUS,
         typography: Typography,
@@ -18,6 +19,7 @@ const THEME = {
     },
     dark: {
         colors: COLORS.dark,
+        gradients: GRADIENTS.dark,
         spacing: SPACING,
         radius: RADIUS,
         typography: Typography,
