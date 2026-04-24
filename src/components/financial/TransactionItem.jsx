@@ -1,18 +1,23 @@
-import { StyleSheet, View } from "react-native";
-import { AppText } from "../ui/AppText";
-import { AppIcon } from "../ui/AppIcon";
-import { COLORS } from "../../constants/colors";
-import { RADIUS, SPACING } from "../../constants/layout";
+import { StyleSheet, View } from "react-native"
+import { AppText } from "../ui/AppText"
+import { AppIcon } from "../ui/AppIcon"
+import { useTheme } from "../../hooks/useTheme"
 
 export function TransactionItem({transaction}) {
+    const { theme } = useTheme()
+
+    const styles = getStyles(theme)
+
     const isExpense = transaction.type === "expense";
-    const amountColor = isExpense ? COLORS.light.expenses : COLORS.light.income;
+    const amountColor = isExpense ? theme.colors.expenses : theme.colors.income;
     return (
         <View style={styles.container}>
             <AppIcon name={transaction.icon} size={14} background="primaryContainer" color = "onPrimary" style={styles.icon}/>
-            <View >
-                <AppText variant="label" color="text"> {transaction.label} </AppText>
-                <AppText variant="body" color="text"> {transaction.category} - {transaction.account} </AppText>
+            <View style={styles.info} >
+                <AppText variant="label" color="text">
+                    {transaction.label}
+                </AppText>
+                <AppText variant="body" color="text">{transaction.category} - {transaction.account}</AppText>
             </View>
             <AppText variant="title" color={amountColor}>
                 {isExpense ? "-" : "+"} {transaction.amount} 
@@ -21,18 +26,24 @@ export function TransactionItem({transaction}) {
     )
 }
 
-const styles = StyleSheet.create({
+const getStyles = (theme) => StyleSheet.create({
     container: {
         flex: 1,
+        overflow: "hidden",
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "center",
         alignItems: "center",
-        padding: SPACING.md,
+        gap: theme.spacing.md,
+        paddingVertical: theme.spacing.md,
+        paddingHorizontal: theme.spacing.xs,
     },
     icon: {
-        borderRadius: RADIUS.full,
-        padding: SPACING.sm,
+        borderRadius: theme.radius.full,
+        padding: theme.spacing.sm,
     },
-    detail: {
+    info: {
+        flex: 1,
+        justifyContent: "flex-start",
+        width: "100%"
     }
 })
