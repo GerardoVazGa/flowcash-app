@@ -1,6 +1,5 @@
 import { Pressable, StyleSheet, Text } from "react-native";
 import { BUTTON_SIZES } from "../../constants/buttons.js";
-import THEME from "../../constants/theme.js";
 
 export function AppButton({
     children,
@@ -13,7 +12,9 @@ export function AppButton({
 }) {
     const isDisabled = disabled
 
-    const currentTheme = THEME.light
+    const {theme} = useTheme()
+
+    const currentTheme = theme
 
     return (
         <Pressable 
