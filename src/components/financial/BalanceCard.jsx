@@ -1,20 +1,22 @@
 import { StyleSheet } from "react-native";
 import { View } from "react-native";
 import { AppText } from "../ui/AppText";
-import { COLORS, GRADIENTS } from "../../constants/colors.js";
-import { SPACING, RADIUS } from "../../constants/layout.js";
 import { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Stat } from "./MetricCard";
 import { AppIcon } from "../ui/AppIcon";
+import { useTheme } from "../../hooks/useTheme.js";
 
 export function BalanceCard({totalBalance}) {
+    const { theme } = useTheme()
+    const styles = getStyles(theme)
+
     return (
         <LinearGradient 
-            colors={GRADIENTS.light.primary.colors} 
-            start={GRADIENTS.light.primary.start}
-            end={GRADIENTS.light.primary.end}
-            locations={GRADIENTS.light.primary.locations}
+            colors={theme.gradients.primary.colors} 
+            start={theme.gradients.primary.start}
+            end={theme.gradients.primary.end}
+            locations={theme.gradients.primary.locations}
             style={styles.card}
         >
             <View style = {styles.balanceContainer}>
@@ -28,21 +30,21 @@ export function BalanceCard({totalBalance}) {
     )
 }
 
-const styles = StyleSheet.create({
+const getStyles = (theme) => StyleSheet.create({
     card: {
-        padding: SPACING.lg,
-        borderRadius: RADIUS.xl,
+        padding: theme.spacing.lg,
+        borderRadius: theme.radius.xl,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
     },
     icon: {
-        borderRadius: RADIUS.full,
-        padding: SPACING.sm,
-        outlineColor: COLORS.light.outline,
-        outlineWidth: SPACING.xs
+        borderRadius: theme.radius.full,
+        padding: theme.spacing.sm,
+        outlineColor: theme.colors.outline,
+        outlineWidth: theme.spacing.xs
     },
     balanceAmount: {
-        marginVertical: SPACING.md
+        marginVertical: theme.spacing.md
     }
 })
