@@ -10,7 +10,7 @@ import { useTheme } from "../../hooks/useTheme"
 
 
 
-export function BudgetItem({showDelete = true, onDelete, budget}) {
+export function BudgetItem({showDelete = true, onDelete, budget, isVisible = true}) {
     const { theme } = useTheme()
     const currentTheme = theme
     const styles = getStyles(currentTheme)
@@ -54,7 +54,7 @@ export function BudgetItem({showDelete = true, onDelete, budget}) {
                 )}
 
             </View>
-            <ProgressBar color={colorBar} percent={budgetWithIcon.percent}/>
+            <ProgressBar color={colorBar} percent={budgetWithIcon.percent} isVisible={isVisible}/>
             <View style={styles.footer}>
                 <AppText 
                     variant="body" 
