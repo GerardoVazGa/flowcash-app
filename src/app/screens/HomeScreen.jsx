@@ -1,11 +1,8 @@
 import { View, Text, ScrollView, StyleSheet} from "react-native";
 import { Section } from "../../components/layouts/Section.jsx";
-import { AppButton } from "../../components/ui/AppButton.jsx";
 import { AppText } from "../../components/ui/AppText.jsx";
-import { AppIcon } from "../../components/ui/AppIcon.jsx";
 import { BalanceCard } from "../../components/financial/BalanceCard.jsx";
 import { MetricCard } from "../../components/financial/MetricCard.jsx";
-import { SPACING, RADIUS } from "../../constants/layout.js";
 import { TransactionsList } from "../../components/financial/TransactionsList.jsx";
 import { useFinances } from "../../hooks/useFinances.js";
 import { BudgetItem } from "../../components/financial/BudgetItem.jsx";
@@ -74,20 +71,20 @@ const getStyles = (theme) => StyleSheet.create({
         
     },
     content: {
-        padding: SPACING.lg,
-        gap: SPACING.lg,
-        paddingBottom: SPACING.xl
+        padding: theme.spacing.lg,
+        gap: theme.spacing.lg,
+        paddingBottom: theme.spacing.xl
     },
     metricSection: {
         flex: 1,
         flexDirection: "row",
         justifyContent: "center",
-        gap: SPACING.md
+        gap: theme.spacing.md
     },
     recentMovements: {
         backgroundColor: theme.colors.surface,
-        borderRadius: RADIUS.xl,
-        padding: SPACING.md,
+        borderRadius: theme.radius.xl,
+        padding: theme.spacing.md,
         shadowColor: theme.shadows.shadowColor,
         shadowOffset: theme.shadows.shadowOffset,
         shadowOpacity: theme.shadows.shadowOpacity,
@@ -98,11 +95,11 @@ const getStyles = (theme) => StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        paddingHorizontal: SPACING.md,
-        paddingBottom: SPACING.md
+        paddingHorizontal: theme.spacing.md,
+        paddingBottom: theme.spacing.md
     },
     budgetSection: {
-        gap: SPACING.md
+        gap: theme.spacing.md
     }
 })
 
