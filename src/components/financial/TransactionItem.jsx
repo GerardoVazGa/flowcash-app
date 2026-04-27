@@ -2,6 +2,7 @@ import { StyleSheet, View } from "react-native"
 import { AppText } from "../ui/AppText"
 import { AppIcon } from "../ui/AppIcon"
 import { useTheme } from "../../hooks/useTheme"
+import { formatCurrency } from "../../utils/formatCurrency"
 
 export function TransactionItem({transaction}) {
     const { theme } = useTheme()
@@ -20,7 +21,7 @@ export function TransactionItem({transaction}) {
                 <AppText variant="body" color="text">{transaction.category} - {transaction.account}</AppText>
             </View>
             <AppText variant="title" color={amountColor}>
-                {isExpense ? "-" : "+"} {transaction.amount} 
+                {isExpense ? "-" : "+"}{formatCurrency(transaction.amount)} 
             </AppText>
         </View>
     )

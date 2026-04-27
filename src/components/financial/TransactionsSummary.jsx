@@ -2,31 +2,37 @@ import { StyleSheet, View } from "react-native";
 import { useTheme } from "../../hooks/useTheme";
 import { MetricCard } from "./MetricCard";
 import { AppText } from "../ui/AppText";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 export function TransactionsSummary({income, expense, balance}) {
     const  {theme} = useTheme()
     const styles = getStyles(theme)
+
+    const incomeFormated = formatCurrency(income)
+    const expenseFormated = formatCurrency(expense)
+    const balanceFormated = formatCurrency(balance)
+
     return (
         <View style = {styles.container}>
             <AppText variant="title">Resumen de Transacciones</AppText>
             <View style={styles.metrics}>
                 <MetricCard 
                     label="Ingresos" 
-                    value={income.toFixed(2)}
+                    value={incomeFormated}
                     variant="income" 
                     size="sm" 
                 />
                 
                 <MetricCard 
                     label="Gastos" 
-                    value={expense.toFixed(2)}
+                    value={expenseFormated}
                     variant="expense" 
                     size="sm" 
                 />
                 
                 <MetricCard 
                     label="Balance" 
-                    value={balance.toFixed(2)}
+                    value={balanceFormated}
                     variant="expense" 
                     size="sm" 
                 />

@@ -7,6 +7,7 @@ import { IconButton } from "../ui/IconButton"
 import { CATEGORY_ICONS } from "../../constants/categoryIcon"
 import { budgetStatus } from "../../utils/budgetStatus"
 import { useTheme } from "../../hooks/useTheme"
+import { formatCurrency } from "../../utils/formatCurrency"
 
 
 
@@ -39,8 +40,8 @@ export function BudgetItem({showDelete = true, onDelete, budget, isVisible = tru
                     <AppText variant="label" style={styles.period}> {budgetWithIcon.period}</AppText>
                 </View>
                 <View style={styles.amount}>
-                    <AppText variant="body"> $ {budgetWithIcon.spent} </AppText>
-                    <AppText variant="body">de $ {budgetWithIcon.limit}</AppText>
+                    <AppText variant="body"> {formatCurrency(budgetWithIcon.spent)} </AppText>
+                    <AppText variant="body">de {formatCurrency(budgetWithIcon.limit)}</AppText>
                 </View>
 
                 {showDelete && (
@@ -54,7 +55,7 @@ export function BudgetItem({showDelete = true, onDelete, budget, isVisible = tru
                 )}
 
             </View>
-            <ProgressBar color={colorBar} percent={budgetWithIcon.percent} isVisible={isVisible}/>
+            <ProgressBar color={colorBar} percent={budgetWithIcon.percent} />
             <View style={styles.footer}>
                 <AppText 
                     variant="body" 
@@ -75,8 +76,8 @@ export function BudgetItem({showDelete = true, onDelete, budget, isVisible = tru
                 > 
                     {
                         budgetWithIcon.isOverLimit 
-                        ? "Limite excedido por $ " + Math.abs(budgetWithIcon.remaining)
-                        : `Quedan $ ${budgetWithIcon.remaining}`
+                        ? `Excedido por ${formatCurrency(Math.abs(budgetWithIcon.remaining))} ` 
+                        : `Quedan ${formatCurrency(budgetWithIcon.remaining)}`
                     }
                 </AppText>
             </View>
