@@ -14,7 +14,9 @@ export const COLORS = {
         textVariant: '#6B7280',
 
         error: '#BA1A1A',
-        outline: '#ffffff80',
+        outline: '#0000001f',         // bordes generales
+        outlineIcon: '#00000026',     // iconos sobre surface
+        outlineOnColor: '#ffffff40', // iconos sobre fondos verdes/rojos
 
         chipBackground: 'rgba(255,255,255,0.10)',
         chipBackgroundStrong: 'rgba(255,255,255,0.16)',
@@ -57,7 +59,9 @@ export const COLORS = {
         textVariant: '#bec9c1',
 
         error: '#ffb4ab',
-        outline: 'rgba(63,73,67,0.15)',
+        outline: '#ffffff1f',       // bordes generales
+        outlineIcon: '#ffffff2e',   // iconos sobre surface
+        outlineOnColor: '#ffffff4d', // iconos sobre fondos de color
 
         chipBackground: 'rgba(255,255,255,0.08)',
         chipBackgroundStrong: 'rgba(255,255,255,0.14)',
