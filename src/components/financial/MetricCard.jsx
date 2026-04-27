@@ -4,11 +4,11 @@ import { AppIcon } from "../ui/AppIcon.jsx";
 import { getVariantStyle } from "../../utils/getVariantStyle.js";
 import { useTheme } from "../../hooks/useTheme.js";
 
-export function MetricCard({label = "Total", value, icon, variant, style}) {
+export function MetricCard({label = "Total", value, icon, variant, size = "md", style}) {
     const { theme } = useTheme()
     const variantStyle = getVariantStyle(variant, theme.colors)
 
-    const styles = getStyles(theme)
+    const styles = getStyles(theme, size)
 
     return (
         <View style={
@@ -20,41 +20,44 @@ export function MetricCard({label = "Total", value, icon, variant, style}) {
         }>
             <View 
                 style={styles.header}>
-                <AppIcon 
-                    name={icon} 
-                    size={16} 
-                    color={variantStyle.iconColor}
-                    background={variantStyle.iconBackgroundColor} 
-                    style={[
-                        styles.icon,
-                        {borderColor:variantStyle.borderColor}
-                    ]}/>
+                {
+                icon && 
+                    <AppIcon 
+                        name={icon} 
+                        size={size === "sm" ? 14 : 16} 
+                        color={variantStyle.iconColor}
+                        background={variantStyle.iconBackgroundColor} 
+                        style={[
+                            styles.icon,
+                            {borderColor:variantStyle.borderColor}
+                        ]}
+                    />
+                }
                 <AppText 
-                    variant="label" 
+                    variant={size === "sm" ? "body" : "label"} 
                     color={variantStyle.color}
                 >
                     {label}
                 </AppText>
             </View>
             <AppText 
-                variant="title" 
+                variant={size === "sm" ? "body" : "title"}
                 color="text" 
                 style={styles.text}
             >
-                $ {value}
+                {variant === "income" ? `+$${value}` : variant === "expense" ? `-$${value}` : `${value}`}
             </AppText>
         </View>
     )
 }
 
-const getStyles = (theme) => StyleSheet.create({
+const getStyles = (theme, size) => StyleSheet.create({
     container: {
         flex: 1,
         overflow: 'hidden',
         flexDirection: 'column',
-        justifyContent: 'space-around',
         gap: theme.spacing.md,
-        padding: theme.spacing.md,
+        padding: size === "sm" ? theme.spacing.sm : theme.spacing.md,
         borderRadius: theme.radius.xl,
 
         shadowColor: theme.shadows.shadowColor,
@@ -62,7 +65,7 @@ const getStyles = (theme) => StyleSheet.create({
         shadowOpacity: theme.shadows.shadowOpacity,
         shadowRadius: theme.shadows.shadowRadius,
         elevation: theme.shadows.elevation,
-        height: 180
+        height: size === "sm" ? 100 : 180
     },
     header: {
         flexDirection: 'row',
@@ -70,11 +73,11 @@ const getStyles = (theme) => StyleSheet.create({
         gap: theme.spacing.sm
     },
     text: {
-        padding: theme.spacing.sm
+        textAlign: 'center',
     },
     icon: {
         borderRadius: theme.radius.full,
-        padding: theme.spacing.sm,
+        padding: size === "sm" ? theme.spacing.xs : theme.spacing.sm,
         borderWidth: theme.spacing.xs
     }
 })
