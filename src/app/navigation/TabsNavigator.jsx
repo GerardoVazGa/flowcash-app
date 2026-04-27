@@ -1,6 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { HomeScreen } from "../screens/HomeScreen"
-import { Placeholder } from "../../components/ui/Placeholder"
 
 const Tab = createBottomTabNavigator()
 
