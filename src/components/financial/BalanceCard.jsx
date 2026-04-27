@@ -21,7 +21,7 @@ export function BalanceCard({totalBalance}) {
         >
             <View style = {styles.balanceContainer}>
                 <AppText variant="label" color="onPrimary">Balance Total</AppText>
-                <AppText variant="headline" color="onPrimary" style={styles.balanceAmount}> ${totalBalance} </AppText>
+                <AppText variant="headline" color="onPrimary" style={styles.balanceAmount}> {totalBalance} </AppText>
             </View>
             <AppIcon name="wallet-outline" size={34} style={styles.icon}
                 background="primaryContainer" color = "onPrimary"
