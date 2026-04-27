@@ -23,17 +23,17 @@ export function HomeScreen(){
             contentContainerStyle={styles.content}
             showsVerticalScrollIndicator={false}
         >
-            <BalanceCard totalBalance={totalBalance.toFixed(2)}/>
+            <BalanceCard totalBalance={totalBalance}/>
             <Section title="" style={styles.metricSection}>
                 <MetricCard 
                     label="Ingresos" 
-                    value={incomes.toFixed(2)} 
+                    value={incomes} 
                     icon="trending-up-outline"
                     variant="income" 
                 />
                 <MetricCard 
                     label="Gastos" 
-                    value={expenses.toFixed(2)} 
+                    value={expenses} 
                     icon= "trending-down-outline"
                     variant="expense"
                 />
