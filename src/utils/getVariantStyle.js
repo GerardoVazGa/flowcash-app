@@ -6,7 +6,7 @@ export function getVariantStyle(variant, colors) {
                 color: colors.incomeStrong,
                 iconBackgroundColor: colors.income,
                 iconColor: colors.onPrimary,
-                borderColor: colors.incomeSoft
+                borderColor: colors.outlineOnColor
             }
         case "expense":
             return {
@@ -14,14 +14,14 @@ export function getVariantStyle(variant, colors) {
                 color: colors.expensesStrong,
                 iconBackgroundColor: colors.expenses,
                 iconColor: colors.onPrimary,
-                borderColor: colors.expensesSoft
+                borderColor: colors.outlineOnColor
             }
         default:
             return {
                 backgroundColor: colors.surface,
                 color: colors.text,
                 iconColor: colors.text,
-                borderColor: colors.outline
+                borderColor: colors.outlineOnColor
             }
     }
 }

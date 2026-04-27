@@ -41,7 +41,7 @@ const getStyles = (theme) => StyleSheet.create({
     icon: {
         borderRadius: theme.radius.full,
         padding: theme.spacing.sm,
-        outlineColor: theme.colors.outline,
+        outlineColor: theme.colors.outlineOnColor,
         outlineWidth: theme.spacing.xs
     },
     balanceAmount: {
