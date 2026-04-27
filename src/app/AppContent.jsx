@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { HomeScreen } from "./screens/HomeScreen";
 import { useTheme } from "../hooks/useTheme.js"
+import { AppNavigator } from "./navigation/AppNavigator.jsx";
 
 export function AppContent() {
     const { theme } = useTheme()
@@ -10,7 +11,7 @@ export function AppContent() {
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
-            <HomeScreen />
+            <AppNavigator />
         </View>
     )
 }
