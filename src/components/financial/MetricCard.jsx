@@ -45,7 +45,7 @@ export function MetricCard({label = "Total", value, icon, variant, size = "md", 
                 color="text" 
                 style={styles.text}
             >
-                {variant === "income" ? `+$${value}` : variant === "expense" ? `-$${value}` : `${value}`}
+                {variant === "income" ? `+${value}` : variant === "expense" ? `-${value}` : `${value}`}
             </AppText>
         </View>
     )
@@ -65,10 +65,11 @@ const getStyles = (theme, size) => StyleSheet.create({
         shadowOpacity: theme.shadows.shadowOpacity,
         shadowRadius: theme.shadows.shadowRadius,
         elevation: theme.shadows.elevation,
-        height: size === "sm" ? 100 : 180
+        height: size === "sm" ? 100 : 150
     },
     header: {
         flexDirection: 'row',
+        justifyContent: 'center',
         alignItems: 'center',
         gap: theme.spacing.sm
     },
