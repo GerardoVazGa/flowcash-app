@@ -18,9 +18,11 @@ export function IconButton({
 
     const backgroundStyle = disabled 
         ? currentTheme.colors.surfaceHigh
-        : currentTheme.colors?.[background] || currentTheme.colors.primaryContainer 
+        : background === "transparent" ? "transparent" : currentTheme.colors?.[background] || currentTheme.colors.primaryContainer
 
-    const iconColorStyle = currentTheme.colors?.[colorIcon] || currentTheme.colors.surface
+    const iconColorStyle = currentTheme.colors?.[colorIcon] || (
+        background === "transparent" ? currentTheme.colors.text : currentTheme.colors.onPrimary
+    )
     return (
         <Pressable
             disabled = {disabled}
