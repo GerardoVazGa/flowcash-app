@@ -7,11 +7,11 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 export default function App() {
   return (
     <GestureHandlerRootView style={styles.container}>
-      <BottomSheetModalProvider>
-        <ThemeProvider>
+      <ThemeProvider>
+        <BottomSheetModalProvider>
           <AppContent />
-        </ThemeProvider>
-      </BottomSheetModalProvider>
+        </BottomSheetModalProvider>
+      </ThemeProvider>
     </GestureHandlerRootView>
   );
 }
