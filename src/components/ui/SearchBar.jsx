@@ -53,6 +53,7 @@ export function SearchBar({value, onChange}) {
 
 const getStyles = (theme) => StyleSheet.create({
     container: {
+        flex: 1,
         flexDirection: "row",
         alignItems: "center",
         gap: theme.spacing.sm,
