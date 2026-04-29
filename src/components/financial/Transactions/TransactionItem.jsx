@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native"
 import { AppText } from "../../ui/AppText.jsx"
 import { AppIcon } from "../../ui/AppIcon.jsx"
-import { useTheme } from "../../../hooks/useTheme.jsx"
+import { useTheme } from "../../../hooks/useTheme.js"
 import { formatCurrency } from "../../../utils/formatCurrency.js"
 
 export function TransactionItem({transaction}) {

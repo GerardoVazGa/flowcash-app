@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, View } from "react-native";
-import { useTheme } from "../../hooks/useTheme";
-import { AppIcon } from "./AppIcon";
-import { AppText } from "./AppText";
+import { useTheme } from "../../../hooks/useTheme.js";
+import { AppIcon } from "../../ui/AppIcon.jsx";
+import { AppText } from "../../ui/AppText.jsx";
 
 export function FilterOption({title, subtitle, iconName, onPress, selected}) {
     const { theme } = useTheme()
