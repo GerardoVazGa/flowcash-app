@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import { useTheme } from "../../../hooks/useTheme";
-import { MetricCard } from "./MetricCard";
-import { AppText } from "../../ui/AppText";
+import { MetricCard } from "./MetricCard.jsx";
+import { AppText } from "../../ui/AppText.jsx";
 import { formatCurrency } from "../../../utils/formatCurrency";
 
 export function TransactionsSummary({income, expense, balance}) {

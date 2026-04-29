@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native";
 import { View } from "react-native";
-import { AppText } from "../ui/AppText";
+import { AppText } from "../../ui/AppText.jsx";
 import { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
-import { Stat } from "./MetricCard";
-import { AppIcon } from "../ui/AppIcon";
-import { useTheme } from "../../hooks/useTheme.js";
+import { Stat } from "./MetricCard.jsx";
+import { AppIcon } from "../../ui/AppIcon.jsx";
+import { useTheme } from "../../../hooks/useTheme.js";
 
 export function BalanceCard({totalBalance}) {
     const { theme } = useTheme()

@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native"
-import { AppText } from "../../ui/AppText"
-import { AppIcon } from "../../ui/AppIcon"
-import { useTheme } from "../../../hooks/useTheme"
-import { formatCurrency } from "../../../utils/formatCurrency"
+import { AppText } from "../../ui/AppText.jsx"
+import { AppIcon } from "../../ui/AppIcon.jsx"
+import { useTheme } from "../../../hooks/useTheme.jsx"
+import { formatCurrency } from "../../../utils/formatCurrency.js"
 
 export function TransactionItem({transaction}) {
     const { theme } = useTheme()

@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, View } from "react-native";
-import { TransactionItem } from "./TransactionItem";
+import { TransactionItem } from "./TransactionItem.jsx";
 
 export function TransactionsList({transactions}) {
     return (

@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native";
-import { AppText } from "../ui/AppText";
-import { AppIcon } from "../ui/AppIcon.jsx";
-import { getVariantStyle } from "../../utils/getVariantStyle.js";
-import { useTheme } from "../../hooks/useTheme.js";
+import { AppText } from "../../ui/AppText.jsx";
+import { AppIcon } from "../../ui/AppIcon.jsx";
+import { getVariantStyle } from "../../../utils/getVariantStyle.js";
+import { useTheme } from "../../../hooks/useTheme.js";
 
 export function MetricCard({label = "Total", value, icon, variant, size = "md", style}) {
     const { theme } = useTheme()
