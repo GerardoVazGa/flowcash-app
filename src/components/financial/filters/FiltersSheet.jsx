@@ -1,7 +1,7 @@
 import { BottomSheetView } from "@gorhom/bottom-sheet";
 import { View, Text, StyleSheet, Pressable } from "react-native";
-import { AppText } from "./AppText";
-import { useTheme } from "../../hooks/useTheme";
+import { AppText } from "../../ui/AppText";
+import { useTheme } from "../../../hooks/useTheme";
 import { FilterOption } from "./FilterOption";
 import { CategoryOption } from "./CategoryOption";
 

@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, View } from "react-native";
-import { useTheme } from "../../hooks/useTheme";
-import { AppText } from "./AppText";
-import { AppIcon } from "./AppIcon";
+import { useTheme } from "../../../hooks/useTheme";
+import { AppText } from "../../ui/AppText";
+import { AppIcon } from "../../ui/AppIcon";
 
 export function CategoryOption({title, selected, onPress}) {
     const { theme } = useTheme()
