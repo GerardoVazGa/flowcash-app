@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, View } from "react-native";
 import { AppText } from "./AppText";
 import { useTheme } from "../../hooks/useTheme";
 
-export function BaseChip({label, selected = false, onPress, leftIcon, rightIcon}) {
+export function BaseChip({label, selected = false, onPress, leftIcon, rightIcon, disabled = false}) {
     const { theme } = useTheme()
     const styles = getStyles(theme, selected)
 
@@ -10,8 +10,13 @@ export function BaseChip({label, selected = false, onPress, leftIcon, rightIcon}
         <Pressable 
             onPress={onPress} 
             style= {
-                ({pressed}) => [styles.container, pressed && {opacity: 0.5}]
+                ({pressed}) => [
+                    styles.container, 
+                    pressed && {opacity: 0.5}, 
+                    disabled && styles.disabled
+                ]
             }
+            disabled={disabled}
         >
             {leftIcon && <View>{leftIcon}</View>}
             <AppText variant="body" color={selected ? "primary": "textVariant"}>{label}</AppText>
@@ -31,5 +36,8 @@ const getStyles = (theme, selected) => StyleSheet.create({
         borderRadius: theme.radius.full,
         borderColor: selected ? `${theme.colors.primary}40` : theme.colors.outline,
         borderWidth: selected ? 2 : 1
+    },
+    disabled: {
+        opacity: 0.5
     }
 })
