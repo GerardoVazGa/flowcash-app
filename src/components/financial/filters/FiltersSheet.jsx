@@ -1,9 +1,10 @@
-import { BottomSheetView } from "@gorhom/bottom-sheet";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { BottomSheetScrollView, BottomSheetView } from "@gorhom/bottom-sheet";
+import { View, Text, StyleSheet, Pressable, ScrollView } from "react-native";
 import { AppText } from "../../ui/AppText";
 import { useTheme } from "../../../hooks/useTheme";
 import { FilterOption } from "./FilterOption";
 import { CategoryOption } from "./CategoryOption";
+import { PeriodFilter } from "./PeriodFilter";
 
 export function FiltersSheet({filters, setFilters}) {
     const {theme} = useTheme()
@@ -24,7 +25,7 @@ export function FiltersSheet({filters, setFilters}) {
         })
     }
     return(
-        <BottomSheetView style={styles.container}>
+        <BottomSheetScrollView style={styles.container}>
             <View style={styles.header}>
                 <AppText variant="title">Filtrar Movimientos</AppText>
                 <Pressable onPress={handleCleanFilter}>
@@ -34,35 +35,9 @@ export function FiltersSheet({filters, setFilters}) {
 
             <AppText variant="label" color="textVariant">Periodo</AppText>
 
-            <View>
-                <FilterOption
-                    title="Todo el historial"
-                    subtitle="Todos los registros"
-                    iconName="list-outline"
-                    selected={filters.period.type === "all"}
-                    onPress={() =>
-                        setFilters((p) => ({
-                        ...p,
-                        period: { type: "all" }
-                        }))
-                    }
-                />
-
-                <FilterOption
-                    title="Por mes"
-                    subtitle="Por mes"
-                    iconName="calendar-outline"
-                    selected={filters.period.type === "month"}
-                    onPress={() =>
-                        setFilters((p) => ({
-                        ...p,
-                        period: { type: "month" }
-                        }))
-                    }
-                />
-                
-
-
+            <View style={styles.period}>
+                <AppText variant="title" color="textVariant">Rapido</AppText>
+                <PeriodFilter period={filters.period} setFilters={setFilters}/>
             </View>
 
             <AppText variant="label" color="textVariant">Categoría</AppText>
@@ -82,7 +57,7 @@ export function FiltersSheet({filters, setFilters}) {
             </View>
 
 
-        </BottomSheetView>
+        </BottomSheetScrollView>
     )
 
 }
@@ -99,6 +74,9 @@ const getStyles = (theme) => StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         marginBottom: theme.spacing.md
-    }
+    },
+    period: {
+        gap: theme.spacing.md
+    },
 })
 
