@@ -1,22 +1,24 @@
 import { StyleSheet, Text, View } from "react-native";
-import { TransactionsSummary } from "../../components/financial/TransactionsSummary";
+import { TransactionsSummary } from "../../components/financial/summary/TransactionsSummary";
 import { useTheme } from "../../hooks/useTheme";
 import { SearchBar } from "../../components/ui/SearchBar";
 import { useState, useMemo, useRef } from "react";
-import { FiltersSheet } from "../../components/ui/FiltersSheet";
+import { FiltersSheet } from "../../components/financial/filters/FiltersSheet";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { IconButton } from "../../components/ui/IconButton";
+import { currentYear, currentMonth } from "../../utils/periodFiltersUtils";
 
 export function TransactionsScreen() {
     const [text, setText] = useState("")
     const modalRef = useRef(null)
-    const snapPoints = useMemo(() => ["50%", "75%"], [])
+    const snapPoints = useMemo(() => ["75%"], [])
     const [filters, setFilters] = useState({
-        type: "income",
-        category: "all",
+        type: "all",
+        category: [],
         period: {
-            type: "month",
-            value: 1
+            preset: "this_month",
+            month: currentMonth,
+            year: currentYear
         }
     })
 
@@ -29,6 +31,7 @@ export function TransactionsScreen() {
         console.log(modalRef.current);
         modalRef.current?.present()
     }
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
