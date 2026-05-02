@@ -21,6 +21,7 @@ export function TransactionsScreen() {
             year: currentYear
         }
     })
+    const [draftFilters, setDraftFilters] = useState({})
 
     const {theme} = useTheme()
     const styles = getStyles(theme)
@@ -28,7 +29,11 @@ export function TransactionsScreen() {
     const handleChangeText = (text) => setText(text)
 
     const handleOpenFilters = () => {
-        console.log(modalRef.current);
+        setDraftFilters(prev => {
+            return {
+                ...filters
+            }
+        })
         modalRef.current?.present()
     }
 
@@ -56,8 +61,8 @@ export function TransactionsScreen() {
                 enableDynamicSizing = {false}
             >
                 <FiltersSheet 
-                    filters={filters} 
-                    setFilters={setFilters}
+                    draftFilters={draftFilters}
+                    setDraftFilters={setDraftFilters}
                 />
             </BottomSheetModal>
 

@@ -6,14 +6,14 @@ import { FilterOption } from "./FilterOption";
 import { CategoryOption } from "./CategoryOption";
 import { PeriodFilter } from "./PeriodFilter";
 
-export function FiltersSheet({filters, setFilters}) {
+export function FiltersSheet({draftFilters, setDraftFilters}) {
     const {theme} = useTheme()
     const styles = getStyles(theme)
 
     const handleCleanFilter = () => setFilters({})
 
     const toggleCategory = (category) => {
-        setFilters((prev) => {
+        setDraftFilters((prev) => {
             const categoryExists = prev.category.includes(category)
 
             return {
@@ -37,7 +37,7 @@ export function FiltersSheet({filters, setFilters}) {
 
             <View style={styles.period}>
                 <AppText variant="title" color="textVariant">Rapido</AppText>
-                <PeriodFilter period={filters.period} setFilters={setFilters}/>
+                <PeriodFilter period={draftFilters.period} setDraftFilters={setDraftFilters}/>
             </View>
 
             <AppText variant="label" color="textVariant">Categoría</AppText>
@@ -45,13 +45,13 @@ export function FiltersSheet({filters, setFilters}) {
             <View>
                 <CategoryOption 
                     title="comida"
-                    selected={filters.category.includes("comida")}
+                    selected={draftFilters.category.includes("comida")}
                     onPress={() => toggleCategory('comida')}
                 />
 
                 <CategoryOption 
                     title="trabajo"
-                    selected={filters.category.includes("trabajo")}
+                    selected={draftFilters.category.includes("trabajo")}
                     onPress={() => toggleCategory('trabajo')}
                 />
             </View>
