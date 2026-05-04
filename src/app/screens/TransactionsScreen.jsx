@@ -6,7 +6,7 @@ import { useState, useMemo, useRef } from "react";
 import { FiltersSheet } from "../../components/financial/filters/FiltersSheet";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { IconButton } from "../../components/ui/IconButton";
-import { currentYear, currentMonth } from "../../utils/periodFiltersUtils";
+import { currentYear, currentMonth } from "../../constants/periodFilters";
 import { useFinances } from "../../hooks/useFinances";
 import { getMonth } from "date-fns";
 import { FiltersProvider } from "../../context/FiltersContext";
@@ -70,11 +70,13 @@ export function TransactionsScreen() {
             >
                 <FiltersProvider 
                     value={
-                        monthsWithData,
-                        filters,
-                        setFilters,
-                        draftFilters,
-                        setDraftFilters
+                        {
+                            monthsWithData,
+                            filters,
+                            setFilters,
+                            draftFilters,
+                            setDraftFilters
+                        }
                     }
                 >
                     <FiltersSheet />
