@@ -7,6 +7,10 @@ import { FiltersSheet } from "../../components/financial/filters/FiltersSheet";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { IconButton } from "../../components/ui/IconButton";
 import { currentYear, currentMonth } from "../../utils/periodFiltersUtils";
+import { useFinances } from "../../hooks/useFinances";
+import { getMonth } from "date-fns";
+import { FiltersProvider } from "../../context/FiltersContext";
+import { useMonthsWithData } from "../../hooks/useMonthsWithData";
 
 export function TransactionsScreen() {
     const [text, setText] = useState("")
@@ -23,8 +27,12 @@ export function TransactionsScreen() {
     })
     const [draftFilters, setDraftFilters] = useState({})
 
+    const {transactions} = useFinances()
+
     const {theme} = useTheme()
     const styles = getStyles(theme)
+
+    const monthsWithData = useMonthsWithData(transactions)
 
     const handleChangeText = (text) => setText(text)
 
@@ -60,10 +68,17 @@ export function TransactionsScreen() {
                 enablePanDownToClose
                 enableDynamicSizing = {false}
             >
-                <FiltersSheet 
-                    draftFilters={draftFilters}
-                    setDraftFilters={setDraftFilters}
-                />
+                <FiltersProvider 
+                    value={
+                        monthsWithData,
+                        filters,
+                        setFilters,
+                        draftFilters,
+                        setDraftFilters
+                    }
+                >
+                    <FiltersSheet />
+                </FiltersProvider>
             </BottomSheetModal>
 
         </View>
