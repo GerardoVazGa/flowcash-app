@@ -5,10 +5,12 @@ import { useTheme } from "../../../hooks/useTheme";
 import { FilterOption } from "./FilterOption";
 import { CategoryOption } from "./CategoryOption";
 import { PeriodFilter } from "./PeriodFilter";
+import { useFilters } from "../../../context/FiltersContext";
 
-export function FiltersSheet({draftFilters, setDraftFilters}) {
+export function FiltersSheet() {
     const {theme} = useTheme()
     const styles = getStyles(theme)
+    const {draftFilters, setDraftFilters} = useFilters()
 
     const handleCleanFilter = () => setFilters({})
 
@@ -37,7 +39,7 @@ export function FiltersSheet({draftFilters, setDraftFilters}) {
 
             <View style={styles.period}>
                 <AppText variant="title" color="textVariant">Rapido</AppText>
-                <PeriodFilter period={draftFilters.period} setDraftFilters={setDraftFilters}/>
+                <PeriodFilter />
             </View>
 
             <AppText variant="label" color="textVariant">Categoría</AppText>
