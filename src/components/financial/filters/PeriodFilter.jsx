@@ -1,40 +1,43 @@
 import { StyleSheet, View } from "react-native";
 import { useTheme } from "../../../hooks/useTheme";
 import { BaseChip } from "../../ui/BaseChip";
-import { PresetsPeriod, currentMonth, currentYear } from "../../../utils/periodFiltersUtils";
+import { PresetsPeriod, currentMonth, currentYear } from "../../../constants/periodFilters.js";
+import { periodToDateRange } from "../../../utils/periodFiltersUtils.js";
 import { AppText } from "../../ui/AppText";
+import { YearPicker } from "./YearPicker";
+import { MonthsGrid } from "./MonthsGrid";
+import { useState, useMemo } from "react";
+import { vi } from "date-fns/locale";
+import { useFilters } from "../../../context/FiltersContext.js";
 
-export function PeriodFilter({period, setFilters}){
+export function PeriodFilter() {
+    const {draftFilters, setDraftFilters} = useFilters()
+    const { period } = draftFilters
+
+    const [viewYear, setViewYear] = useState(period.year || currentYear)
+    
     const {theme} = useTheme()
     const styles = getStyles(theme)
 
     const isCustomPeriod = period.preset === null
 
+    const range = useMemo(() => (
+        periodToDateRange(period)
+    ), [period])
+
     const handlePresetSelect = (preset) => {
-        let month = currentMonth
-        let year = currentYear
-
-        if(preset === "last_7_days") {
-            month = null
-            year = null
-        }
-
-        if(preset === "this_year") {
-            month = null
-        }
-        
-        setFilters(prev => ({
+        setDraftFilters(prev => ({
             ...prev,
             period: {
                 preset,
-                month,
-                year
+                month: null,
+                year: currentYear
             }
         }))
     }
 
     const enableCustomPeriod = () => {
-        setFilters(prev => ({
+        setDraftFilters(prev => ({
             ...prev,
             period: {
                 preset: null,
@@ -44,7 +47,7 @@ export function PeriodFilter({period, setFilters}){
         }))
     }
     return (
-        <View>
+        <View style={styles.container}>
             <View style={styles.containerPresets}>
                 {PresetsPeriod.map((periodPreset) => (
                     <BaseChip 
@@ -64,24 +67,26 @@ export function PeriodFilter({period, setFilters}){
 
             <AppText variant="label" color="textVariant">
                 {
-                    period.preset 
-                        ? period.preset
-                        : period.month !== null 
-                            ? `${period.month} ${period.year}` 
-                            : `${period.year}` 
+                    range.label || viewYear
                 }
             </AppText>
 
             {isCustomPeriod && 
-                <AppText variant="label" color="textVariant">
-                    periodo personalizado
-                </AppText>
+                <>
+                    <AppText variant="label" color="textVariant">Año</AppText>
+                    <YearPicker viewYear={viewYear} setViewYear={setViewYear}/>
+                    <AppText variant="label" color="textVariant">Mes</AppText>
+                    <MonthsGrid viewYear={viewYear} />
+                </>
             }
         </View>
     )
 }
 
 const getStyles = (theme) => StyleSheet.create({
+    container: {
+        gap: theme.spacing.sm
+    },
     containerPresets: {
         flexDirection: "row",
         flexWrap: "wrap",
