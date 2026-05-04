@@ -1,10 +1,9 @@
-export const currentYear = new Date().getFullYear()
-export const currentMonth = new Date().getMonth()
+import {TODAY, MONTHS_SHORT, currentYear, currentMonth } from "../constants/periodFilters"
 
-export const getAvilableYears = (transactions) => {
+export const getAvailableYears = (transactions) => {
 
     const years = transactions.map(transaction => {
-        new Date(transaction.date).getFullYear()
+        return new Date(transaction.date).getFullYear()
     })
 
     const uniqueYears = new Set(years)
@@ -13,50 +12,12 @@ export const getAvilableYears = (transactions) => {
     return [...uniqueYears].sort((a, b) => b - a)
 }
 
-const getAvilableMonths = (selectedYear) => {
-    const MONTHS = [
-        {id: "Jan", name: "Ene"}, 
-        {id: "Feb", name: "Feb"}, 
-        {id: "Mar", name: "Mar"}, 
-        {id: "Apr", name: "Abr"}, 
-        {id: "May", name: "May"}, 
-        {id: "Jun", name: "Jun"},
-        {id: "Jul", name: "Jul"}, 
-        {id: "Aug", name: "Ago"}, 
-        {id: "Sep", name: "Sep"}, 
-        {id: "Oct", name: "Oct"}, 
-        {id: "Nov", name: "Nov"}, 
-        {id: "Dec", name: "Dic"},
-    ]
-
-    if(selectedYear === currentYear) {
-        return MONTHS.slice(0, currentMonth + 1)
-    }
-
-    return MONTHS
+export const getAvailableMonths = (selectedYear) => {
+    return MONTHS_SHORT.map((month, index) => {
+        return {
+            id: index,
+            name: month,
+            disable: selectedYear === currentYear && index > currentMonth
+        }
+    })
 }
-
-export const PresetsPeriod = [
-    {
-        id: "this_month",
-        title: "Este mes",
-        iconName: "calendar-number-outline",
-    },
-    {
-        id: "last_7_days",
-        title: "Ultimos 7 días",
-        iconName: "calendar-clear-outline",
-    },
-    {
-        id: "last_30_days",
-        title: "Ultimos 30 días",
-        iconName: "calendar-outline",
-    },
-    {
-        id: "last_month",
-        title: "El mes pasado",
-        iconName: "calendar-number-outline",
-    }
-
-]
-
