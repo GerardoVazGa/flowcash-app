@@ -27,7 +27,7 @@ export function FiltersSheet() {
         })
     }
     return(
-        <BottomSheetScrollView style={styles.container}>
+        <BottomSheetScrollView contentContainerStyle={styles.container}>
             <View style={styles.header}>
                 <AppText variant="title">Filtrar Movimientos</AppText>
                 <Pressable onPress={handleCleanFilter}>
@@ -66,7 +66,6 @@ export function FiltersSheet() {
 
 const getStyles = (theme) => StyleSheet.create({
     container: {
-        flex: 1,
         paddingHorizontal: theme.spacing.lg,
         paddingVertical: theme.spacing.md,
         gap: theme.spacing.md
@@ -78,7 +77,8 @@ const getStyles = (theme) => StyleSheet.create({
         marginBottom: theme.spacing.md
     },
     period: {
-        gap: theme.spacing.md
+        gap: theme.spacing.md,
+        marginBottom: theme.spacing.sm
     },
 })
 
