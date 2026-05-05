@@ -11,21 +11,14 @@ import { useFinances } from "../../hooks/useFinances";
 import { getMonth } from "date-fns";
 import { FiltersProvider } from "../../context/FiltersContext";
 import { useMonthsWithData } from "../../hooks/useMonthsWithData";
+import { DEFAULT_FILTERS } from "../../constants/filters";
 
 export function TransactionsScreen() {
     const [text, setText] = useState("")
     const modalRef = useRef(null)
     const snapPoints = useMemo(() => ["75%"], [])
-    const [filters, setFilters] = useState({
-        type: "all",
-        category: [],
-        period: {
-            preset: "this_month",
-            month: currentMonth,
-            year: currentYear
-        }
-    })
-    const [draftFilters, setDraftFilters] = useState({})
+    const [filters, setFilters] = useState(DEFAULT_FILTERS)
+    const [draftFilters, setDraftFilters] = useState(DEFAULT_FILTERS)
 
     const {transactions} = useFinances()
 
@@ -45,6 +38,9 @@ export function TransactionsScreen() {
         modalRef.current?.present()
     }
 
+    const handleCloseFilters = () => {
+        modalRef.current?.dismiss()
+    }
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -79,7 +75,7 @@ export function TransactionsScreen() {
                         }
                     }
                 >
-                    <FiltersSheet />
+                    <FiltersSheet onClose={handleCloseFilters}/>
                 </FiltersProvider>
             </BottomSheetModal>
 
