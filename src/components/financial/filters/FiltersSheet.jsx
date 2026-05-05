@@ -1,18 +1,33 @@
 import { BottomSheetScrollView, BottomSheetView } from "@gorhom/bottom-sheet";
 import { View, Text, StyleSheet, Pressable, ScrollView } from "react-native";
 import { AppText } from "../../ui/AppText";
+import { AppButton } from "../../ui/AppButton";
 import { useTheme } from "../../../hooks/useTheme";
 import { FilterOption } from "./FilterOption";
 import { CategoryOption } from "./CategoryOption";
 import { PeriodFilter } from "./PeriodFilter";
 import { useFilters } from "../../../context/FiltersContext";
+import { DEFAULT_FILTERS } from "../../../constants/filters";
+import { set } from "date-fns";
 
-export function FiltersSheet() {
+export function FiltersSheet({onClose}) {
     const {theme} = useTheme()
     const styles = getStyles(theme)
-    const {draftFilters, setDraftFilters} = useFilters()
+    const {draftFilters, setDraftFilters, setFilters, filters} = useFilters()
 
-    const handleCleanFilter = () => setFilters({})
+    const handleApplyFilters = () => {
+        setFilters(draftFilters)
+        onClose()
+    }
+
+    const handleCancelFilters = () => {
+        setDraftFilters(filters)
+        onClose()
+    }
+
+    const handleCleanFilter = () => {
+        setDraftFilters(DEFAULT_FILTERS)
+    }
 
     const toggleCategory = (category) => {
         setDraftFilters((prev) => {
@@ -58,6 +73,30 @@ export function FiltersSheet() {
                 />
             </View>
 
+            <View style={styles.actions}>
+                <AppButton 
+                    onAction={handleCancelFilters} 
+                    size="md" 
+                    variant="outline" 
+                    rounded="lg"
+                    backgroundColor="error"
+                    style={{flex: 1}}
+                >
+                    <AppText variant="title">Cancelar</AppText>
+                </AppButton>
+                <AppButton 
+                    onAction={handleApplyFilters} 
+                    size="md" 
+                    rounded="lg"
+                    fullwidth 
+                    variant="gradient"
+                    style={{flex: 3}}
+                >
+                    <AppText variant="title" color="onPrimary">Aplicar</AppText>
+                </AppButton>
+
+            </View>
+
 
         </BottomSheetScrollView>
     )
@@ -80,5 +119,9 @@ const getStyles = (theme) => StyleSheet.create({
         gap: theme.spacing.md,
         marginBottom: theme.spacing.sm
     },
+    actions: {
+        flexDirection: "row",
+        gap: theme.spacing.md
+    }
 })
 
