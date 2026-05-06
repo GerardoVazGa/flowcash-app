@@ -9,3 +9,21 @@ export const DEFAULT_FILTERS = {
         year: currentYear
     }
 }
+
+export const TYPE_OPTIONS = [
+    {
+        label: "Todos",
+        value: "all",
+        icon: "swap-horizontal-outline"
+    },
+    {
+        label: "Ingresos",
+        value: "income",
+        icon: "arrow-up-outline"
+    },
+    {
+        label: "Gastos",
+        value: "expense",
+        icon: "arrow-down-outline"
+    }
+]
