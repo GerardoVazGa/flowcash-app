@@ -105,7 +105,7 @@ export function FiltersSheet({ onClose }) {
                     backgroundColor="error"
                     style={{ flex: 1 }}
                 >
-                    <AppText variant="title">Cancelar</AppText>
+                    <AppText variant="title" color="error">Cancelar</AppText>
                 </AppButton>
                 <AppButton
                     onAction={handleApplyFilters}
