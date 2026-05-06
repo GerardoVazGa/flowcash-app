@@ -10,10 +10,10 @@ import { useFilters } from "../../../context/FiltersContext";
 import { DEFAULT_FILTERS } from "../../../constants/filters";
 import { set } from "date-fns";
 
-export function FiltersSheet({onClose}) {
-    const {theme} = useTheme()
+export function FiltersSheet({ onClose }) {
+    const { theme } = useTheme()
     const styles = getStyles(theme)
-    const {draftFilters, setDraftFilters, setFilters, filters} = useFilters()
+    const { draftFilters, setDraftFilters, setFilters, filters } = useFilters()
 
     const handleApplyFilters = () => {
         setFilters(draftFilters)
@@ -35,14 +35,14 @@ export function FiltersSheet({onClose}) {
 
             return {
                 ...prev,
-                category: categoryExists 
-                    ? prev.category.filter((categ) => categ !== category) 
+                category: categoryExists
+                    ? prev.category.filter((categ) => categ !== category)
                     : [...prev.category, category]
             }
         })
     }
-    return(
-        <BottomSheetScrollView contentContainerStyle={styles.container}>
+    return (
+        <View style={styles.wrapper}>
             <View style={styles.header}>
                 <AppText variant="title">Filtrar Movimientos</AppText>
                 <Pressable onPress={handleCleanFilter}>
@@ -50,47 +50,53 @@ export function FiltersSheet({onClose}) {
                 </Pressable>
             </View>
 
-            <AppText variant="label" color="textVariant">Periodo</AppText>
+            <BottomSheetScrollView
+                style={styles.scroll}
+                contentContainerStyle={styles.content}
+                showsVerticalScrollIndicator={false}
+            >
+                <AppText variant="label" color="textVariant">Periodo</AppText>
 
-            <View style={styles.period}>
-                <AppText variant="title" color="textVariant">Rapido</AppText>
-                <PeriodFilter />
-            </View>
+                <View style={styles.period}>
+                    <AppText variant="title" color="textVariant">Rapido</AppText>
+                    <PeriodFilter />
+                </View>
 
-            <AppText variant="label" color="textVariant">Categoría</AppText>
+                <AppText variant="label" color="textVariant">Categoría</AppText>
 
-            <View>
-                <CategoryOption 
-                    title="comida"
-                    selected={draftFilters.category.includes("comida")}
-                    onPress={() => toggleCategory('comida')}
-                />
+                <View>
+                    <CategoryOption
+                        title="comida"
+                        selected={draftFilters.category.includes("comida")}
+                        onPress={() => toggleCategory('comida')}
+                    />
 
-                <CategoryOption 
-                    title="trabajo"
-                    selected={draftFilters.category.includes("trabajo")}
-                    onPress={() => toggleCategory('trabajo')}
-                />
-            </View>
+                    <CategoryOption
+                        title="trabajo"
+                        selected={draftFilters.category.includes("trabajo")}
+                        onPress={() => toggleCategory('trabajo')}
+                    />
+                </View>
+            </BottomSheetScrollView>
 
             <View style={styles.actions}>
-                <AppButton 
-                    onAction={handleCancelFilters} 
-                    size="md" 
-                    variant="outline" 
+                <AppButton
+                    onAction={handleCancelFilters}
+                    size="md"
+                    variant="outline"
                     rounded="lg"
                     backgroundColor="error"
-                    style={{flex: 1}}
+                    style={{ flex: 1 }}
                 >
                     <AppText variant="title">Cancelar</AppText>
                 </AppButton>
-                <AppButton 
-                    onAction={handleApplyFilters} 
-                    size="md" 
+                <AppButton
+                    onAction={handleApplyFilters}
+                    size="md"
                     rounded="lg"
-                    fullwidth 
+                    fullwidth
                     variant="gradient"
-                    style={{flex: 3}}
+                    style={{ flex: 2 }}
                 >
                     <AppText variant="title" color="onPrimary">Aplicar</AppText>
                 </AppButton>
@@ -98,14 +104,21 @@ export function FiltersSheet({onClose}) {
             </View>
 
 
-        </BottomSheetScrollView>
+        </View>
     )
 
 }
 
 const getStyles = (theme) => StyleSheet.create({
-    container: {
+    wrapper: {
+        flex: 1,
         paddingHorizontal: theme.spacing.lg,
+        paddingBottom: theme.spacing.md
+    },
+    scroll: {
+        flex: 1,
+    },
+    content: {
         paddingVertical: theme.spacing.md,
         gap: theme.spacing.md
     },
@@ -121,7 +134,9 @@ const getStyles = (theme) => StyleSheet.create({
     },
     actions: {
         flexDirection: "row",
-        gap: theme.spacing.md
+        alignItems: "center",
+        alignSelf: "stretch",
+        gap: theme.spacing.sm
     }
 })
 
