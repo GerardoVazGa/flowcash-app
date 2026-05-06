@@ -7,13 +7,19 @@ import { FilterOption } from "./FilterOption";
 import { CategoryOption } from "./CategoryOption";
 import { PeriodFilter } from "./PeriodFilter";
 import { useFilters } from "../../../context/FiltersContext";
-import { DEFAULT_FILTERS } from "../../../constants/filters";
-import { set } from "date-fns";
+import { DEFAULT_FILTERS, TYPE_OPTIONS, CATEGORY_OPTIONS } from "../../../constants/filters";
 
 export function FiltersSheet({ onClose }) {
     const { theme } = useTheme()
     const styles = getStyles(theme)
     const { draftFilters, setDraftFilters, setFilters, filters } = useFilters()
+
+    const applyType = (value) => {
+        setDraftFilters((prev) => ({
+            ...prev,
+            type: value
+        }))
+    }
 
     const handleApplyFilters = () => {
         setFilters(draftFilters)
@@ -55,6 +61,20 @@ export function FiltersSheet({ onClose }) {
                 contentContainerStyle={styles.content}
                 showsVerticalScrollIndicator={false}
             >
+                <AppText variant="label" color="textVariant">Tipo</AppText>
+
+                <View style={styles.type}>
+                    {TYPE_OPTIONS.map((option) => (
+                        <FilterOption
+                            key={option.value}
+                            title={option.label}
+                            iconName={option.icon}
+                            onPress={() => applyType(option.value)}
+                            selected={draftFilters.type === option.value}
+                        />
+                    ))}
+                </View>
+
                 <AppText variant="label" color="textVariant">Periodo</AppText>
 
                 <View style={styles.period}>
@@ -64,18 +84,15 @@ export function FiltersSheet({ onClose }) {
 
                 <AppText variant="label" color="textVariant">Categoría</AppText>
 
-                <View>
-                    <CategoryOption
-                        title="comida"
-                        selected={draftFilters.category.includes("comida")}
-                        onPress={() => toggleCategory('comida')}
-                    />
-
-                    <CategoryOption
-                        title="trabajo"
-                        selected={draftFilters.category.includes("trabajo")}
-                        onPress={() => toggleCategory('trabajo')}
-                    />
+                <View style={styles.categories}>
+                    {CATEGORY_OPTIONS.map(category => (
+                        <CategoryOption 
+                            key={category.value}
+                            title={category.label}
+                            selected={draftFilters.category.includes(category.value)}
+                            onPress={() => toggleCategory(category.value)}
+                        />
+                    ))}
                 </View>
             </BottomSheetScrollView>
 
@@ -128,9 +145,15 @@ const getStyles = (theme) => StyleSheet.create({
         alignItems: "center",
         marginBottom: theme.spacing.md
     },
+    type: {
+        gap: theme.spacing.sm
+    },
     period: {
         gap: theme.spacing.md,
         marginBottom: theme.spacing.sm
+    },
+    categories: {
+        gap: theme.spacing.sm
     },
     actions: {
         flexDirection: "row",
