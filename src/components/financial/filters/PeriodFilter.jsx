@@ -6,8 +6,13 @@ import { periodToDateRange } from "../../../utils/periodFiltersUtils.js";
 import { AppText } from "../../ui/AppText";
 import { YearPicker } from "./YearPicker";
 import { MonthsGrid } from "./MonthsGrid";
-import { useState, useMemo } from "react";
-import { vi } from "date-fns/locale";
+import { useState, useMemo, useEffect } from "react";
+import Animated, { 
+    useSharedValue, 
+    useAnimatedStyle, 
+    withTiming,
+} from "react-native-reanimated";
+import { ANIMATION_PERIOD_CONFIG } from "../../../constants/animations";
 import { useFilters } from "../../../context/FiltersContext.js";
 
 export function PeriodFilter() {
@@ -24,6 +29,24 @@ export function PeriodFilter() {
     const range = useMemo(() => (
         periodToDateRange(period)
     ), [period])
+
+    const opacity = useSharedValue(0)
+    const transalateY = useSharedValue(-20)
+
+    useEffect(() => {
+        if (isCustomPeriod) {
+            opacity.value = withTiming(1, ANIMATION_PERIOD_CONFIG)
+            transalateY.value = withTiming(0, ANIMATION_PERIOD_CONFIG)
+        } else {
+            opacity.value = withTiming(0, ANIMATION_PERIOD_CONFIG)
+            transalateY.value = withTiming(-20, ANIMATION_PERIOD_CONFIG)
+        }
+    }, [isCustomPeriod])
+
+    const animatedStyle = useAnimatedStyle(() => ({
+        opacity: opacity.value,
+        transform: [{translateY: transalateY.value}]
+    }))
 
     const handlePresetSelect = (preset) => {
         setDraftFilters(prev => ({
@@ -72,12 +95,12 @@ export function PeriodFilter() {
             </AppText>
 
             {isCustomPeriod && 
-                <>
+                <Animated.View style={[styles.customContainer,animatedStyle]}>
                     <AppText variant="label" color="textVariant">Año</AppText>
                     <YearPicker viewYear={viewYear} setViewYear={setViewYear}/>
                     <AppText variant="label" color="textVariant">Mes</AppText>
                     <MonthsGrid viewYear={viewYear} />
-                </>
+                </Animated.View>
             }
         </View>
     )
@@ -91,5 +114,8 @@ const getStyles = (theme) => StyleSheet.create({
         flexDirection: "row",
         flexWrap: "wrap",
         gap: theme.spacing.sm
+    },
+    customContainer: {
+        gap: theme.spacing.md
     }
 })
