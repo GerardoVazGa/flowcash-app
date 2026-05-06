@@ -27,3 +27,38 @@ export const TYPE_OPTIONS = [
         icon: "arrow-down-outline"
     }
 ]
+
+export const CATEGORY_OPTIONS = [
+    {
+        label: "Trabajo",
+        value: "trabajo",
+    },
+    {
+        label: "Alimentación",
+        value: "alimentacion",
+    },
+    {
+        label: "Transporte",
+        value: "transporte",
+    },
+    {
+        label: "Entretenimiento",
+        value: "entretenimiento",
+    },
+    {
+        label: "Servicios",
+        value: "servicios",
+    },
+    {
+        label: "Salud",
+        value: "salud",
+    },
+    {
+        label: "Ventas",
+        value: "ventas",
+    },
+    {
+        label: "Transferencia",
+        value: "transferencia",
+    },
+]
