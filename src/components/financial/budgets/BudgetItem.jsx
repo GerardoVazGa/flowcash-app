@@ -5,7 +5,7 @@ import { AppButton } from "../../ui/AppButton"
 import { ProgressBar } from "../../ui/ProgressBar"
 import { IconButton } from "../../ui/IconButton"
 import { CATEGORY_ICONS } from "../../../constants/categoryIcon.js"
-import { budgetStatus } from "../../../utils/budgetStatus"
+import { budgetStatus } from "../../../utils/budgets/budgetStatus.js"
 import { useTheme } from "../../../hooks/useTheme"
 import { formatCurrency } from "../../../utils/formatters/formatCurrency.js"
 
