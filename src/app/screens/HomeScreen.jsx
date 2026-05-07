@@ -3,7 +3,7 @@ import { Section } from "../../components/layouts/Section.jsx";
 import { AppText } from "../../components/ui/AppText.jsx";
 import { BalanceCard } from "../../components/financial/summary/BalanceCard.jsx";
 import { MetricCard } from "../../components/financial/summary/MetricCard.jsx";
-import { TransactionsList } from "../../components/financial/Transactions/TransactionsList.jsx";
+import { TransactionsFlatList } from "../../components/financial/Transactions/TransactionsFlatList.jsx";
 import { BudgetItem } from "../../components/financial/budgets/BudgetItem.jsx";
 import { useBudgets } from "../../hooks/useBudgets.js";
 import { useTheme } from "../../hooks/useTheme.js";
@@ -49,7 +49,7 @@ export function HomeScreen(){
                 <View style={styles.headerRecentMovements}>
                     <AppText variant="title">Ultimos movimientos</AppText>
                 </View>
-                <TransactionsList transactions={recentTransactions}/>
+                <TransactionsFlatList transactions={recentTransactions}/>
             </Section>
 
             <Section style={styles.budgetSection}>
