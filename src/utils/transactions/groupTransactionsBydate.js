@@ -26,6 +26,7 @@ export function groupTransactionsByDate(transactions) {
 
     const groups = Object.keys(groupsTransactions).map(key => (
         {
+            id: key,
             header: key,
             data: groupsTransactions[key]
         }
