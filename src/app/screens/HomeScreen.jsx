@@ -4,7 +4,6 @@ import { AppText } from "../../components/ui/AppText.jsx";
 import { BalanceCard } from "../../components/financial/summary/BalanceCard.jsx";
 import { MetricCard } from "../../components/financial/summary/MetricCard.jsx";
 import { TransactionsList } from "../../components/financial/Transactions/TransactionsList.jsx";
-import { useFinances } from "../../hooks/useFinances.js";
 import { BudgetItem } from "../../components/financial/budgets/BudgetItem.jsx";
 import { useBudgets } from "../../hooks/useBudgets.js";
 import { useTheme } from "../../hooks/useTheme.js";
