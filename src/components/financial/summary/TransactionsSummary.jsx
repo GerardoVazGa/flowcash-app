@@ -2,15 +2,10 @@ import { StyleSheet, View } from "react-native";
 import { useTheme } from "../../../hooks/useTheme";
 import { MetricCard } from "./MetricCard.jsx";
 import { AppText } from "../../ui/AppText.jsx";
-import { formatCurrency } from "../../../utils/formatters/formatCurrency.js";
 
 export function TransactionsSummary({income, expense, balance}) {
     const  {theme} = useTheme()
     const styles = getStyles(theme)
-
-    const incomeFormated = formatCurrency(income)
-    const expenseFormated = formatCurrency(expense)
-    const balanceFormated = formatCurrency(balance)
 
     return (
         <View style = {styles.container}>
@@ -18,21 +13,21 @@ export function TransactionsSummary({income, expense, balance}) {
             <View style={styles.metrics}>
                 <MetricCard 
                     label="Ingresos" 
-                    value={incomeFormated}
+                    value={income}
                     variant="income" 
                     size="sm" 
                 />
                 
                 <MetricCard 
                     label="Gastos" 
-                    value={expenseFormated}
+                    value={expense}
                     variant="expense" 
                     size="sm" 
                 />
                 
                 <MetricCard 
                     label="Balance" 
-                    value={balanceFormated}
+                    value={balance}
                     variant="expense" 
                     size="sm" 
                 />
