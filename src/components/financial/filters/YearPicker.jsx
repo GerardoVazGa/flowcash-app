@@ -1,15 +1,14 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import { useTheme } from "../../../hooks/useTheme.js";
-import { useFinances } from "../../../hooks/useFinances.js";
+import { useRawTransactions } from "../../../hooks/transactions/useRawTransactions.js";
 import { getAvailableYears } from "../../../utils/period/getAvailableYears.js";
 import { useMemo } from "react";
 import { BaseChip } from "../../ui/BaseChip.jsx";
-import { set } from "date-fns";
 import { useFilters } from "../../../context/FiltersContext.js";
 
 export function YearPicker({ viewYear, setViewYear }) {
     const {theme} = useTheme()
-    const {transactions} = useFinances()
+    const { rawTransactions: transactions } = useRawTransactions()
     const {draftFilters, setDraftFilters} = useFilters()
     const { period } = draftFilters
 
