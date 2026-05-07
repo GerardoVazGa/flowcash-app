@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import { TransactionItem } from "./TransactionItem.jsx";
 
-export function TransactionsList({transactions}) {
+export function TransactionsFlatList({transactions}) {
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             {transactions.map((transaction) => (
