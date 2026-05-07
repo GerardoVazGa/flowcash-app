@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { transactionsService } from "../services/transactionsService.js"
-import { formatCurrency } from "../utils/formatCurrency.js"
+import { formatCurrency } from "../utils/formatters/formatCurrency.js"
 
 export const useFinances = () => {
     const  transactions = transactionsService().getTransactions()

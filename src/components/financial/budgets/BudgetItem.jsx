@@ -7,7 +7,7 @@ import { IconButton } from "../../ui/IconButton"
 import { CATEGORY_ICONS } from "../../../constants/categoryIcon.js"
 import { budgetStatus } from "../../../utils/budgetStatus"
 import { useTheme } from "../../../hooks/useTheme"
-import { formatCurrency } from "../../../utils/formatCurrency"
+import { formatCurrency } from "../../../utils/formatters/formatCurrency.js"
 
 
 

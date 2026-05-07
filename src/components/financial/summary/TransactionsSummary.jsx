@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 import { useTheme } from "../../../hooks/useTheme";
 import { MetricCard } from "./MetricCard.jsx";
 import { AppText } from "../../ui/AppText.jsx";
-import { formatCurrency } from "../../../utils/formatCurrency";
+import { formatCurrency } from "../../../utils/formatters/formatCurrency.js";
 
 export function TransactionsSummary({income, expense, balance}) {
     const  {theme} = useTheme()
