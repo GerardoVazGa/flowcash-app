@@ -13,6 +13,7 @@ import { getMonth } from "date-fns";
 import { FiltersProvider } from "../../context/FiltersContext";
 import { useMonthsWithData } from "../../hooks/useMonthsWithData";
 import { DEFAULT_FILTERS } from "../../constants/filters";
+import { TransactionGroupList } from "../../components/financial/Transactions/TransactionGroupList";
 
 export function TransactionsScreen() {
     const [text, setText] = useState("")
@@ -58,6 +59,8 @@ export function TransactionsScreen() {
                 expense={expenses}
                 balance={totalBalance}
             />
+
+            <TransactionGroupList transactions={transactions}/>
 
             <BottomSheetModal
                 ref={modalRef}
