@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native'
 import { useTheme } from '../../../hooks/useTheme.js'
-import { getAvailableMonths } from '../../../utils/periodFiltersUtils.js'
+import { getAvailableMonths } from '../../../utils/period/getAvailableMonths.js'
 import { useMemo } from 'react'
 import { BaseChip } from '../../ui/BaseChip.jsx'
 import { MonthsCeil } from './MonthsCeil.jsx'

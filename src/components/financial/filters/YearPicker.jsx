@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import { useTheme } from "../../../hooks/useTheme.js";
 import { useFinances } from "../../../hooks/useFinances.js";
-import { getAvailableYears } from "../../../utils/periodFiltersUtils.js";
+import { getAvailableYears } from "../../../utils/period/getAvailableYears.js";
 import { useMemo } from "react";
 import { BaseChip } from "../../ui/BaseChip.jsx";
 import { set } from "date-fns";

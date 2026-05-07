@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 import { useTheme } from "../../../hooks/useTheme";
 import { BaseChip } from "../../ui/BaseChip";
 import { PresetsPeriod, currentMonth, currentYear } from "../../../constants/periodFilters.js";
-import { periodToDateRange } from "../../../utils/periodFiltersUtils.js";
+import { periodToDateRange } from "../../../utils/period/periodToDateRange.js";
 import { AppText } from "../../ui/AppText";
 import { YearPicker } from "./YearPicker";
 import { MonthsGrid } from "./MonthsGrid";
