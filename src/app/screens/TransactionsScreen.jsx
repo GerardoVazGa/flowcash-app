@@ -2,12 +2,13 @@ import { StyleSheet, Text, View } from "react-native";
 import { TransactionsSummary } from "../../components/financial/summary/TransactionsSummary";
 import { useTheme } from "../../hooks/useTheme";
 import { SearchBar } from "../../components/ui/SearchBar";
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, use } from "react";
 import { FiltersSheet } from "../../components/financial/filters/FiltersSheet";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { IconButton } from "../../components/ui/IconButton";
 import { currentYear, currentMonth } from "../../constants/periodFilters";
-import { useFinances } from "../../hooks/useFinances";
+import { useTransactions } from "../../hooks/transactions/useTransactions";
+import { useRawTransactions } from "../../hooks/transactions/useRawTransactions";
 import { getMonth } from "date-fns";
 import { FiltersProvider } from "../../context/FiltersContext";
 import { useMonthsWithData } from "../../hooks/useMonthsWithData";
@@ -19,13 +20,13 @@ export function TransactionsScreen() {
     const snapPoints = useMemo(() => ["75%"], [])
     const [filters, setFilters] = useState(DEFAULT_FILTERS)
     const [draftFilters, setDraftFilters] = useState(DEFAULT_FILTERS)
-
-    const {transactions} = useFinances()
+    const { transactions, incomes, expenses, totalBalance } = useTransactions(filters)
+    const { rawTransactions } = useRawTransactions()
 
     const {theme} = useTheme()
     const styles = getStyles(theme)
 
-    const monthsWithData = useMonthsWithData(transactions)
+    const monthsWithData = useMonthsWithData(rawTransactions)
 
     const handleChangeText = (text) => setText(text)
 
@@ -53,9 +54,9 @@ export function TransactionsScreen() {
                 />
             </View>
             <TransactionsSummary 
-                income={1000}
-                expense={500}
-                balance={500}
+                income={incomes}
+                expense={expenses}
+                balance={totalBalance}
             />
 
             <BottomSheetModal
