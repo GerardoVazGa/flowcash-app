@@ -24,4 +24,5 @@ export function filterTransactions(transactions, filters) {
 
         return true
     })
+    return filteredTransactions
 }
