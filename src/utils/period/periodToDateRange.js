@@ -1,5 +1,3 @@
-import { Label } from "@react-navigation/elements"
-import {TODAY, MONTHS_SHORT, currentYear, currentMonth } from "../constants/periodFilters"
 import {
     startOfMonth,
     endOfMonth,
@@ -11,34 +9,13 @@ import {
     endOfDay,
     format
 } from "date-fns"
-import { es } from "date-fns/locale";
-
-export const getAvailableYears = (transactions) => {
-
-    const years = transactions.map(transaction => {
-        return new Date(transaction.date).getFullYear()
-    })
-
-    const uniqueYears = new Set(years)
-    uniqueYears.add(currentYear)
-
-    return [...uniqueYears].sort((a, b) => b - a)
-}
-
-export const getAvailableMonths = (selectedYear) => {
-    return MONTHS_SHORT.map((month, index) => {
-        return {
-            id: index,
-            name: month,
-            disable: selectedYear === currentYear && index > currentMonth
-        }
-    })
-}
+import { es } from "date-fns/locale"
+import { TODAY, MONTHS_SHORT } from "../../constants/periodFilters.js"
 
 export const periodToDateRange = (period) => {
     const {preset, month, year} = period
 
-    if(preset === null){
+    if(!preset){
         if(month !== null && year !== null) {
             const date = new Date(year, month, 1)
             return {
