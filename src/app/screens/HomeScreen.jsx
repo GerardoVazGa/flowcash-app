@@ -8,14 +8,20 @@ import { useFinances } from "../../hooks/useFinances.js";
 import { BudgetItem } from "../../components/financial/budgets/BudgetItem.jsx";
 import { useBudgets } from "../../hooks/useBudgets.js";
 import { useTheme } from "../../hooks/useTheme.js";
+import { useHomeSummary } from "../../hooks/useHomeSummary.js";
 
 export function HomeScreen(){
-    const { theme } = useTheme();
-    const styles = getStyles(theme);
+    const { theme } = useTheme()
+    const styles = getStyles(theme)
 
-    const {transactions, incomes, expenses, totalBalance} = useFinances()
+    const { 
+        recentTransactions, 
+        recentBudgets, 
+        incomes, 
+        expenses, 
+        totalBalance 
+    } = useHomeSummary()
 
-    const {budgets} = useBudgets()
     
     return (
         <ScrollView 
@@ -44,13 +50,13 @@ export function HomeScreen(){
                 <View style={styles.headerRecentMovements}>
                     <AppText variant="title">Ultimos movimientos</AppText>
                 </View>
-                <TransactionsList transactions={transactions}/>
+                <TransactionsList transactions={recentTransactions}/>
             </Section>
 
             <Section style={styles.budgetSection}>
                 <AppText variant="headline">Presupuesto</AppText>
                 {
-                    budgets.map((budget) => (
+                    recentBudgets.map((budget) => (
                         <BudgetItem key={budget.id} budget={budget} onDelete={() => {}} showDelete={false}/>
                     ))
                 }
