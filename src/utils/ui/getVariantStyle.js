@@ -18,9 +18,9 @@ export function getVariantStyle(variant, colors) {
             }
         default:
             return {
-                backgroundColor: colors.surface,
-                color: colors.text,
-                iconColor: colors.text,
+                backgroundColor: colors.surfaceHigh,
+                color: colors.secondary,
+                iconColor: colors.primary,
                 borderColor: colors.outlineOnColor
             }
     }
