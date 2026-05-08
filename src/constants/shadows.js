@@ -1,16 +1,17 @@
 export const SHADOWS = {
     light: {
-        shadowColor: 'rgba(0, 0, 0, 0.5)',
-        shadowOpacity: 0.05,
-        shadowRadius: 40,
-        shadowOffset: { width: 0, height: 20 },
-        elevation: 4,
+        shadowColor: "#000",
+        shadowOpacity: 0.06,
+        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 2 },
+        elevation: 2,
     },
 
     dark: {
-        shadowColor: 'rgba(0,0,0,0.1)',
-        shadowRadius: 32,
-        shadowOffset: { width: 0, height: 16 },
-        elevation: 6,
+        shadowColor: "#000",
+        shadowOpacity: 0.2,
+        shadowRadius: 10,
+        shadowOffset: { width: 0, height: 3 },
+        elevation: 3,
     },
 }
