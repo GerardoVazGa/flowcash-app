@@ -28,7 +28,7 @@ export function TransactionsSummary({income, expense, balance}) {
                 <MetricCard 
                     label="Balance" 
                     value={balance}
-                    variant="expense" 
+                    variant="balance" 
                     size="sm" 
                 />
             </View>
