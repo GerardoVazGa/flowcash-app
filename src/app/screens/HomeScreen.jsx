@@ -3,11 +3,11 @@ import { Section } from "../../components/layouts/Section.jsx";
 import { AppText } from "../../components/ui/AppText.jsx";
 import { BalanceCard } from "../../components/financial/summary/BalanceCard.jsx";
 import { MetricCard } from "../../components/financial/summary/MetricCard.jsx";
-import { TransactionsFlatList } from "../../components/financial/Transactions/TransactionsFlatList.jsx";
 import { BudgetItem } from "../../components/financial/budgets/BudgetItem.jsx";
 import { useBudgets } from "../../hooks/useBudgets.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import { useHomeSummary } from "../../hooks/useHomeSummary.js";
+import { TransactionItem } from "../../components/financial/Transactions/TransactionItem.jsx";
 
 export function HomeScreen(){
     const { theme } = useTheme()
@@ -47,9 +47,13 @@ export function HomeScreen(){
 
             <Section style={styles.recentMovements}>
                 <View style={styles.headerRecentMovements}>
-                    <AppText variant="title">Ultimos movimientos</AppText>
+                    <AppText variant="headline">Movimientos</AppText>
                 </View>
-                <TransactionsFlatList transactions={recentTransactions}/>
+                {
+                    recentTransactions.map((transaction, index) => (
+                        <TransactionItem key={transaction.id} transaction={transaction} variant="card" isFeatured={index === 0}/>
+                    ))
+                }
             </Section>
 
             <Section style={styles.budgetSection}>
@@ -87,14 +91,7 @@ const getStyles = (theme) => StyleSheet.create({
         gap: theme.spacing.md
     },
     recentMovements: {
-        backgroundColor: theme.colors.surface,
-        borderRadius: theme.radius.xl,
-        padding: theme.spacing.md,
-        shadowColor: theme.shadows.shadowColor,
-        shadowOffset: theme.shadows.shadowOffset,
-        shadowOpacity: theme.shadows.shadowOpacity,
-        shadowRadius: theme.shadows.shadowRadius,
-        elevation: theme.shadows.elevation,
+        gap: theme.spacing.sm
     },
     headerRecentMovements: {
         flexDirection: "row",
