@@ -9,8 +9,10 @@ export function TransactionItem({transaction, variant = "card", isFeatured = fal
 
     const styles = getStyles(theme)
 
-    const isExpense = transaction.type === "expense";
-    const amountColor = isExpense ? theme.colors.expenses : theme.colors.income;
+    const isExpense = transaction.type === "expense"
+    const amountColor = isExpense ? theme.colors.expenses : theme.colors.income
+
+    const isDense = variant === "dense"
     return (
         <View 
             style={
@@ -21,16 +23,19 @@ export function TransactionItem({transaction, variant = "card", isFeatured = fal
                 ]
             }
         >
-            <AppIcon name={transaction.icon} size={14} background="primaryContainer" color = "onPrimary" style={styles.icon}/>
+            <AppIcon name={transaction.icon} size={isDense ? 18 : 14} background="primaryContainer" color = "onPrimary" style={styles.icon}/>
             <View style={styles.info} >
-                <AppText variant="label" color="text">
+                <AppText variant="title" color="text">
                     {transaction.label}
                 </AppText>
-                <AppText variant="body" color="text">{transaction.category} - {transaction.account}</AppText>
+                <AppText variant="label" color="textVariant">{transaction.category}</AppText>
             </View>
-            <AppText variant="title" color={amountColor}>
-                {isExpense ? "-" : "+"}{formatCurrency(transaction.amount)} 
-            </AppText>
+            <View style={styles.amountContainer}>
+                <AppText variant="title" color={amountColor}>
+                    {isExpense ? "-" : "+"}{formatCurrency(transaction.amount)} 
+                </AppText>
+                {isDense && <AppText variant="body" color="text">{transaction.account}</AppText>}
+            </View>
         </View>
     )
 }
@@ -80,5 +85,9 @@ const getStyles = (theme) => StyleSheet.create({
         flex: 1,
         justifyContent: "flex-start",
         width: "100%"
+    },
+    amountContainer: {
+        justifyContent: "center",
+        alignItems: "flex-end"
     }
 })
