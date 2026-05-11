@@ -2,6 +2,7 @@ import { periodToDateRange } from "../period/periodToDateRange.js";
 import { isDateInRange } from "../filters/isDateInRange.js";
 import { matchesCategories } from "../filters/matchesCategories.js";
 import { matchesType } from "../filters/matchesType.js";
+import { matchesSearch } from "../filters/matchesSearch.js";
 
 export function filterTransactions(transactions, filters) {
     const { type, category: categories, period } = filters
@@ -19,6 +20,10 @@ export function filterTransactions(transactions, filters) {
         }
 
         if(!matchesType(transaction.type, type)){
+            return false
+        }
+
+        if(!matchesSearch(transaction, filters.search, ["label", "category", "amount", "account"])) {
             return false
         }
 
