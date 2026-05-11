@@ -4,7 +4,7 @@ import { AppIcon } from "./AppIcon";
 import { IconButton } from "./IconButton";
 import { useState } from "react";
 
-export function SearchBar({value, onChange}) {
+export function SearchBar({value, onChange, placeholder = "Buscar..."}) {
     const [isFocused, setIsFocused] = useState(false)
 
     const {theme} = useTheme()
@@ -28,7 +28,7 @@ export function SearchBar({value, onChange}) {
             />
 
             <TextInput 
-                placeholder="Buscar transacciones..." 
+                placeholder={placeholder}
                 placeholderTextColor={theme.colors.textVariant}
                 value={value}
                 onChangeText={onChange}
