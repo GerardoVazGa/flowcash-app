@@ -2,25 +2,24 @@ import { StyleSheet, Text, View } from "react-native";
 import { TransactionsSummary } from "../../components/financial/summary/TransactionsSummary";
 import { useTheme } from "../../hooks/useTheme";
 import { SearchBar } from "../../components/ui/SearchBar";
-import { useState, useMemo, useRef, use } from "react";
+import { useState, useMemo, useRef } from "react";
 import { FiltersSheet } from "../../components/financial/filters/FiltersSheet";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { IconButton } from "../../components/ui/IconButton";
-import { currentYear, currentMonth } from "../../constants/periodFilters";
 import { useTransactions } from "../../hooks/transactions/useTransactions";
 import { useRawTransactions } from "../../hooks/transactions/useRawTransactions";
-import { getMonth } from "date-fns";
-import { FiltersProvider } from "../../context/FiltersContext";
 import { useMonthsWithData } from "../../hooks/useMonthsWithData";
-import { DEFAULT_FILTERS } from "../../constants/filters";
 import { TransactionGroupList } from "../../components/financial/Transactions/TransactionGroupList";
+import { FiltersTrasactionProvider } from "../../context/FiltersTransactionContext";
+import { useFiltersTransaction } from "../../hooks/transactions/useFiltersTransaction";
 
 export function TransactionsScreen() {
     const [text, setText] = useState("")
     const modalRef = useRef(null)
     const snapPoints = useMemo(() => ["75%"], [])
-    const [filters, setFilters] = useState(DEFAULT_FILTERS)
-    const [draftFilters, setDraftFilters] = useState(DEFAULT_FILTERS)
+    const transactionFilters = useFiltersTransaction()
+    const {filters, openFilters} = transactionFilters
+
     const { transactions, incomes, expenses, totalBalance } = useTransactions(filters)
     const { rawTransactions } = useRawTransactions()
 
@@ -29,14 +28,15 @@ export function TransactionsScreen() {
 
     const monthsWithData = useMonthsWithData(rawTransactions)
 
+    const values = useMemo(() => ({
+        ...transactionFilters,
+        monthsWithData
+    }), [transactionFilters, monthsWithData])
+
     const handleChangeText = (text) => setText(text)
 
     const handleOpenFilters = () => {
-        setDraftFilters(prev => {
-            return {
-                ...filters
-            }
-        })
+        openFilters()
         modalRef.current?.present()
     }
 
@@ -68,19 +68,13 @@ export function TransactionsScreen() {
                 enablePanDownToClose
                 enableDynamicSizing = {false}
             >
-                <FiltersProvider 
+                <FiltersTrasactionProvider 
                     value={
-                        {
-                            monthsWithData,
-                            filters,
-                            setFilters,
-                            draftFilters,
-                            setDraftFilters
-                        }
+                        values
                     }
                 >
                     <FiltersSheet onClose={handleCloseFilters}/>
-                </FiltersProvider>
+                </FiltersTrasactionProvider>
             </BottomSheetModal>
 
         </View>
