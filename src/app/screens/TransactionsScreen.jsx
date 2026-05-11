@@ -40,7 +40,7 @@ export function TransactionsScreen() {
     const handleCloseFilters = () => {
         modalRef.current?.dismiss()
     }
-    
+
     return (
         <FiltersTrasactionProvider value={values}>
             <View style={styles.container}>
@@ -72,9 +72,7 @@ export function TransactionsScreen() {
                             values
                         }
                     >
-                        <FiltersTrasactionProvider value={values}>
-                            <FiltersSheet onClose={handleCloseFilters} />
-                        </FiltersTrasactionProvider>
+                        <FiltersSheet onClose={handleCloseFilters} />
                     </FiltersTrasactionProvider>
                 </BottomSheetModal>
 
