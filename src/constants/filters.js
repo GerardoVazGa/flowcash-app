@@ -7,7 +7,8 @@ export const DEFAULT_FILTERS = {
         preset: "this_month",
         month: currentMonth,
         year: currentYear
-    }
+    },
+    search: ""
 }
 
 export const TYPE_OPTIONS = [
