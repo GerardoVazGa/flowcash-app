@@ -4,9 +4,9 @@ import { matchesCategories } from "../filters/matchesCategories.js";
 import { matchesType } from "../filters/matchesType.js";
 
 export function filterTransactions(transactions, filters) {
-    const { type, category, period } = filters
+    const { type, category: categories, period } = filters
     const { start, end } = periodToDateRange(period)
-
+    
     const filteredTransactions = transactions.filter((transaction) => {
         const transactionDate = new Date(transaction.date)
 
@@ -14,7 +14,7 @@ export function filterTransactions(transactions, filters) {
             return false
         }
 
-        if(!matchesCategories(transaction.category, category)) {
+        if(!matchesCategories(transaction.category, categories)) {
             return false
         }
 
