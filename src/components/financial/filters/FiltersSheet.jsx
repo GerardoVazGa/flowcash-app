@@ -6,47 +6,28 @@ import { useTheme } from "../../../hooks/useTheme";
 import { FilterOption } from "./FilterOption";
 import { CategoryOption } from "./CategoryOption";
 import { PeriodFilter } from "./PeriodFilter";
-import { useFilters } from "../../../context/FiltersContext";
 import { DEFAULT_FILTERS, TYPE_OPTIONS, CATEGORY_OPTIONS } from "../../../constants/filters";
+import { useFiltersTransactionContext } from "../../../context/FiltersTransactionContext";
 
 export function FiltersSheet({ onClose }) {
     const { theme } = useTheme()
     const styles = getStyles(theme)
-    const { draftFilters, setDraftFilters, setFilters, filters } = useFilters()
-
-    const applyType = (value) => {
-        setDraftFilters((prev) => ({
-            ...prev,
-            type: value
-        }))
-    }
+    const {draftFilters, applyType, applyFilters, cleanFilters, cancelFilters, toggleCategory } = useFiltersTransactionContext()
 
     const handleApplyFilters = () => {
-        setFilters(draftFilters)
+        applyFilters()
         onClose()
     }
 
     const handleCancelFilters = () => {
-        setDraftFilters(filters)
+        cancelFilters()
         onClose()
     }
 
     const handleCleanFilter = () => {
-        setDraftFilters(DEFAULT_FILTERS)
+        cleanFilters()
     }
 
-    const toggleCategory = (category) => {
-        setDraftFilters((prev) => {
-            const categoryExists = prev.category.includes(category)
-
-            return {
-                ...prev,
-                category: categoryExists
-                    ? prev.category.filter((categ) => categ !== category)
-                    : [...prev.category, category]
-            }
-        })
-    }
     return (
         <View style={styles.wrapper}>
             <View style={styles.header}>

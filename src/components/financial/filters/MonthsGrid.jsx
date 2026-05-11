@@ -5,12 +5,12 @@ import { useMemo } from 'react'
 import { BaseChip } from '../../ui/BaseChip.jsx'
 import { MonthsCeil } from './MonthsCeil.jsx'
 import { currentMonth, currentYear } from '../../../constants/periodFilters.js'
-import { useFilters } from '../../../context/FiltersContext.js'
+import { useFiltersTransactionContext } from '../../../context/FiltersTransactionContext.js'
 
 export function MonthsGrid({ viewYear }) {
     const {theme} = useTheme()
     const styles = getStyles(theme)
-    const {monthsWithData, draftFilters, setDraftFilters} = useFilters()
+    const {draftFilters,monthsWithData, selectMonth} = useFiltersTransactionContext()
 
     const { period } = draftFilters
 
@@ -30,17 +30,6 @@ export function MonthsGrid({ viewYear }) {
         return monthsWithData?.[year]?.has(month) ?? false
     }
 
-    const handleSelectedMonth = (month) => {
-        setDraftFilters((prev) => ({
-            ...prev,
-            period: {
-                ...prev.period,
-                month,
-                year: viewYear
-            }
-        }))
-    }
-
     return (
         <View style={styles.container}>
             {months.map((month) => (
@@ -54,7 +43,7 @@ export function MonthsGrid({ viewYear }) {
                         month.id === currentMonth
                     }
                     hasData = {hasData(month.id, viewYear)}
-                    onPress={handleSelectedMonth}
+                    onPress={() => selectMonth(month.id, viewYear)}
                     isDisabled={month.disable}
                 />
             ))}

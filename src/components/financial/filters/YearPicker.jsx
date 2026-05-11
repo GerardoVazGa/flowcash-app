@@ -4,12 +4,12 @@ import { useRawTransactions } from "../../../hooks/transactions/useRawTransactio
 import { getAvailableYears } from "../../../utils/period/getAvailableYears.js";
 import { useMemo } from "react";
 import { BaseChip } from "../../ui/BaseChip.jsx";
-import { useFilters } from "../../../context/FiltersContext.js";
+import { useFiltersTransactionContext } from "../../../context/FiltersTransactionContext.js";
 
 export function YearPicker({ viewYear, setViewYear }) {
     const {theme} = useTheme()
     const { rawTransactions: transactions } = useRawTransactions()
-    const {draftFilters, setDraftFilters} = useFilters()
+    const {draftFilters,selectYear} = useFiltersTransactionContext()
     const { period } = draftFilters
 
     const styles = getStyles(theme)
@@ -18,17 +18,10 @@ export function YearPicker({ viewYear, setViewYear }) {
         return getAvailableYears(transactions)
     }, [transactions])
 
-    const handleSelectedYear = (selectedYear) => {
+    const handlerSelectedYear = (selectedYear) => {
         setViewYear(selectedYear)
 
-        setDraftFilters(prev => ({
-            ...prev,
-            period: {
-                ...prev.period,
-                month: null,
-                year: selectedYear
-            }
-        }))
+        selectYear(selectedYear)
     }
     return(
         <View>
@@ -42,7 +35,7 @@ export function YearPicker({ viewYear, setViewYear }) {
                         key={year}
                         label={year}
                         selected={viewYear=== year}
-                        onPress={() => handleSelectedYear(year)}
+                        onPress={() => handlerSelectedYear(year)}
                     />
                 ))}
             </ScrollView>

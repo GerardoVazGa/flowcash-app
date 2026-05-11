@@ -13,10 +13,11 @@ import Animated, {
     withTiming,
 } from "react-native-reanimated";
 import { ANIMATION_PERIOD_CONFIG } from "../../../constants/animations";
-import { useFilters } from "../../../context/FiltersContext.js";
+import { useFiltersTransactionContext } from "../../../context/FiltersTransactionContext.js";
 
 export function PeriodFilter() {
-    const {draftFilters, setDraftFilters} = useFilters()
+    const {draftFilters, applyPeriodPreset, enableCustomPeriod} = useFiltersTransactionContext()
+
     const { period } = draftFilters
 
     const [viewYear, setViewYear] = useState(period.year || currentYear)
@@ -48,27 +49,6 @@ export function PeriodFilter() {
         transform: [{translateY: transalateY.value}]
     }))
 
-    const handlePresetSelect = (preset) => {
-        setDraftFilters(prev => ({
-            ...prev,
-            period: {
-                preset,
-                month: null,
-                year: currentYear
-            }
-        }))
-    }
-
-    const enableCustomPeriod = () => {
-        setDraftFilters(prev => ({
-            ...prev,
-            period: {
-                preset: null,
-                month: currentMonth,
-                year: currentYear
-            }
-        }))
-    }
     return (
         <View style={styles.container}>
             <View style={styles.containerPresets}>
@@ -76,7 +56,7 @@ export function PeriodFilter() {
                     <BaseChip 
                         key={periodPreset.id}
                         label={periodPreset.title}
-                        onPress={() => handlePresetSelect(periodPreset.id)}
+                        onPress={() => applyPeriodPreset(periodPreset.id)}
                         selected={period.preset === periodPreset.id}
                     />
                 ))}
