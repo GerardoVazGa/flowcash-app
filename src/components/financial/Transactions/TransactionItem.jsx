@@ -3,11 +3,12 @@ import { AppText } from "../../ui/AppText.jsx"
 import { AppIcon } from "../../ui/AppIcon.jsx"
 import { useTheme } from "../../../hooks/useTheme.js"
 import { formatCurrency } from "../../../utils/formatters/formatCurrency.js"
+import { memo, useMemo } from "react"
 
-export function TransactionItem({transaction, variant = "card", isFeatured = false}) {
+export const TransactionItem = memo (({transaction, variant = "card", isFeatured = false}) => {
     const { theme } = useTheme()
 
-    const styles = getStyles(theme)
+    const styles = useMemo(() => getStyles(theme), [theme])
 
     const isExpense = transaction.type === "expense"
     const amountColor = isExpense ? theme.colors.expenses : theme.colors.income
@@ -38,7 +39,7 @@ export function TransactionItem({transaction, variant = "card", isFeatured = fal
             </View>
         </View>
     )
-}
+})
 
 const getStyles = (theme) => StyleSheet.create({
     container: {
