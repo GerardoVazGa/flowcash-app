@@ -2,7 +2,7 @@ import { useContext, createContext } from "react";
 
 const FiltersTransactionContext = createContext(null)
 
-export const useFiltersTransaction = () => {
+export const useFiltersTransactionContext = () => {
     const context = useContext(FiltersTransactionContext)
 
     if(!context) {
