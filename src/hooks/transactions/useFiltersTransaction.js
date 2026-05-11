@@ -54,6 +54,27 @@ export const useFiltersTransaction = () => {
         }))
     }, [])
 
+    const selectYear = useCallback((selectedYear) => {
+        setDraftFilters(prev => ({
+            ...prev,
+            period: {
+                ...prev.period,
+                year: selectedYear
+            }
+        }))
+    }, [])
+
+    const selectMonth = useCallback((month, viewYear) => {
+        setDraftFilters(prev => ({
+            ...prev, 
+            period: {
+                ...prev.period,
+                month,
+                year: viewYear
+            }
+        }))
+    }, [])
+
     return {
         ...filtersState,
         openFilters,
@@ -61,6 +82,8 @@ export const useFiltersTransaction = () => {
         toggleCategory,
         applyPeriodPreset,
         enableCustomPeriod,
+        selectYear,
+        selectMonth
     }
 
 }
