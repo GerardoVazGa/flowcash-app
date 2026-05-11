@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import { TransactionsSummary } from "../../components/financial/summary/TransactionsSummary";
 import { useTheme } from "../../hooks/useTheme";
-import { SearchBar } from "../../components/ui/SearchBar";
 import { useState, useMemo, useRef } from "react";
 import { FiltersSheet } from "../../components/financial/filters/FiltersSheet";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
@@ -12,18 +11,18 @@ import { useMonthsWithData } from "../../hooks/useMonthsWithData";
 import { TransactionGroupList } from "../../components/financial/Transactions/TransactionGroupList";
 import { FiltersTrasactionProvider } from "../../context/FiltersTransactionContext";
 import { useFiltersTransaction } from "../../hooks/transactions/useFiltersTransaction";
+import { SearchBarFilter } from "../../components/financial/filters/SearchBarFilter";
 
 export function TransactionsScreen() {
-    const [text, setText] = useState("")
     const modalRef = useRef(null)
     const snapPoints = useMemo(() => ["75%"], [])
     const transactionFilters = useFiltersTransaction()
-    const {filters, openFilters} = transactionFilters
+    const { filters, openFilters } = transactionFilters
 
     const { transactions, incomes, expenses, totalBalance } = useTransactions(filters)
     const { rawTransactions } = useRawTransactions()
 
-    const {theme} = useTheme()
+    const { theme } = useTheme()
     const styles = getStyles(theme)
 
     const monthsWithData = useMonthsWithData(rawTransactions)
@@ -33,8 +32,6 @@ export function TransactionsScreen() {
         monthsWithData
     }), [transactionFilters, monthsWithData])
 
-    const handleChangeText = (text) => setText(text)
-
     const handleOpenFilters = () => {
         openFilters()
         modalRef.current?.present()
@@ -43,41 +40,46 @@ export function TransactionsScreen() {
     const handleCloseFilters = () => {
         modalRef.current?.dismiss()
     }
+    
     return (
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <SearchBar value={text} onChange={handleChangeText} />
-                <IconButton 
-                    icon="filter-outline" 
-                    background="transparent"
-                    colorIcon="primary"
-                    onPress={handleOpenFilters}
+        <FiltersTrasactionProvider value={values}>
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <SearchBarFilter />
+                    <IconButton
+                        icon="filter-outline"
+                        background="transparent"
+                        colorIcon="primary"
+                        onPress={handleOpenFilters}
+                    />
+                </View>
+                <TransactionsSummary
+                    income={incomes}
+                    expense={expenses}
+                    balance={totalBalance}
                 />
-            </View>
-            <TransactionsSummary 
-                income={incomes}
-                expense={expenses}
-                balance={totalBalance}
-            />
 
-            <TransactionGroupList transactions={transactions}/>
+                <TransactionGroupList transactions={transactions} />
 
-            <BottomSheetModal
-                ref={modalRef}
-                snapPoints={snapPoints}
-                enablePanDownToClose
-                enableDynamicSizing = {false}
-            >
-                <FiltersTrasactionProvider 
-                    value={
-                        values
-                    }
+                <BottomSheetModal
+                    ref={modalRef}
+                    snapPoints={snapPoints}
+                    enablePanDownToClose
+                    enableDynamicSizing={false}
                 >
-                    <FiltersSheet onClose={handleCloseFilters}/>
-                </FiltersTrasactionProvider>
-            </BottomSheetModal>
+                    <FiltersTrasactionProvider
+                        value={
+                            values
+                        }
+                    >
+                        <FiltersTrasactionProvider value={values}>
+                            <FiltersSheet onClose={handleCloseFilters} />
+                        </FiltersTrasactionProvider>
+                    </FiltersTrasactionProvider>
+                </BottomSheetModal>
 
-        </View>
+            </View>
+        </FiltersTrasactionProvider>
     )
 }
 
@@ -94,7 +96,7 @@ const getStyles = (theme) => StyleSheet.create({
         paddingHorizontal: theme.spacing.xs,
         paddingVertical: theme.spacing.sm,
         gap: theme.spacing.md,
-        
+
     }
 })
 
