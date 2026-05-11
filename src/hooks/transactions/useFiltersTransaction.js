@@ -6,11 +6,18 @@ import { currentMonth, currentYear } from "../../constants/periodFilters"
 export const useFiltersTransaction = () => {
     const filtersState = useFilters(DEFAULT_FILTERS)
 
-    const {filters, setDraftFilters } = filtersState
+    const {filters, setDraftFilters, setFilters} = filtersState
 
     const openFilters = useCallback(() => {
         setDraftFilters(filters)
     }, [filters])
+
+    const updateSearch = useCallback((text) => {
+        setFilters(prev => ({
+            ...prev,
+            search: text
+        }))
+    }, [])
 
     const applyType = useCallback((value) => {
         setDraftFilters((prev) => ({
@@ -77,6 +84,7 @@ export const useFiltersTransaction = () => {
 
     return {
         ...filtersState,
+        updateSearch,
         openFilters,
         applyType,
         toggleCategory,
