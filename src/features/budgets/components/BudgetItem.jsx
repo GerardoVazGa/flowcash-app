@@ -5,7 +5,7 @@ import { AppButton } from "../../../components/ui/AppButton.jsx"
 import { ProgressBar } from "../../../components/ui/ProgressBar.jsx"
 import { IconButton } from "../../../components/ui/IconButton.jsx"
 import { CATEGORY_ICONS } from "../../../constants/categoryIcon.js"
-import { budgetStatusVariant } from "../utils/budgetStatusVariant.js"
+import { budgetStateVariant } from "../utils/budgetStateVariant.js"
 import { useTheme } from "../../../hooks/useTheme.js"
 import { formatCurrency } from "../../../utils/formatters/formatCurrency.js"
 import { formatBudgetPeriod } from "../utils/formatBudgetPeriod.js"
@@ -19,7 +19,7 @@ export function BudgetItem({showDelete = true, onDelete, budget, isVisible = tru
 
     const budgetIcon = CATEGORY_ICONS[budget.category]
 
-    const {variant} = budgetStatusVariant(budget.status)
+    const {variant} = budgetStateVariant(budget.state)
 
     const status = currentTheme.status[variant]
     const colorBar = currentTheme.colors[status.bar]
