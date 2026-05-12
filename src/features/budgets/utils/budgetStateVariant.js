@@ -1,5 +1,5 @@
-export function budgetStatusVariant(status) {
-    switch(status) {
+export function budgetStateVariant(state) {
+    switch(state) {
         case "HEALTHY":
             return { variant: 'safe' }
         case "WARNING":

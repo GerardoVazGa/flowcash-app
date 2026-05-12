@@ -8,13 +8,13 @@ export function budgetMetrics(budget) {
 
     const isOverLimit = remaining < 0
 
-    let status = "HEALTHY"
-    if (isOverLimit) status = "EXCEEDED"
-    if(percent < 101) status = "LIMIT_REACHED"
-    if(percent < 90) status = "AT_RISK"
-    if(percent < 70) status = "CRITICAL"
-    if(percent < 50) status = "WARNING"
+    let state = "HEALTHY"
+    if (isOverLimit) state = "EXCEEDED"
+    if(percent < 101) state = "LIMIT_REACHED"
+    if(percent < 90) state = "AT_RISK"
+    if(percent < 70) state = "CRITICAL"
+    if(percent < 50) state = "WARNING"
 
     
-    return { percent, remaining, isOverLimit, status }
+    return { percent, remaining, isOverLimit, state }
 }
