@@ -6,8 +6,10 @@ export function useBudgets() {
 
     useEffect(() => {
         const data = budgetsService().getBudgets()
+
+        const activeBudgets = data.filter(budget => !budget.archived)
         
-        const budgetsWithMetrics = mapBudgetsWithMetrics(data)
+        const budgetsWithMetrics = mapBudgetsWithMetrics(activeBudgets)
         
         setBudgets(budgetsWithMetrics)
     }, [])
