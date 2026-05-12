@@ -10,6 +10,7 @@ export function budgetMetrics(budget) {
 
     let status = "HEALTHY"
     if (isOverLimit) status = "EXCEEDED"
+    if(percent < 101) status = "LIMIT_REACHED"
     if(percent < 90) status = "AT_RISK"
     if(percent < 70) status = "CRITICAL"
     if(percent < 50) status = "WARNING"
