@@ -16,7 +16,7 @@ export function BudgetItem({showDelete = true, onDelete, budget, isVisible = tru
     const currentTheme = theme
     const styles = getStyles(currentTheme)
 
-    const budgetWithIcon = {...budget, icon: CATEGORY_ICONS[budget.category]}
+    const budgetIcon = CATEGORY_ICONS[budget.category]
 
     const {variant} = budgetStatus(budget.percent)
 
@@ -29,19 +29,19 @@ export function BudgetItem({showDelete = true, onDelete, budget, isVisible = tru
         <View style={styles.container}>
             <View style={styles.header}>
                 <AppIcon 
-                    name={budgetWithIcon.icon}
+                    name={budgetIcon}
                     size={24} 
                     background="primaryContainer" 
                     color = "onPrimary" 
                     style={styles.icon}
                 />
                 <View style={styles.info}>
-                    <AppText variant="title">{budgetWithIcon.category}</AppText>
-                    <AppText variant="label" style={styles.period}> {budgetWithIcon.period}</AppText>
+                    <AppText variant="title">{budget.category}</AppText>
+                    <AppText variant="label" style={styles.period}> {budget.period.type}</AppText>
                 </View>
                 <View style={styles.amount}>
-                    <AppText variant="body"> {formatCurrency(budgetWithIcon.spent)} </AppText>
-                    <AppText variant="body">de {formatCurrency(budgetWithIcon.limit)}</AppText>
+                    <AppText variant="body"> {formatCurrency(budget.spent)} </AppText>
+                    <AppText variant="body">de {formatCurrency(budget.limit)}</AppText>
                 </View>
 
                 {showDelete && (
@@ -55,7 +55,7 @@ export function BudgetItem({showDelete = true, onDelete, budget, isVisible = tru
                 )}
 
             </View>
-            <ProgressBar color={colorBar} percent={budgetWithIcon.percent} />
+            <ProgressBar color={colorBar} percent={budget.percent} />
             <View style={styles.footer}>
                 <AppText 
                     variant="body" 
@@ -69,15 +69,15 @@ export function BudgetItem({showDelete = true, onDelete, budget, isVisible = tru
                         ]
                     }
                 > 
-                    {budgetWithIcon.percent}% usado
+                    {budget.percent}% usado
                 </AppText>
                 <AppText 
                     variant="body"
                 > 
                     {
-                        budgetWithIcon.isOverLimit 
-                        ? `Excedido por ${formatCurrency(Math.abs(budgetWithIcon.remaining))} ` 
-                        : `Quedan ${formatCurrency(budgetWithIcon.remaining)}`
+                        budget.isOverLimit 
+                        ? `Excedido por ${formatCurrency(Math.abs(budget.remaining))} ` 
+                        : `Quedan ${formatCurrency(budget.remaining)}`
                     }
                 </AppText>
             </View>
