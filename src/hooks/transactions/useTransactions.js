@@ -7,10 +7,11 @@ import { groupTransactionsByDate } from "../../utils/transactions/groupTransacti
 import { calculateIncomes } from "../../utils/transactions/calculateIncomes.js"
 import { calculateExpenses } from "../../utils/transactions/calculateExpenses.js"
 import { calculateBalance } from "../../utils/transactions/calculateBalance.js"
+import { useRawTransactions } from "./useRawTransactions.js"
 
 
 export const useTransactions = (filters) => {
-    const  transactions = transactionsService().getTransactions()
+    const  { rawTransactions: transactions } = useRawTransactions()
 
     const filteredTransactions = useMemo(() => {
         return filterTransactions(transactions, filters)
