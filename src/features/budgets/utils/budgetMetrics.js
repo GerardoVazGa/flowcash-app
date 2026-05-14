@@ -1,3 +1,5 @@
+import { BUDGET_STATUS } from "../constants/budgetStatus"
+
 export function budgetMetrics(budget) {
     const percent = Math.max(
         Math.round((budget.spent / budget.limit) * 100),
@@ -8,12 +10,11 @@ export function budgetMetrics(budget) {
 
     const isOverLimit = remaining < 0
 
-    let status = "HEALTHY"
-    if (isOverLimit) status = "EXCEEDED"
-    if(percent < 101) status = "LIMIT_REACHED"
-    if(percent < 90) status = "AT_RISK"
-    if(percent < 70) status = "CRITICAL"
-    if(percent < 50) status = "WARNING"
+    let status = BUDGET_STATUS.HEALTHY
+    if (isOverLimit || percent >= 100) status = BUDGET_STATUS.EXCEEDED
+    else if(percent >= 90) status = BUDGET_STATUS.AT_RISK
+    else if(percent >= 70) status = BUDGET_STATUS.CRITICAL
+    else if(percent >= 50) status = BUDGET_STATUS.WARNING
 
     
     return { percent, remaining, isOverLimit, status }
