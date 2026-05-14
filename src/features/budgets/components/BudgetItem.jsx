@@ -4,11 +4,10 @@ import { AppText } from "@components/ui/AppText"
 import { ProgressBar } from "@components/ui/ProgressBar"
 import { IconButton } from "@components/ui/IconButton"
 import { CATEGORY_ICONS } from "@constants/categoryIcon"
-import { budgetStatusVariant } from "../utils/budgetStatusVariant.js"
 import { useTheme } from "@hooks/useTheme"
 import { formatCurrency } from "@utils/formatters/formatCurrency"
-import { formatBudgetPeriod } from "../utils/formatBudgetPeriod.js"
 import { BUDGET_STATUS_VARIANTS } from "../constants/budgetVariants.js"
+import { BUDGETS_PERIODS_LABELS } from "../constants/budgetPeriod.js"
 
 
 
@@ -25,6 +24,8 @@ export function BudgetItem({showDelete = true, onDelete, budget, isVisible = tru
     const colorBar = currentTheme.colors[status.bar]
     const backgroundColor = currentTheme.colors[status.bg]
     const textColor = currentTheme.colors[status.text]
+
+    const periodLabel = BUDGETS_PERIODS_LABELS[budget.period.type] || budget.period.type
     
     return (
         <View style={styles.container}>
@@ -38,7 +39,7 @@ export function BudgetItem({showDelete = true, onDelete, budget, isVisible = tru
                 />
                 <View style={styles.info}>
                     <AppText variant="title">{budget.category}</AppText>
-                    <AppText variant="label" style={styles.period}>{formatBudgetPeriod(budget.period.type)}</AppText>
+                    <AppText variant="label" style={styles.period}>{periodLabel}</AppText>
                 </View>
                 <View style={styles.amount}>
                     <AppText variant="body"> {formatCurrency(budget.spent)} </AppText>
