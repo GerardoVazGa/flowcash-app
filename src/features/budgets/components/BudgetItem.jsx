@@ -8,6 +8,7 @@ import { budgetStatusVariant } from "../utils/budgetStatusVariant.js"
 import { useTheme } from "@hooks/useTheme"
 import { formatCurrency } from "@utils/formatters/formatCurrency"
 import { formatBudgetPeriod } from "../utils/formatBudgetPeriod.js"
+import { BUDGET_STATUS_VARIANTS } from "../constants/budgetVariants.js"
 
 
 
@@ -18,7 +19,7 @@ export function BudgetItem({showDelete = true, onDelete, budget, isVisible = tru
 
     const budgetIcon = CATEGORY_ICONS[budget.category]
 
-    const {variant} = budgetStatusVariant(budget.status)
+    const variant = BUDGET_STATUS_VARIANTS[budget.status] || "safe"
 
     const status = currentTheme.status[variant]
     const colorBar = currentTheme.colors[status.bar]
