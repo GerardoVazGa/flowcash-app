@@ -1,14 +1,15 @@
 import { StyleSheet, View } from "react-native"
 import { useTheme } from "@hooks/useTheme"
-import { budgetStatusVariant } from "../../utils/budgetStatusVariant"
 import { ProgressRing } from "@components/ui/ProgressRing"
 import { AppText } from "@components/ui/AppText"
+import { BUDGET_STATUS_VARIANTS } from "@features/budgets/constants/budgetVariants"
 
 export function BudgetRing({ percent, status }) {
     const { theme } = useTheme()
     const styles = getStyles(theme)
 
-    const { variant } = budgetStatusVariant(status)
+    const variant = BUDGET_STATUS_VARIANTS[status] || BUDGET_STATUS_VARIANTS["HEALTHY"]
+
     const statusColor = theme.status[variant]
     const colorBar = theme.colors[statusColor.bar]
     const text = theme.colors[statusColor.text]
