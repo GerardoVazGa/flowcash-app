@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
-import { AppText } from "../../../../components/ui/AppText";
-import { useTheme } from "../../../../hooks/useTheme";
+import { AppText } from "@components/ui/AppText";
+import { useTheme } from "@hooks/useTheme";
 
 export function BudgetSummary({spent, limit, periodType = "Mensual"}) {
     const { theme } = useTheme()

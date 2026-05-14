@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
-import { useTheme } from "../../../../hooks/useTheme";
-import { AppIcon } from "../../../../components/ui/AppIcon";
-import { AppText } from "../../../../components/ui/AppText";
+import { useTheme } from "@hooks/useTheme";
+import { AppIcon } from "@components/ui/AppIcon";
+import { AppText } from "@components/ui/AppText";
 
 export function BudgetAlert({value}) {
     const {

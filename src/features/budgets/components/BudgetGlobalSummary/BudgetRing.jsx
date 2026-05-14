@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native"
-import { useTheme } from "../../../../hooks/useTheme"
+import { useTheme } from "@hooks/useTheme"
 import { budgetStateVariant } from "../../utils/budgetStateVariant"
-import { ProgressRing } from "../../../../components/ui/ProgressRing"
-import { AppText } from "../../../../components/ui/AppText"
+import { ProgressRing } from "@components/ui/ProgressRing"
+import { AppText } from "@components/ui/AppText"
 
 export function BudgetRing({ percent, state }) {
     const { theme } = useTheme()

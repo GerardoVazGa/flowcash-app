@@ -1,7 +1,6 @@
 import { FlatList, StyleSheet, View } from "react-native";
-import { AppText } from "../../../components/ui/AppText";
 import { BudgetGlobalSummary } from "../components/BudgetGlobalSummary/BudgetGlobalSummary";
-import { useTheme } from "../../../hooks/useTheme";
+import { useTheme } from "@hooks/useTheme";
 import { useBudgets } from "../hooks/useBudgets";
 import { BudgetItem } from "../components/BudgetItem";
 

@@ -1,11 +1,8 @@
 import { StyleSheet, View } from "react-native";
-import { useTheme } from "../../../../hooks/useTheme"
-import { AnimatedCircularProgress } from "react-native-circular-progress";
-import { AppText } from "../../../../components/ui/AppText";
-import { ProgressRing } from "../../../../components/ui/ProgressRing";
+import { useTheme } from "@hooks/useTheme"
 import { BudgetRing } from "./BudgetRing";
 import { BudgetSummary } from "./BudgetSummary";
-import { formatCurrency } from "../../../../utils/formatters/formatCurrency";
+import { formatCurrency } from "@utils/formatters/formatCurrency";
 import { BudgetAlert } from "./BudgetAlert";
 import { BudgetStatItem } from "./BudgetStatItem";
 

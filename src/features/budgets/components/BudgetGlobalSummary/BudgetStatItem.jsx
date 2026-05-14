@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native"
-import { useTheme } from "../../../../hooks/useTheme"
-import { AppText } from "../../../../components/ui/AppText"
+import { useTheme } from "@hooks/useTheme"
+import { AppText } from "@components/ui/AppText"
 
 export function BudgetStatItem({ label, value }) {
     const { theme } = useTheme()
