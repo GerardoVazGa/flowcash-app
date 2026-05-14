@@ -1,17 +1,17 @@
 import { StyleSheet, View } from "react-native"
 import { useTheme } from "@hooks/useTheme"
-import { budgetStateVariant } from "../../utils/budgetStateVariant"
+import { budgetStatusVariant } from "../../utils/budgetStatusVariant"
 import { ProgressRing } from "@components/ui/ProgressRing"
 import { AppText } from "@components/ui/AppText"
 
-export function BudgetRing({ percent, state }) {
+export function BudgetRing({ percent, status }) {
     const { theme } = useTheme()
     const styles = getStyles(theme)
 
-    const { variant } = budgetStateVariant(state)
-    const status = theme.status[variant]
-    const colorBar = theme.colors[status.bar]
-    const text = theme.colors[status.text]
+    const { variant } = budgetStatusVariant(status)
+    const statusColor = theme.status[variant]
+    const colorBar = theme.colors[statusColor.bar]
+    const text = theme.colors[statusColor.text]
     
     return (
         <View style={styles.usageInfo}>

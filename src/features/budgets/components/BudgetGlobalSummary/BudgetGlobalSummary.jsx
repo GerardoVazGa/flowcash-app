@@ -15,7 +15,7 @@ export function BudgetGlobalSummary({ remaining = 70, percent = 30, totalExeceed
 
     return (
         <View style={styles.container}>
-            <BudgetRing percent={percent} state="AT_RISK"/>
+            <BudgetRing percent={percent} status="AT_RISK"/>
             <View style={styles.summary}>
                 <View style = {{flex: 2}}>
                     <BudgetSummary spent={formatCurrency(spent)} limit={formatCurrency(limit)} periodType="Mensual" />
