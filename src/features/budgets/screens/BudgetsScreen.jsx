@@ -3,6 +3,7 @@ import { BudgetGlobalSummary } from "../components/BudgetGlobalSummary/BudgetGlo
 import { useTheme } from "@hooks/useTheme";
 import { useBudgets } from "../hooks/useBudgets";
 import { BudgetItem } from "../components/BudgetItem";
+import { FilterBar } from "../components/budgetFilters/FilterBar";
 
 export function BudgetsScreen() {
     const { theme } = useTheme()
@@ -17,6 +18,7 @@ export function BudgetsScreen() {
                 ListHeaderComponent={() => (
                     <View style = {styles.header}>
                         <BudgetGlobalSummary />
+                        <FilterBar />
                     </View>
                 )}
                 renderItem={({item}) => (
@@ -27,7 +29,7 @@ export function BudgetsScreen() {
                 )}
                 ItemSeparatorComponent={() => <View style={{height: theme.spacing.md}}/>}
                 contentContainerStyle={styles.items}
-
+                showsVerticalScrollIndicator={false}
             />
 
         </View>
@@ -37,13 +39,14 @@ export function BudgetsScreen() {
 const getStyles = (theme) => StyleSheet.create({
     container: {
         flex: 1,
-        padding: theme.spacing.md,
-        paddingBottom: theme.spacing.lg,
     },
     header: {
-        marginBottom: theme.spacing.md
+        marginBottom: theme.spacing.md,
+        gap: theme.spacing.md
     },
     items: {
-        gap: theme.spacing.sm
+        padding: theme.spacing.md,
+        paddingBottom: theme.spacing.lg,
+        gap: theme.spacing.sm,
     }
 })
