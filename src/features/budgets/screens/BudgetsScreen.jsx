@@ -4,11 +4,14 @@ import { useTheme } from "@hooks/useTheme";
 import { useBudgets } from "../hooks/useBudgets";
 import { BudgetItem } from "../components/BudgetItem";
 import { FilterBar } from "../components/budgetFilters/FilterBar";
+import { useBudgetFilters } from "../hooks/useBudgetFilters";
 
 export function BudgetsScreen() {
     const { theme } = useTheme()
     const styles = getStyles(theme)
-    const { budgets } = useBudgets()
+    const { filters, updatePeriod} = useBudgetFilters()
+
+    const { budgets } = useBudgets(filters)
     return (
         <View style = {styles.container}>
 
@@ -18,7 +21,7 @@ export function BudgetsScreen() {
                 ListHeaderComponent={() => (
                     <View style = {styles.header}>
                         <BudgetGlobalSummary />
-                        <FilterBar />
+                        <FilterBar period={filters.period} onChange={updatePeriod}/>
                     </View>
                 )}
                 renderItem={({item}) => (
