@@ -1,21 +1,29 @@
-import { useState, useEffect } from "react";
-import { budgetsService } from "../services/budgetsServices.js";
+import { useMemo } from "react";
 import { mapBudgetsWithMetrics } from "../utils/metrics/mapBudgetsWithMetrics.js";
-export function useBudgets() {
-    const [budgets, setBudgets] = useState([])
+import { useRawBudgets } from "./useRawBudgets.js";
+import { filterBudgets } from "../utils/filters/filterBudgets.js";
+import { sortBudgets } from "../utils/sorting/sortBudgets.js";
+export function useBudgets(filters) {
+    
+    const { rawBudgets } = useRawBudgets()
 
-    useEffect(() => {
-        const data = budgetsService().getBudgets()
+    const { sortBy } = filters
 
-        const activeBudgets = data.filter(budget => !budget.archived)
-        
-        const budgetsWithMetrics = mapBudgetsWithMetrics(activeBudgets)
-        
-        setBudgets(budgetsWithMetrics)
-    }, [])
+    const budgetsWithMetrics = useMemo(() => {
+        return mapBudgetsWithMetrics(rawBudgets)
+    }, [rawBudgets])
+
+    const filteredBudgets = useMemo(() => {
+        return filterBudgets(budgetsWithMetrics, filters)
+    }, [budgetsWithMetrics, filters])
+
+    const sortedBudgets = useMemo(() => {
+        return sortBudgets(filteredBudgets, sortBy)
+
+    }, [filteredBudgets, sortBy])
 
     return {
-        budgets
+        budgets: sortedBudgets
     }
     
 }
