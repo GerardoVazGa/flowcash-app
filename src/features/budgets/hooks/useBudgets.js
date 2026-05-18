@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { budgetsService } from "../services/budgetsServices.js";
-import { mapBudgetsWithMetrics } from "../utils/mapBudgetsWithMetrics.js";
+import { mapBudgetsWithMetrics } from "../utils/metrics/mapBudgetsWithMetrics.js";
 export function useBudgets() {
     const [budgets, setBudgets] = useState([])
 
