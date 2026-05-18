@@ -10,7 +10,7 @@ export function filterBudgets(budgets, filters) {
     } = filters
     
     const filteredBudgets = budgets.filter(budget => {
-        if(!matchesPeriod(budget.period, period)){
+        if(!matchesPeriod(budget.period.type, period)){
             return false
         }
 

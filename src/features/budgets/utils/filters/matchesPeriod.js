@@ -1,5 +1,5 @@
 export const matchesPeriod = (budgetPeriod, period) => {
-    if(budgetPeriod === "ALL") return true
+    if(period === "ALL") return true
 
     return budgetPeriod === period
 }
