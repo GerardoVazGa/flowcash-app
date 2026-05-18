@@ -1,4 +1,4 @@
-import { BUDGET_STATUS } from "../constants/budgetStatus"
+import { BUDGET_STATUS } from "../../constants/budgetStatus.js"
 
 export function budgetMetrics(budget) {
     const percent = Math.max(
