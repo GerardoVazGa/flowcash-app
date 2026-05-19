@@ -5,13 +5,26 @@ import { useBudgets } from "../hooks/useBudgets";
 import { BudgetItem } from "../components/BudgetItem";
 import { FilterBar } from "../components/budgetFilters/FilterBar";
 import { useBudgetFilters } from "../hooks/useBudgetFilters";
+import { IconButton } from "@components/ui/IconButton";
+import { useMemo, useRef } from "react";
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
+import { BudgetFilterSheet } from "../components/budgetFilters/BudgetFilterSheet";
 
 export function BudgetsScreen() {
+    const modalRef = useRef(null)
+    const snapPoints = useMemo(() => ["90%"], [])
+
     const { theme } = useTheme()
     const styles = getStyles(theme)
-    const { filters, updatePeriod} = useBudgetFilters()
+    const { filters, updatePeriod, openFilters} = useBudgetFilters()
 
     const { budgets } = useBudgets(filters)
+
+    const handlerOpenFilters = () => {
+        openFilters()
+        modalRef.current?.present()
+    }
+
     return (
         <View style = {styles.container}>
 
@@ -21,7 +34,15 @@ export function BudgetsScreen() {
                 ListHeaderComponent={() => (
                     <View style = {styles.header}>
                         <BudgetGlobalSummary />
-                        <FilterBar period={filters.period} onChange={updatePeriod}/>
+                        <View style={styles.filterRow}>
+                            <FilterBar onPeriodChange={updatePeriod} />
+                            <IconButton 
+                                icon="filter-outline"
+                                background="transparent"
+                                colorIcon="primary"
+                                onPress={handlerOpenFilters}
+                            />
+                        </View>
                     </View>
                 )}
                 renderItem={({item}) => (
@@ -34,6 +55,17 @@ export function BudgetsScreen() {
                 contentContainerStyle={styles.items}
                 showsVerticalScrollIndicator={false}
             />
+
+            <BottomSheetModal 
+                ref={modalRef}
+                snapPoints={snapPoints}
+                enablePanDownToClose
+                enableDynamicSizing = {false}
+            >
+
+                <BudgetFilterSheet />
+
+            </BottomSheetModal>
 
         </View>
     )
@@ -51,5 +83,9 @@ const getStyles = (theme) => StyleSheet.create({
         padding: theme.spacing.md,
         paddingBottom: theme.spacing.lg,
         gap: theme.spacing.sm,
+    },
+    filterRow: {
+        flexDirection: "row",
+        gap: theme.spacing.md
     }
 })
