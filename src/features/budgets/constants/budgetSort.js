@@ -12,8 +12,8 @@ export const BUDGET_SORT_OPTIONS = [
         value: "highest_remaining"
     },
     {
-        label: "alfabetico",
-        value: "alphabetical"
+        label: "Recientemente actualizado",
+        value: "recently_updated"
     }
 ]
 
@@ -21,12 +21,12 @@ export const BUDGET_SORT = {
     CLOSEST_TO_LIMIT: "closest_to_limit",
     HIGHEST_SPENT: "highest_spent",
     HIGHEST_REMAINING: "highest_remaining",
-    ALPHABETICAL: "alphabetical"
+    RECENTLY_UPDATED: "recently_updated",
 }
 
 export const BUDGET_SORTERS = {
-    [BUDGET_SORT.CLOSEST_TO_LIMIT]: (a, b) => b.percent - a.remaining,
+    [BUDGET_SORT.CLOSEST_TO_LIMIT]: (a, b) => b.percent - a.percent,
     [BUDGET_SORT.HIGHEST_SPENT]: (a, b) => b.spent - a.spent,
     [BUDGET_SORT.HIGHEST_REMAINING]: (a, b) => b.remaining - a.remaining,
-    [BUDGET_SORT.ALPHABETICAL]: (a, b) => a.label.localeCompare(b.label)
+    [BUDGET_SORT.RECENTLY_UPDATED]: (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt),
 }
