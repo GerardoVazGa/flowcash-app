@@ -1,19 +1,23 @@
 export const BUDGET_SORT_OPTIONS = [
     {
-        label: "Cercano al limite",
-        value: "closest_to_limit"
+        label: "Cercano al límite",
+        value: "closest_to_limit",
+        icon: "speedometer-outline"
     },
     {
         label: "Mayor gasto",
-        value: "highest_spent"
+        value: "highest_spent",
+        icon: "trending-up-outline"
     },
     {
         label: "Mayor restante",
-        value: "highest_remaining"
+        value: "highest_remaining",
+        icon: "wallet-outline"
     },
     {
         label: "Recientemente actualizado",
-        value: "recently_updated"
+        value: "recently_updated",
+        icon: "time-outline"
     }
 ]
 
