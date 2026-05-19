@@ -1,5 +1,6 @@
+import { AppText } from "@components/ui/AppText"
 import { useTheme } from "@hooks/useTheme"
-import { StyleSheet } from "react-native"
+import { StyleSheet, View } from "react-native"
 
 export function FilterSection({title, children}) {
     const { theme } = useTheme()
