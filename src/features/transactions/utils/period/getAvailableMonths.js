@@ -1,4 +1,4 @@
-import { MONTHS_SHORT, currentYear, currentMonth } from "../../constants/periodFilters"
+import { MONTHS_SHORT, currentYear, currentMonth } from "@constants/periodFilters.js"
 
 export const getAvailableMonths = (selectedYear) => {
     return MONTHS_SHORT.map((month, index) => {

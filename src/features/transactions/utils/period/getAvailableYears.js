@@ -1,4 +1,4 @@
-import { currentYear } from "../../constants/periodFilters.js"
+import { currentYear } from "@constants/periodFilters.js"
 
 export const getAvailableYears = (transactions) => {
 

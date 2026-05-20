@@ -10,7 +10,7 @@ import {
     format
 } from "date-fns"
 import { es } from "date-fns/locale"
-import { TODAY, MONTHS_SHORT } from "../../constants/periodFilters.js"
+import { TODAY, MONTHS_SHORT } from "@constants/periodFilters.js"
 
 export const periodToDateRange = (period) => {
     const {preset, month, year} = period
