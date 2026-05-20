@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native"
-import { AppText } from "../../ui/AppText.jsx"
-import { AppIcon } from "../../ui/AppIcon.jsx"
-import { useTheme } from "../../../hooks/useTheme.js"
-import { formatCurrency } from "../../../utils/formatters/formatCurrency.js"
+import { AppText } from "@components/ui/AppText.jsx"
+import { AppIcon } from "@components/ui/AppIcon.jsx"
+import { useTheme } from "@hooks/useTheme.js"
+import { formatCurrency } from "@utils/formatters/formatCurrency.js"
 import { memo, useMemo } from "react"
 
 export const TransactionItem = memo (({transaction, variant = "card", isFeatured = false}) => {

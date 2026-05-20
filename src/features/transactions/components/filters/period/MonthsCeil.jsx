@@ -1,8 +1,8 @@
 import { Pressable, StyleSheet } from "react-native";
-import { useTheme } from "../../../hooks/useTheme";
-import { MONTHS_SHORT } from "../../../constants/periodFilters";
+import { useTheme } from "@hooks/useTheme.js";
+import { MONTHS_SHORT } from "@constants/periodFilters.js";
 import { View } from "react-native";
-import { AppText } from "../../ui/AppText";
+import { AppText } from "@components/ui/AppText.jsx";
 
 export function MonthsCeil({
     month,

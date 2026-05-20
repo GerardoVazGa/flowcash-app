@@ -1,11 +1,10 @@
 import { StyleSheet, View } from 'react-native'
-import { useTheme } from '../../../../../hooks/useTheme.js'
-import { getAvailableMonths } from '../../../../../utils/period/getAvailableMonths.js'
+import { useTheme } from '@hooks/useTheme.js'
+import { getAvailableMonths } from '@features/transactions/utils/period/getAvailableMonths.js'
 import { useMemo } from 'react'
-import { BaseChip } from '../../../../../components/ui/BaseChip.jsx'
 import { MonthsCeil } from './MonthsCeil.jsx'
-import { currentMonth, currentYear } from '../../../../../constants/periodFilters.js'
-import { useFiltersTransactionContext } from '../../../../../context/FiltersTransactionContext.js'
+import { currentMonth, currentYear } from '@constants/periodFilters.js'
+import { useFiltersTransactionContext } from '@features/transactions/context/FiltersTransactionContext.js'
 
 export function MonthsGrid({ viewYear }) {
     const {theme} = useTheme()

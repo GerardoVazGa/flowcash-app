@@ -1,7 +1,7 @@
 import { SectionList, StyleSheet, View } from "react-native";
-import { AppText } from "../../ui/AppText";
-import { TransactionItem } from "./TransactionItem";
-import { useTheme } from "../../../hooks/useTheme";
+import { AppText } from "@components/ui/AppText.jsx";
+import { TransactionItem } from "./TransactionItem.jsx";
+import { useTheme } from "@hooks/useTheme.js";
 import { useCallback, useMemo } from "react";
 
 export function TransactionGroupList({transactions}) {

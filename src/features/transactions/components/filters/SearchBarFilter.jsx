@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useFiltersTransactionContext } from "../../../context/FiltersTransactionContext";
-import { useDebounce } from "../../../hooks/shared/useDebounce";
-import { SearchBar } from "../../ui/SearchBar";
+import { useFiltersTransactionContext } from "../../context/FiltersTransactionContext.js";
+import { useDebounce } from "@hooks/shared/useDebounce.js";
+import { SearchBar } from "@components/ui/SearchBar.jsx";
 
 export function SearchBarFilter () {
     const { updateSearch } = useFiltersTransactionContext()

@@ -1,10 +1,10 @@
 import { ScrollView, StyleSheet, View } from "react-native";
-import { useTheme } from "../../../hooks/useTheme.js";
-import { useRawTransactions } from "../../../hooks/transactions/useRawTransactions.js";
-import { getAvailableYears } from "../../../utils/period/getAvailableYears.js";
+import { useTheme } from "@hooks/useTheme.js";
+import { useRawTransactions } from "@features/transactions/hooks/useRawTransactions.js";
+import { getAvailableYears } from "@features/transactions/utils/period/getAvailableYears.js";
 import { useMemo } from "react";
-import { BaseChip } from "../../ui/BaseChip.jsx";
-import { useFiltersTransactionContext } from "../../../context/FiltersTransactionContext.js";
+import { BaseChip } from "@components/ui/BaseChip.jsx";
+import { useFiltersTransactionContext } from "@features/transactions/context/FiltersTransactionContext.js";
 
 export function YearPicker({ viewYear, setViewYear }) {
     const {theme} = useTheme()
