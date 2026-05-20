@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { HomeScreen } from "../screens/HomeScreen"
-import { TransactionsScreen } from "../screens/TransactionsScreen"
-import { BudgetsScreen } from "../../features/budgets/screens/BudgetsScreen"
+import { TransactionsScreen } from "@features/transactions/screens/TransactionsScreen.jsx"
+import { BudgetsScreen } from "@features/budgets/screens/BudgetsScreen.jsx"
 
 const Tab = createBottomTabNavigator()
 
