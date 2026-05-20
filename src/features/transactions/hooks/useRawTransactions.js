@@ -1,5 +1,5 @@
 import { useMemo } from "react"
-import { transactionsService } from "../../services/transactionsService"
+import { transactionsService } from "../services/transactionsService.js"
 
 export const useRawTransactions = () => {
     const transactions = useMemo(() => (

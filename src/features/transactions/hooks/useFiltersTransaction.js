@@ -1,7 +1,7 @@
 import { useCallback } from "react"
-import { DEFAULT_FILTERS } from "../../constants/filters"
-import { useFilters } from "../filters/useFilters"
-import { currentMonth, currentYear } from "../../constants/periodFilters"
+import { DEFAULT_FILTERS } from "../../../constants/filters"
+import { useFilters } from "../../../hooks/filters/useFilters"
+import { currentMonth, currentYear } from "../../../constants/periodFilters"
 
 export const useFiltersTransaction = () => {
     const filtersState = useFilters(DEFAULT_FILTERS)
