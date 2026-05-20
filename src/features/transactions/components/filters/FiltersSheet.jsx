@@ -1,18 +1,25 @@
-import { BottomSheetScrollView, BottomSheetView } from "@gorhom/bottom-sheet";
+import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { View, Text, StyleSheet, Pressable, ScrollView } from "react-native";
-import { AppText } from "../../ui/AppText";
-import { AppButton } from "../../ui/AppButton";
-import { useTheme } from "../../../hooks/useTheme";
-import { FilterOption } from "./FilterOption";
-import { CategoryOption } from "./CategoryOption";
-import { PeriodFilter } from "./PeriodFilter";
-import { DEFAULT_FILTERS, TYPE_OPTIONS, CATEGORY_OPTIONS } from "../../../constants/filters";
-import { useFiltersTransactionContext } from "../../../context/FiltersTransactionContext";
+import { AppText } from "../../../../components/ui/AppText";
+import { AppButton } from "../../../../components/ui/AppButton";
+import { useTheme } from "../../../../hooks/useTheme";
+import { FilterOption } from "../../../../components/financial/filters/FilterOption";
+import { CategoryOption } from "../../../../components/financial/filters/CategoryOption";
+import { PeriodFilter } from "./period/PeriodFilter";
+import { DEFAULT_FILTERS, TYPE_OPTIONS, CATEGORY_OPTIONS } from "../../../../constants/filters";
+import { useFiltersTransactionContext } from "../../../../context/FiltersTransactionContext";
 
 export function FiltersSheet({ onClose }) {
     const { theme } = useTheme()
     const styles = getStyles(theme)
-    const {draftFilters, applyType, applyFilters, cleanFilters, cancelFilters, toggleCategory } = useFiltersTransactionContext()
+    const {
+        draftFilters, 
+        applyType, 
+        applyFilters, 
+        cleanFilters, 
+        cancelFilters, 
+        toggleCategory 
+    } = useFiltersTransactionContext()
 
     const handleApplyFilters = () => {
         applyFilters()

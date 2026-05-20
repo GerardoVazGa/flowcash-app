@@ -1,10 +1,10 @@
 import { StyleSheet, View } from "react-native";
-import { useTheme } from "../../../hooks/useTheme";
-import { BaseChip } from "../../ui/BaseChip";
-import { PresetsPeriod, currentMonth, currentYear } from "../../../constants/periodFilters.js";
-import { periodToDateRange } from "../../../utils/period/periodToDateRange.js";
-import { AppText } from "../../ui/AppText";
-import { YearPicker } from "./YearPicker";
+import { useTheme } from "../../../../../hooks/useTheme";
+import { BaseChip } from "../../../../../components/ui/BaseChip";
+import { PresetsPeriod, currentMonth, currentYear } from "../../../../../constants/periodFilters.js";
+import { periodToDateRange } from "../../../../../utils/period/periodToDateRange.js";
+import { AppText } from "../../../../../components/ui/AppText";
+import { YearPicker } from "../../../../../components/financial/filters/YearPicker";
 import { MonthsGrid } from "./MonthsGrid";
 import { useState, useMemo, useEffect } from "react";
 import Animated, { 
@@ -12,8 +12,8 @@ import Animated, {
     useAnimatedStyle, 
     withTiming,
 } from "react-native-reanimated";
-import { ANIMATION_PERIOD_CONFIG } from "../../../constants/animations";
-import { useFiltersTransactionContext } from "../../../context/FiltersTransactionContext.js";
+import { ANIMATION_PERIOD_CONFIG } from "../../../../../constants/animations";
+import { useFiltersTransactionContext } from "../../../../../context/FiltersTransactionContext.js";
 
 export function PeriodFilter() {
     const {draftFilters, applyPeriodPreset, enableCustomPeriod} = useFiltersTransactionContext()
