@@ -9,6 +9,7 @@ import { IconButton } from "@components/ui/IconButton";
 import { useMemo, useRef } from "react";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { BudgetFilterSheet } from "../components/budgetFilters/BudgetFilterSheet";
+import { FiltersBudgetProvider } from "../context/FiltersBudgetContext";
 
 export function BudgetsScreen() {
     const modalRef = useRef(null)
@@ -16,13 +17,22 @@ export function BudgetsScreen() {
 
     const { theme } = useTheme()
     const styles = getStyles(theme)
-    const { filters, updatePeriod, openFilters} = useBudgetFilters()
+    const budgetsFilters = useBudgetFilters()
+    const { filters, updatePeriod, openFilters} = budgetsFilters
+
+    const budgetValues = useMemo(() => ({
+        ...budgetsFilters,
+    }), [budgetsFilters])
 
     const { budgets } = useBudgets(filters)
 
     const handlerOpenFilters = () => {
         openFilters()
         modalRef.current?.present()
+    }
+
+    const handleCloseFilters = () => {
+        modalRef.current?.dismiss()
     }
 
     return (
@@ -63,7 +73,9 @@ export function BudgetsScreen() {
                 enableDynamicSizing = {false}
             >
 
-                <BudgetFilterSheet />
+                <FiltersBudgetProvider value={budgetValues}>
+                    <BudgetFilterSheet onClose={handleCloseFilters}/>
+                </FiltersBudgetProvider>
 
             </BottomSheetModal>
 
