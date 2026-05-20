@@ -45,7 +45,7 @@ export function BudgetsScreen() {
                     <View style = {styles.header}>
                         <BudgetGlobalSummary />
                         <View style={styles.filterRow}>
-                            <FilterBar onPeriodChange={updatePeriod} />
+                            <FilterBar period={filters.period} onChange={updatePeriod} />
                             <IconButton 
                                 icon="filter-outline"
                                 background="transparent"
