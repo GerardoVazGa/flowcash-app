@@ -6,15 +6,15 @@ export const useFiltersBudgetContext = () => {
     const context = useContext(FiltersBudgetContext)
 
     if(!context) {
-        throw new Error('useFiltersBudget must be used within a FiltersBudgetProvider')
+        throw new Error('useFiltersBudgetContext must be used within a FiltersBudgetProvider')
     }
 
     return context
 }
 
-export const FiltersBudgetProvider = ({values, children}) => {
+export const FiltersBudgetProvider = ({value, children}) => {
     return (
-        <FiltersBudgetContext.Provider value={values}>
+        <FiltersBudgetContext.Provider value={value}>
             {children}
         </FiltersBudgetContext.Provider>
     )
