@@ -1,17 +1,17 @@
 import { StyleSheet, Text, View } from "react-native";
-import { TransactionsSummary } from "../../components/financial/summary/TransactionsSummary";
-import { useTheme } from "../../hooks/useTheme";
-import { useState, useMemo, useRef } from "react";
-import { FiltersSheet } from "../../components/financial/filters/FiltersSheet";
+import { TransactionsSummary } from "../components/summary/TransactionsSummary.jsx";
+import { useTheme } from "@hooks/useTheme";
+import { useMemo, useRef } from "react";
+import { FiltersSheet } from "../components/filters/FiltersSheet.jsx";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
-import { IconButton } from "../../components/ui/IconButton";
-import { useTransactions } from "../../hooks/transactions/useTransactions";
-import { useRawTransactions } from "../../hooks/transactions/useRawTransactions";
-import { useMonthsWithData } from "../../hooks/useMonthsWithData";
-import { TransactionGroupList } from "../../components/financial/Transactions/TransactionGroupList";
-import { FiltersTrasactionProvider } from "../../context/FiltersTransactionContext";
-import { useFiltersTransaction } from "../../hooks/transactions/useFiltersTransaction";
-import { SearchBarFilter } from "../../components/financial/filters/SearchBarFilter";
+import { IconButton } from "@components/ui/IconButton.jsx";
+import { useTransactions } from "../hooks/useTransactions.js";
+import { useRawTransactions } from "../hooks/useRawTransactions.js";
+import { useMonthsWithData } from "../hooks/useMonthsWithData.js";
+import { TransactionGroupList } from "../components/transactions/TransactionGroupList.jsx";
+import { FiltersTrasactionProvider } from "../context/FiltersTransactionContext.js";
+import { useFiltersTransaction } from "../hooks/useFiltersTransaction";
+import { SearchBarFilter } from "../components/filters/SearchBarFilter.jsx";
 
 export function TransactionsScreen() {
     const modalRef = useRef(null)
