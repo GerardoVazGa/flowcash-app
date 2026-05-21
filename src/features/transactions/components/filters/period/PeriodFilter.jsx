@@ -1,7 +1,8 @@
 import { StyleSheet, View } from "react-native";
 import { useTheme } from "@hooks/useTheme.js";
 import { BaseChip } from "@components/ui/BaseChip.jsx";
-import { PresetsPeriod, currentYear } from "@constants/periodFilters.js";
+import { PresetsPeriod } from "@constants/periodFilters.js";
+import { getCurrentYear } from "@utils/date/getCurrentYear.js";
 import { periodToDateRange } from "@features/transactions/utils/period/periodToDateRange.js";
 import { AppText } from "@components/ui/AppText.jsx";
 import { YearPicker } from "./YearPicker.jsx";
@@ -20,7 +21,7 @@ export function PeriodFilter() {
 
     const { period } = draftFilters
 
-    const [viewYear, setViewYear] = useState(period.year || currentYear)
+    const [viewYear, setViewYear] = useState(period.year || getCurrentYear())
     
     const {theme} = useTheme()
     const styles = getStyles(theme)

@@ -1,7 +1,8 @@
 import { useCallback } from "react"
 import { DEFAULT_FILTERS } from "../../../constants/filters"
 import { useFilters } from "../../../hooks/filters/useFilters"
-import { currentMonth, currentYear } from "../../../constants/periodFilters"
+import { getCurrentMonth } from "@utils/date/getCurrentMonth"
+import { getCurrentYear } from "@utils/date/getCurrentYear"
 
 export const useFiltersTransaction = () => {
     const filtersState = useFilters(DEFAULT_FILTERS)
@@ -45,7 +46,7 @@ export const useFiltersTransaction = () => {
             period: {
                 preset,
                 month: null,
-                year: currentYear
+                year: getCurrentYear()
             }
         }))
     }, [])
@@ -55,8 +56,8 @@ export const useFiltersTransaction = () => {
             ...prev,
             period: {
                 preset: null,
-                month: currentMonth,
-                year: currentYear
+                month: getCurrentMonth(),
+                year: getCurrentYear()
             }
         }))
     }, [])

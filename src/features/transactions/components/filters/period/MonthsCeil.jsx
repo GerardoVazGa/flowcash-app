@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet } from "react-native";
 import { useTheme } from "@hooks/useTheme.js";
-import { MONTHS_SHORT } from "@constants/periodFilters.js";
+import { MONTHS_SHORT } from "@constants/date.js";
 import { View } from "react-native";
 import { AppText } from "@components/ui/AppText.jsx";
 

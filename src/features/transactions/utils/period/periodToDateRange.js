@@ -10,7 +10,8 @@ import {
     format
 } from "date-fns"
 import { es } from "date-fns/locale"
-import { TODAY, MONTHS_SHORT } from "@constants/periodFilters.js"
+import { MONTHS_SHORT } from "@constants/date.js"
+import { getToday } from "@utils/date/getToday.js"
 
 export const periodToDateRange = (period) => {
     const {preset, month, year} = period
@@ -40,13 +41,13 @@ export const periodToDateRange = (period) => {
     switch(preset) {
         case "this_month":
             return {
-                start: startOfMonth(TODAY), // 1st day of the month
-                end: endOfMonth(TODAY), 
+                start: startOfMonth(getToday()), // 1st day of the month
+                end: endOfMonth(getToday()), 
                 label: "Este mes",
-                sublabel: format(TODAY, "MMMM yyyy", { locale: es })
+                sublabel: format(getToday(), "MMMM yyyy", { locale: es })
             }
         case "last_month": 
-            const last = subMonths(TODAY, 1)
+            const last = subMonths(getToday(), 1)
             return {
                 start: startOfMonth(last), // 1st day of the month
                 end: endOfMonth(last), 
@@ -55,24 +56,24 @@ export const periodToDateRange = (period) => {
             }
         case "last_7_days":
             return {
-                start: startOfDay(subDays(TODAY, 6)),
-                end: endOfDay(TODAY),
+                start: startOfDay(subDays(getToday(), 6)),
+                end: endOfDay(getToday()),
                 label: "Últimos 7 días",
-                sublabel:  `${format(subDays(TODAY, 6), "d MMM", { locale: es })} - ${format(TODAY, "d MMM", { locale: es })}`
+                sublabel:  `${format(subDays(getToday(), 6), "d MMM", { locale: es })} - ${format(getToday(), "d MMM", { locale: es })}`
             }
         case "last_30_days":
             return {
-                start: startOfDay(subDays(TODAY, 29)),
-                end: endOfDay(TODAY),
+                start: startOfDay(subDays(getToday(), 29)),
+                end: endOfDay(getToday()),
                 label: "Últimos 30 días",
-                sublabel: `${format(subDays(TODAY, 29), "d MMM", { locale: es })} - ${format(TODAY, "d MMM", { locale: es })}`
+                sublabel: `${format(subDays(getToday(), 29), "d MMM", { locale: es })} - ${format(getToday(), "d MMM", { locale: es })}`
             }
         default:
             return {
-                start: startOfMonth(TODAY), // 1st day of the month
-                end: endOfMonth(TODAY), 
+                start: startOfMonth(getToday()), // 1st day of the month
+                end: endOfMonth(getToday()), 
                 label: "Este mes",
-                sublabel: format(TODAY, "MMMM yyyy", { locale: es })
+                sublabel: format(getToday(), "MMMM yyyy", { locale: es })
             }
     }
 }

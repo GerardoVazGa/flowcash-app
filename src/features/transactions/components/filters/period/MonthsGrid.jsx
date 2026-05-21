@@ -3,7 +3,8 @@ import { useTheme } from '@hooks/useTheme.js'
 import { getAvailableMonths } from '@features/transactions/utils/period/getAvailableMonths.js'
 import { useMemo } from 'react'
 import { MonthsCeil } from './MonthsCeil.jsx'
-import { currentMonth, currentYear } from '@constants/periodFilters.js'
+import { getCurrentMonth } from '@utils/date/getCurrentMonth.js'
+import { getCurrentYear } from '@utils/date/getCurrentYear.js'
 import { useFiltersTransactionContext } from '@features/transactions/context/FiltersTransactionContext.js'
 
 export function MonthsGrid({ viewYear }) {
@@ -38,8 +39,8 @@ export function MonthsGrid({ viewYear }) {
                     year={viewYear}
                     selected={isMonthSelected(month.id)}
                     isCurrentMonth={
-                        viewYear === currentYear &&
-                        month.id === currentMonth
+                        viewYear === getCurrentYear() &&
+                        month.id === getCurrentMonth()
                     }
                     hasData = {hasData(month.id, viewYear)}
                     onPress={() => selectMonth(month.id, viewYear)}

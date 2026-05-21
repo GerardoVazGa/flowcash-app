@@ -1,4 +1,4 @@
-import { currentYear } from "@constants/periodFilters.js"
+import { getCurrentYear } from "@utils/date/getCurrentYear.js"
 
 export const getAvailableYears = (transactions) => {
 
@@ -7,7 +7,7 @@ export const getAvailableYears = (transactions) => {
     })
 
     const uniqueYears = new Set(years)
-    uniqueYears.add(currentYear)
+    uniqueYears.add(getCurrentYear())
 
     return [...uniqueYears].sort((a, b) => b - a)
 }
