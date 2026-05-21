@@ -12,7 +12,7 @@ import Animated, {
     useAnimatedStyle, 
     withTiming,
 } from "react-native-reanimated";
-import { ANIMATION_PERIOD_CONFIG } from "@constants/animations.js";
+import { ANIMATION_PERIOD_CONFIG } from "@constants/theme/animations.js";
 import { useFiltersTransactionContext } from "@features/transactions/context/FiltersTransactionContext.js";
 
 export function PeriodFilter() {
