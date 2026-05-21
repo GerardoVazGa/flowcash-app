@@ -3,7 +3,7 @@ import { transactionsService } from "@features/transactions/services/transaction
 import { budgetsService } from "@features/budgets/services/budgetsServices.js"
 import { calculateIncomes } from "@features/transactions/utils/calculations/calculateIncomes.js"
 import { calculateExpenses } from "@features/transactions/utils/calculations/calculateExpenses.js"
-import { calculateBalance } from " @features/transactions/utils/calculations/calculateBalance.js"
+import { calculateBalance } from "@features/transactions/utils/calculations/calculateBalance.js"
 import { sortTransactionsByDate } from "@features/transactions/utils/sorting/sortTransactionsByDate.js"
 import { formatCurrency } from "../utils/formatters/formatCurrency.js"
 import { mapBudgetsWithMetrics } from "@features/budgets/utils/metrics/mapBudgetsWithMetrics.js"
