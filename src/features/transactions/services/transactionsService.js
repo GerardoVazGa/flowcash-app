@@ -1,5 +1,5 @@
 import { transactions } from "../data/appData.js";
-import { CATEGORY_ICONS } from "@constants/categoryIcon.js";
+import { CATEGORY_ICONS } from "@constants/categories.js";
 
 export const transactionsService = () => {
     return {

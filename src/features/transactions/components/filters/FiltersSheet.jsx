@@ -6,7 +6,8 @@ import { useTheme } from "@hooks/useTheme.js";
 import { FilterOption } from "@components/financial/filters/FilterOption.jsx";
 import { CategoryOption } from "@components/financial/filters/CategoryOption.jsx";
 import { PeriodFilter } from "./period/PeriodFilter.jsx";
-import { TYPE_OPTIONS, CATEGORY_OPTIONS } from "@constants/filters";
+import { TYPE_OPTIONS } from "@constants/filters";
+import { CATEGORY_OPTIONS } from "@constants/categories";
 import { useFiltersTransactionContext } from "../../context/FiltersTransactionContext.js";
 
 export function FiltersSheet({ onClose }) {

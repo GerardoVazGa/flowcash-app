@@ -3,7 +3,7 @@ import { FilterOption } from "@components/financial/filters/FilterOption";
 import { FilterSection } from "@components/layouts/FilterSection";
 import { AppButton } from "@components/ui/AppButton";
 import { AppText } from "@components/ui/AppText";
-import { CATEGORY_OPTIONS } from "@constants/filters";
+import { CATEGORY_OPTIONS } from "@constants/categories.js";
 import { BUDGET_SORT_OPTIONS } from "@features/budgets/constants/budgetSort";
 import { BUDGET_STATUS_OPTIONS} from "@features/budgets/constants/budgetStatus";
 import { useFiltersBudgetContext } from "@features/budgets/context/FiltersBudgetContext";
