@@ -1,4 +1,4 @@
-import { FontFamily } from "./theme/fontFamily";
+import { FontFamily } from "./fontFamily.js";
 
 export const Typography = {
     // Display - Reserved for Total Net Worth or primary account balance
