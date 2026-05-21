@@ -6,7 +6,7 @@ import { MetricCard } from "../../components/financial/summary/MetricCard.jsx";
 import { BudgetItem } from "../../features/budgets/components/BudgetItem.jsx";
 import { useTheme } from "../../hooks/useTheme.js";
 import { useHomeSummary } from "../../hooks/useHomeSummary.js";
-import { TransactionItem } from "../../components/financial/Transactions/TransactionItem.jsx";
+import { TransactionItem } from "@features/transactions/components/transactions/TransactionItem.jsx";
 
 export function HomeScreen(){
     const { theme } = useTheme()
