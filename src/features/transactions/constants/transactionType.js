@@ -31,4 +31,4 @@ export const TRANSACTION_TYPE_CONFIG = {
     }
 }
 
-export const TRANSACTION_TYPE_OPTIONS = Object.values(TRANSACTION_TYPE_CONFIG).map(([value, config]) => ({value, ...config }))
+export const TRANSACTION_TYPE_OPTIONS = Object.entries(TRANSACTION_TYPE_CONFIG).map(([value, config]) => ({value, ...config }))
