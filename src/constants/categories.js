@@ -1,7 +1,7 @@
 
 export const CATEGORIES = {
     trabajo: "trabajo",
-    alimentacion: "alimentación",
+    alimentacion: "alimentacion",
     transporte: "transporte",
     entretenimiento: "entretenimiento",
     servicios: "servicios",
