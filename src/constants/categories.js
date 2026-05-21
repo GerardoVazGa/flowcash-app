@@ -1,13 +1,13 @@
 
 export const CATEGORIES = {
-    trabajo: "trabajo",
-    alimentacion: "alimentacion",
-    transporte: "transporte",
-    entretenimiento: "entretenimiento",
-    servicios: "servicios",
-    salud: "salud",
-    ventas: "ventas",
-    transferencia: "transferencia",
+    trabajo: "Trabajo",
+    alimentacion: "Alimentación",
+    transporte: "Transporte",
+    entretenimiento: "Entretenimiento",
+    servicios: "Servicios",
+    salud: "Salud",
+    ventas: "Ventas",
+    transferencia: "Transferencia",
 }
 
 export const CATEGORY_OPTIONS = [
