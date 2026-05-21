@@ -1,11 +1,11 @@
 import { useCallback } from "react"
-import { DEFAULT_FILTERS } from "../../../constants/filters"
-import { useFilters } from "../../../hooks/filters/useFilters"
+import { DEFAULT_TRANSACTIONS_FILTERS } from "../constants/transactionFilter.js"
+import { useFilters } from "@hooks/filters/useFilters.js"
 import { getCurrentMonth } from "@utils/date/getCurrentMonth"
 import { getCurrentYear } from "@utils/date/getCurrentYear"
 
 export const useFiltersTransaction = () => {
-    const filtersState = useFilters(DEFAULT_FILTERS)
+    const filtersState = useFilters(DEFAULT_TRANSACTIONS_FILTERS)
 
     const {filters, setDraftFilters, setFilters} = filtersState
 
