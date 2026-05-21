@@ -6,7 +6,7 @@ import { useTheme } from "@hooks/useTheme.js";
 import { FilterOption } from "@components/financial/filters/FilterOption.jsx";
 import { CategoryOption } from "@components/financial/filters/CategoryOption.jsx";
 import { PeriodFilter } from "./period/PeriodFilter.jsx";
-import { TYPE_OPTIONS } from "@constants/filters";
+import { TRANSACTION_TYPE_OPTIONS} from "@features/transactions/constants/transactionType.js";
 import { CATEGORY_OPTIONS } from "@constants/categories";
 import { useFiltersTransactionContext } from "../../context/FiltersTransactionContext.js";
 
@@ -53,7 +53,7 @@ export function FiltersSheet({ onClose }) {
                 <AppText variant="label" color="textVariant">Tipo</AppText>
 
                 <View style={styles.type}>
-                    {TYPE_OPTIONS.map((option) => (
+                    {TRANSACTION_TYPE_OPTIONS.map((option) => (
                         <FilterOption
                             key={option.value}
                             title={option.label}

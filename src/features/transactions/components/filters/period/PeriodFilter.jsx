@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import { useTheme } from "@hooks/useTheme.js";
 import { BaseChip } from "@components/ui/BaseChip.jsx";
-import { PresetsPeriod } from "@constants/periodFilters.js";
+import { TRANSACTION_PRESETS_OPTIONS } from "@features/transactions/constants/transactionPeriod.js";
 import { getCurrentYear } from "@utils/date/getCurrentYear.js";
 import { periodToDateRange } from "@features/transactions/utils/period/periodToDateRange.js";
 import { AppText } from "@components/ui/AppText.jsx";
@@ -53,12 +53,12 @@ export function PeriodFilter() {
     return (
         <View style={styles.container}>
             <View style={styles.containerPresets}>
-                {PresetsPeriod.map((periodPreset) => (
+                {TRANSACTION_PRESETS_OPTIONS.map((periodPreset) => (
                     <BaseChip 
                         key={periodPreset.id}
-                        label={periodPreset.title}
-                        onPress={() => applyPeriodPreset(periodPreset.id)}
-                        selected={period.preset === periodPreset.id}
+                        label={periodPreset.label}
+                        onPress={() => applyPeriodPreset(periodPreset.value)}
+                        selected={period.preset === periodPreset.value}
                     />
                 ))}
 
