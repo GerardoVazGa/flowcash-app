@@ -11,22 +11,3 @@ export const DEFAULT_TRANSACTIONS_FILTERS = {
     },
     search: ""
 }
-
-export const TYPE_OPTIONS = [
-    {
-        label: "Todos",
-        value: "all",
-        icon: "swap-horizontal-outline"
-    },
-    {
-        label: "Ingresos",
-        value: "income",
-        icon: "arrow-up-outline"
-    },
-    {
-        label: "Gastos",
-        value: "expense",
-        icon: "arrow-down-outline"
-    }
-]
-

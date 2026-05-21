@@ -1,0 +1,34 @@
+export const TRANSACTION_TYPE = {
+    ALL: "all",
+    INCOME: "income",
+    EXPENSE: "expense"
+}
+
+export const TRANSACTION_TYPE_LABELS = {
+    [TRANSACTION_TYPE.ALL]: "Todos",
+    [TRANSACTION_TYPE.INCOME]: "Ingresos",
+    [TRANSACTION_TYPE.EXPENSE]: "Gastos"
+}
+
+export const TRANSACTION_TYPE_ICONS = {
+    [TRANSACTION_TYPE.ALL]: "swap-horizontal-outline",
+    [TRANSACTION_TYPE.INCOME]: "arrow-up-outline",
+    [TRANSACTION_TYPE.EXPENSE]: "arrow-down-outline"
+}
+
+export const TRANSACTION_TYPE_CONFIG = {
+    [TRANSACTION_TYPE.ALL]: {
+        label: TRANSACTION_TYPE_LABELS[TRANSACTION_TYPE.ALL],
+        icon: TRANSACTION_TYPE_ICONS[TRANSACTION_TYPE.ALL]
+    },
+    [TRANSACTION_TYPE.INCOME]: {
+        label: TRANSACTION_TYPE_LABELS[TRANSACTION_TYPE.INCOME],
+        icon: TRANSACTION_TYPE_ICONS[TRANSACTION_TYPE.INCOME]
+    },
+    [TRANSACTION_TYPE.EXPENSE]: {
+        label: TRANSACTION_TYPE_LABELS[TRANSACTION_TYPE.EXPENSE],
+        icon: TRANSACTION_TYPE_ICONS[TRANSACTION_TYPE.EXPENSE]
+    }
+}
+
+export const TRANSACTION_TYPE_OPTIONS = Object.values(TRANSACTION_TYPE_CONFIG).map(([value, config]) => ({value, ...config }))
