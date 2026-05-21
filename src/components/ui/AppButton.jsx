@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text } from "react-native";
-import { BUTTON_SIZES } from "../../constants/buttons.js";
+import { BUTTON_SIZES } from "../../constants/theme/buttons.js";
 import { useTheme } from "../../hooks/useTheme.js";
 import { LinearGradient } from "expo-linear-gradient";
 

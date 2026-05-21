@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet } from "react-native";
-import { ICON_BUTTON_SIZES } from "../../constants/buttons";
+import { ICON_BUTTON_SIZES } from "../../constants/theme/buttons.js";
 import { AppIcon } from "./AppIcon";
 import { useTheme } from "../../hooks/useTheme";
 
