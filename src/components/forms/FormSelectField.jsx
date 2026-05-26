@@ -3,6 +3,7 @@ import { Pressable, StyleSheet } from "react-native"
 import { FormField } from "./FormField"
 import { useFormField } from "@hooks/forms/useFormField"
 import { SelectorBottomSheet } from "./selectors/SelectorBottomSheet"
+import { AppSelect } from "@components/ui/AppSelect"
 
 export function FormSelectField({control, name, label, placeholder = "Seleccione una opción", options}) {
 
@@ -27,12 +28,12 @@ export function FormSelectField({control, name, label, placeholder = "Seleccione
             label={label}
             error={error}
         >
-            <Pressable
+            <AppSelect 
+                value={selectedOption?.label}
                 onPress={openSheet}
-                style={styles.input}
-            >
-                <AppText variant="body">{selectedOption?.label || placeholder}</AppText>
-            </Pressable>
+                placeholder={placeholder}
+                icon={selectedOption?.icon}
+            />
 
             <SelectorBottomSheet 
                 sheetRef={bottomSheetRef}
@@ -47,12 +48,4 @@ export function FormSelectField({control, name, label, placeholder = "Seleccione
 }
 
 const getStyles = (theme) => StyleSheet.create({
-    input: {
-        borderWidth: 1,
-        color: theme.colors.text,
-        borderColor: theme.colors.outline,
-        borderRadius: theme.radius.md,
-        padding: theme.spacing.md,
-        backgroundColor: theme.colors.surface
-    }
 })
