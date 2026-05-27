@@ -8,11 +8,7 @@ export function FormField({label, error, children}) {
 
     return (
         <View style={styles.field}>
-            <AppText
-                variant="label"
-            >
-                {label}
-            </AppText>
+            {label && <AppText variant="label">{label}</AppText>}
 
             {children}
 
