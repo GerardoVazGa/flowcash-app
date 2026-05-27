@@ -7,7 +7,10 @@ export function FormInput({
     name,
     label,
     placeholder,
-    keyboardType
+    keyboardType,
+    leftComponent,
+    rightComponent,
+    style
 }) {
     const { control } = useFormContext()
 
@@ -34,6 +37,9 @@ export function FormInput({
                         onChangeText={onChange}
                         placeholder={placeholder}
                         keyboardType={keyboardType}
+                        leftComponent={leftComponent}
+                        rightComponent={rightComponent}
+                        style={style}
                     />
                 </FormField>
             )}
