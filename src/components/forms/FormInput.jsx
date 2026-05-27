@@ -1,15 +1,16 @@
-import { Controller } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { AppInput } from "@components/ui/AppInput";
 import { FormField } from "./FormField";
 
 
 export function FormInput({
-    control,
     name,
     label,
     placeholder,
     keyboardType
 }) {
+    const { control } = useFormContext()
+
     return (
         <Controller
             control={control}

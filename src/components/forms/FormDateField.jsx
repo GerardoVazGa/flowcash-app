@@ -5,14 +5,16 @@ import { useTheme } from "@hooks/useTheme"
 import { CalendarBottomSheet } from "./selectors/CalendarBottomSheet"
 import { useMemo } from "react"
 import { StyleSheet } from "react-native"
+import { useFormContext } from "react-hook-form"
 
 export function FormDateField({
     label,
     name,
-    control,
     placeholder = "Seleccione una fecha",
 }) {
     const calendarSheetRef = useRef(null)
+
+    const { control } = useFormContext()
 
     const { value, onChange, onBlur, error } = useFormField(control, name)
 

@@ -4,8 +4,10 @@ import { FormField } from "./FormField"
 import { useFormField } from "@hooks/forms/useFormField"
 import { SelectorBottomSheet } from "./selectors/SelectorBottomSheet"
 import { AppSelect } from "@components/ui/AppSelect"
+import { useFormContext } from "react-hook-form"
 
-export function FormSelectField({control, name, label, placeholder = "Seleccione una opción", options}) {
+export function FormSelectField({name, label, placeholder = "Seleccione una opción", options}) {
+    const { control } = useFormContext()
 
     const {
         value,
