@@ -12,13 +12,15 @@ export function FormSection({
 
     return (
         <View style={styles.container}>
-            <AppText 
-                variant="title" 
-                color="text"
-            >
-                {title}
-            </AppText>
-            
+            {title && (
+                <AppText
+                    variant="title"
+                    color="text"
+                >
+                    {title}
+                </AppText>
+            )}
+
             {children}
         </View>
     )
