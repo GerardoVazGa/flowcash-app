@@ -1,7 +1,7 @@
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { useTheme } from "@hooks/useTheme";
 import { useMemo } from "react";
-import { FlatList } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import { SelectOption } from "./selectOption";
 
 export function SelectorBottomSheet({sheetRef, options, selected, onSelect}) {

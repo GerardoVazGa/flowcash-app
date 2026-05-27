@@ -14,7 +14,7 @@ export function FormSelectField({control, name, label, placeholder = "Seleccione
         error
     } = useFormField(control, name)
 
-    const { bottomSheetRef } = useRef(null)
+    const bottomSheetRef = useRef(null)
 
     const { theme } = useTheme()
     const styles = getStyles(theme)
