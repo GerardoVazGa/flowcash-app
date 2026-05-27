@@ -1,4 +1,4 @@
-import { StyleSheet, TextInput } from "react-native"
+import { StyleSheet, TextInput, View } from "react-native"
 import { useTheme } from "@hooks/useTheme"
 
 
@@ -7,28 +7,35 @@ export function AppInput({
     onChangeText,
     placeholder,
     keyboardType = "default",
+    leftComponent,
+    rightComponent,
     style
 }) {
     const  { theme } = useTheme()
     const styles = getStyles(theme)
 
     return (
-        <TextInput 
-            value={value}
-            placeholder={placeholder}
-            onChange={onChangeText}
-            keyboardType={keyboardType}
-            style = {
-                [
-                    styles,
-                    style
-                ]
-            }
-        />
+        <View style={styles.container}>
+            {leftComponent && leftComponent}
+            <TextInput 
+                style={[styles.input, style]}
+                value={value}
+                onChangeText={onChangeText}
+                placeholder={placeholder}
+                placeholderTextColor={theme.colors.textVariant}
+                keyboardType={keyboardType}
+            />
+            {rightComponent && rightComponent}
+        </View>
     )
 }
 
 const getStyles = (theme) => StyleSheet.create({
+    container: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: theme.spacing.sm
+    },
     input: {
         borderWidth: 1,
         color: theme.colors.text,
