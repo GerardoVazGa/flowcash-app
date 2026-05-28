@@ -69,6 +69,11 @@ export function AppButton({
                 return {
                     backgroundColor: currentTheme.colors.surfaceLow,
                 }
+            case "text": 
+                return {
+                    backgroundColor: 'transparent',
+                    borderColor: 'transparent'
+                }
             case "filled":
             default:
                 return {
