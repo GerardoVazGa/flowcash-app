@@ -5,13 +5,14 @@ import { useTheme } from "@hooks/useTheme";
 
 export function FormSection({
     title,
-    children
+    children,
+    style
 }) {
     const { theme } = useTheme()
     const styles = getStyles(theme)
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, style]}>
             {title && (
                 <AppText
                     variant="title"
