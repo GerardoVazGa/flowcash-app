@@ -11,7 +11,7 @@ export function FABButton ({icon, onPress}) {
             icon={icon}
             onPress={onPress}
             style={styles.fab}
-            size="md"
+            size="xl"
         />
     )
 }
@@ -20,6 +20,12 @@ const getStyles = (theme) => StyleSheet.create({
     fab: {
         position: "absolute",
         right: theme.spacing.lg,
-        bottom: theme.spacing.lg
+        bottom: 65,
+        shadowColor: theme.colors.shadow,
+        shadowOffset: theme.shadows.shadowOffset,
+        shadowOpacity: theme.shadows.shadowOpacity,
+        shadowRadius: theme.shadows.shadowRadius,
+        zIndex: 999,
+        elevation: 10
     }
 })
