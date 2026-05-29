@@ -42,7 +42,6 @@ const getStyles = (theme) => StyleSheet.create({
         color: theme.colors.text,
         borderColor: theme.colors.outline,
         borderRadius: theme.radius.md,
-        padding: theme.spacing.md,
         backgroundColor: theme.colors.surface
     }
 })
