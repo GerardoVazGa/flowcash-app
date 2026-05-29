@@ -6,7 +6,7 @@ import { SelectorBottomSheet } from "./selectors/SelectorBottomSheet"
 import { AppSelect } from "@components/ui/AppSelect"
 import { useFormContext } from "react-hook-form"
 
-export function FormSelectField({name, label, placeholder = "Seleccione una opción", options}) {
+export function FormSelectField({name, label, placeholder = "Seleccione una opción", options, labelStyle}) {
     const { control } = useFormContext()
 
     const {
@@ -29,6 +29,7 @@ export function FormSelectField({name, label, placeholder = "Seleccione una opci
         <FormField
             label={label}
             error={error}
+            labelStyle={labelStyle}
         >
             <AppSelect 
                 value={selectedOption?.label}

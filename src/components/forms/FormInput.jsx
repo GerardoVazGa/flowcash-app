@@ -10,6 +10,8 @@ export function FormInput({
     keyboardType,
     leftComponent,
     rightComponent,
+    containerStyle,
+    labelStyle,
     style
 }) {
     const { control } = useFormContext()
@@ -31,6 +33,7 @@ export function FormInput({
                 <FormField
                     label={label}
                     error={error?.message}
+                    labelStyle={labelStyle}
                 >
                     <AppInput
                         value={value}
@@ -39,6 +42,7 @@ export function FormInput({
                         keyboardType={keyboardType}
                         leftComponent={leftComponent}
                         rightComponent={rightComponent}
+                        containerStyle={containerStyle}
                         style={style}
                     />
                 </FormField>
