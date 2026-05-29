@@ -2,13 +2,13 @@ import { StyleSheet, View } from "react-native"
 import { useTheme } from "@hooks/useTheme"
 import { AppText } from "@components/ui/AppText"
 
-export function FormField({label, error, children}) {
+export function FormField({label, error, children, labelStyle}) {
     const { theme } = useTheme()
     const styles = getStyles(theme)
 
     return (
         <View style={styles.field}>
-            {label && <AppText variant="label">{label}</AppText>}
+            {label && <AppText variant="label" style={labelStyle}>{label}</AppText>}
 
             {children}
 
