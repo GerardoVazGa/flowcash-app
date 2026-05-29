@@ -9,13 +9,14 @@ export function AppInput({
     keyboardType = "default",
     leftComponent,
     rightComponent,
+    containerStyle,
     style
 }) {
     const  { theme } = useTheme()
     const styles = getStyles(theme)
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, containerStyle]}>
             {leftComponent && leftComponent}
             <TextInput 
                 style={[styles.input, style]}
