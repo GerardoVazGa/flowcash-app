@@ -1,11 +1,15 @@
 export function parseAmount(value = "") {
-    const sanatizedValue = value.replace(/[^0-9.]/g, '')
+    const sanitizedValue = value.replace(/[^0-9.]/g, "")
 
-    const parts = sanatizedValue.split('.')
+    const [integerPart, ...decimalParts] = sanitizedValue.split(".")
 
-    if (parts.length <= 1) {
-        return sanatizedValue
+    if (decimalParts.length === 0) {
+        return integerPart
     }
 
-    return `${parts[0]}.${parts[1].join('').slice(0, 2)}`
+    const decimalPart = decimalParts
+        .join("")
+        .slice(0, 2)
+
+    return `${integerPart}.${decimalPart}`
 }
