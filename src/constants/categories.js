@@ -10,40 +10,48 @@ export const CATEGORIES = {
     transferencia: "Transferencia",
 }
 
-export const CATEGORY_OPTIONS = [
-    {
+export const CATEGORY_TYPE = {
+    INCOME: "income",
+    EXPENSE: "expense",
+    TRANSFER: "transfer",
+}
+
+export const CATEGORY_METADATA = {
+    [CATEGORIES.trabajo]: {
         label: "Trabajo",
-        value: CATEGORIES.trabajo,
+        type: CATEGORY_TYPE.INCOME,
     },
-    {
+    [CATEGORIES.alimentacion]: {    
         label: "Alimentación",
-        value: CATEGORIES.alimentacion,
+        type: CATEGORY_TYPE.EXPENSE,
     },
-    {
+    [CATEGORIES.transporte]: {
         label: "Transporte",
-        value: CATEGORIES.transporte,
+        type: CATEGORY_TYPE.EXPENSE,
     },
-    {
+    [CATEGORIES.entretenimiento]: {
         label: "Entretenimiento",
-        value: CATEGORIES.entretenimiento,
+        type: CATEGORY_TYPE.EXPENSE,
     },
-    {
+    [CATEGORIES.servicios]: {    
         label: "Servicios",
-        value: CATEGORIES.servicios,
+        type: CATEGORY_TYPE.EXPENSE,
     },
-    {
+    [CATEGORIES.salud]: {
         label: "Salud",
-        value: CATEGORIES.salud,
+        type: CATEGORY_TYPE.EXPENSE,
     },
-    {
+    [CATEGORIES.ventas]: {
         label: "Ventas",
-        value: CATEGORIES.ventas,
+        type: CATEGORY_TYPE.INCOME,
     },
-    {
+    [CATEGORIES.transferencia]: {
         label: "Transferencia",
-        value: CATEGORIES.transferencia,
-    },
-]
+        type: CATEGORY_TYPE.TRANSFER,
+    }
+}
+
+export const CATEGORY_OPTIONS = Object.entries(CATEGORY_METADATA).map(([key, { label, type }]) => ({ id: key, value: key, label, type }))
 
 export const CATEGORY_ICONS = {
     [CATEGORIES.trabajo]: "briefcase-outline",
