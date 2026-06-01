@@ -1,5 +1,7 @@
-export function formatCurrency(value) {
-    const formatter = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
+export function formatCurrency(value, currency = "MXN", locale = "es-MX") {
 
-    return formatter.format(value);
+    return new Intl.NumberFormat(locale, { 
+        style: 'currency', 
+        currency 
+    }).format(Number(value) || 0)
 }
