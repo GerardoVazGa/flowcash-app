@@ -14,9 +14,8 @@ export function AppSelect({
     return (
         <Pressable 
             onPress={onPress}
-            style={styles.container}
         >
-            <View>
+            <View style={styles.container}>
                 {icon && <AppIcon name={icon} size={18} color="textVariant" background="surfaceLow"/>}
                 <AppText variant="body">{value || placeholder}</AppText>
 
@@ -30,13 +29,14 @@ const getStyles = (theme) => StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: "row",
+        justifyContent: "space-between",
         alignItems: "center",
         width: "100%",
         gap: theme.spacing.sm,
-        backgroundColor: theme.colors.surface,
+        backgroundColor: theme.colors.surfaceLow,
         borderWidth: 1,
         borderRadius: theme.radius.xl,
-        paddingHorizontal: theme.spacing.md,
-        paddingVertical: theme.spacing.sm
+        paddingHorizontal: theme.spacing.lg,
+        paddingVertical: theme.spacing.md
     }
 })

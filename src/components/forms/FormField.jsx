@@ -19,6 +19,6 @@ export function FormField({label, error, children, labelStyle}) {
 
 const getStyles = (theme) => StyleSheet.create({
     field: {
-        gap: theme.spacing.xs
+        gap: theme.spacing.md
     }
 })
