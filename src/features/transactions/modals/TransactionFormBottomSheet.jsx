@@ -11,6 +11,7 @@ export function TransactionFormBottomSheet({sheetRef}) {
             ref={sheetRef}
             snapPoints={snapPoints}
             enablePanDownToClose
+            stackBehavior="push"
             enableDynamicSizing = {false}
         >
             <TransactionsForm />
