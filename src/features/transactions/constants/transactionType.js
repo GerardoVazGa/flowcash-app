@@ -31,4 +31,9 @@ export const TRANSACTION_TYPE_CONFIG = {
     }
 }
 
+export const TRANSACTION_TYPE_COLORS = {
+    [TRANSACTION_TYPE.EXPENSE]: (theme) => theme.colors.expenses,
+    [TRANSACTION_TYPE.INCOME]: (theme) => theme.colors.income,
+}
+
 export const TRANSACTION_TYPE_OPTIONS = Object.entries(TRANSACTION_TYPE_CONFIG).map(([value, config]) => ({value, ...config }))
