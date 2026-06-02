@@ -7,6 +7,7 @@ import { useTheme } from "@hooks/useTheme";
 import { FormProvider, useForm } from "react-hook-form";
 import { StyleSheet, View } from "react-native";
 import { TransactionAmountField } from "./TransactionAmountField";
+import { TransactionTypeField } from "./TransactionTypeField";
 
 export function TransactionsForm() {
     const form = useForm()
@@ -26,8 +27,12 @@ export function TransactionsForm() {
                     style={styles.scroll}
                     contentContainerStyle={styles.content}
                 >
-                    <FormSection >
+                    <FormSection style={styles.amountSection}>
                         <TransactionAmountField name="amount" currency="MXN" />
+                    </FormSection>
+
+                    <FormSection style={styles.toggle}>
+                        <TransactionTypeField name="type" />
                     </FormSection>
 
                 </BottomSheetScrollView>
@@ -48,6 +53,12 @@ const getStyles = (theme) => StyleSheet.create({
         flex: 1
     },
     content: {
-
+        gap: theme.spacing.md
+    },
+    amountSection: {
+        marginBottom: theme.spacing.sm
+    },
+    toggle: {
+        paddingHorizontal: theme.spacing.sm
     }
 })
