@@ -2,7 +2,7 @@ import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { useTheme } from "@hooks/useTheme";
 import { useMemo } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import { SelectOption } from "./selectOption";
+import { SelectOption } from "./SelectOption";
 
 export function SelectorBottomSheet({sheetRef, options, selected, onSelect, title}) {
     const snapPoints = useMemo(() => ["50%", "75%"], [])

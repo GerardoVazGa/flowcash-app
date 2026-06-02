@@ -1,10 +1,11 @@
 import { useTheme } from "@hooks/useTheme"
-import { Pressable, StyleSheet } from "react-native"
+import { StyleSheet } from "react-native"
 import { FormField } from "./FormField"
 import { useFormField } from "@hooks/forms/useFormField"
 import { SelectorBottomSheet } from "./selectors/SelectorBottomSheet"
 import { AppSelect } from "@components/ui/AppSelect"
 import { useFormContext } from "react-hook-form"
+import { useRef } from "react"
 
 export function FormSelectField({name, label, placeholder = "Seleccione una opción", options, labelStyle}) {
     const { control } = useFormContext()

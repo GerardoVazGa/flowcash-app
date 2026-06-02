@@ -1,5 +1,5 @@
 import { useTheme } from "@hooks/useTheme"
-import { Pressable, StyleSheet } from "react-native"
+import { Pressable, StyleSheet, View } from "react-native"
 import { AppIcon } from "./AppIcon"
 import { AppText } from "./AppText"
 

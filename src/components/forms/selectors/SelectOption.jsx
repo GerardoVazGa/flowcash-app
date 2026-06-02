@@ -1,6 +1,8 @@
+import { AppIcon } from "@components/ui/AppIcon"
+import { AppText } from "@components/ui/AppText"
 import { useTheme } from "@hooks/useTheme"
-import { StyleSheet } from "react-native"
-import { View } from "react-native/types_generated/index"
+import { Pressable, StyleSheet } from "react-native"
+import { View } from "react-native"
 
 export function SelectOption({label, icon, selected, onPress}) {
     const { theme } = useTheme()
