@@ -11,28 +11,40 @@ export function SelectOption({label, icon, selected, onPress}) {
     return(
         <Pressable
             onPress={onPress}
+            style = {selected && {
+                    borderColor: theme.colors.primary, 
+                    borderWidth: 1,
+                    borderRadius: theme.radius.md,
+                }
+            }
         >
             <View
                 style = {[
                     styles.container,
-                    selected && {backgroundColor: `${theme.colors.primary}10`}
+                    selected && {
+                        backgroundColor: `${theme.colors.primary}10`,
+                        borderColor: theme.colors.primary
+                    }
                 ]}
             >
-                {icon && 
-                    <AppIcon 
-                        name={icon} 
-                        size={18} 
-                        color={selected ? "primary": "textVariant"}
-                        background={selected ? "primaryContainer": "surfaceHigh"}
-                    />
-                }
+                <View style={styles.left}>
+                    {icon && 
+                        <AppIcon 
+                            name={icon} 
+                            size={18} 
+                            color={selected ? "onPrimary": "textVariant"}
+                            background={selected ? "primaryContainer": "surfaceHigh"}
+                            style={styles.icon}
+                        />
+                    }
 
-                <AppText 
-                    variant="body" 
-                    color={selected ? "text": "textVariant"}
-                >
-                    {label}
-                </AppText>
+                    <AppText 
+                        variant="body" 
+                        color={selected ? "text": "textVariant"}
+                    >
+                        {label}
+                    </AppText>
+                </View>
 
                 {selected && <AppIcon name="checkmark" size={18} color="text" />}
             </View>
@@ -43,12 +55,19 @@ export function SelectOption({label, icon, selected, onPress}) {
 
 const getStyles = (theme) => StyleSheet.create({
     container: {
-        flex: 1,
-        width: "100%",
         flexDirection: "row",
         alignItems: "center",
-        gap: theme.spacing.sm,
+        justifyContent: "space-between",
         paddingVertical: theme.spacing.md,
         paddingHorizontal: theme.spacing.lg
+    },
+    left: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: theme.spacing.md
+    },
+    icon: {
+        borderRadius: theme.radius.md,
+        padding: theme.spacing.sm
     }
 })
