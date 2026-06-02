@@ -5,7 +5,7 @@ import { FlatList, StyleSheet, View } from "react-native";
 import { SelectOption } from "./SelectOption";
 
 export function SelectorBottomSheet({sheetRef, options, selected, onSelect, title}) {
-    const snapPoints = useMemo(() => ["50%", "75%"], [])
+    const snapPoints = useMemo(() => ["75%"], [])
     const {theme} = useTheme()
     const styles = getStyles(theme)
 
@@ -18,6 +18,9 @@ export function SelectorBottomSheet({sheetRef, options, selected, onSelect, titl
         <BottomSheetModal
             ref={sheetRef}
             snapPoints={snapPoints}
+            enablePanDownToClose
+            enableDynamicSizing = {false}
+            stackBehavior="push"
             style={styles.container}
         >
             <View style={styles.container}>
@@ -48,7 +51,7 @@ const getStyles = (theme) => StyleSheet.create({
     container: {
         flex: 1,
         paddingVertical: theme.spacing.md,
-        paddingHorizontal: theme.spacing.lg
+        paddingHorizontal: theme.spacing.sm
     },
     content: {
         paddingVertical: theme.spacing.sm,
