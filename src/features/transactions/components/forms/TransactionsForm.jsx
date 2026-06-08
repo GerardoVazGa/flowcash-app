@@ -7,6 +7,7 @@ import { StyleSheet, View } from "react-native";
 import { TransactionAmountField } from "./TransactionAmountField";
 import { TransactionTypeField } from "./TransactionTypeField";
 import { TransactionCategoryField } from "./TransactionCategoryField";
+import { TransactionDateField } from "./TransactionDateField";
 
 export function TransactionsForm() {
     const form = useForm()
@@ -38,6 +39,10 @@ export function TransactionsForm() {
 
                         <FormSection>
                             <TransactionCategoryField name="category" />
+                        </FormSection>
+
+                        <FormSection>
+                            <TransactionDateField name="date" />
                         </FormSection>
 
                     </View>
