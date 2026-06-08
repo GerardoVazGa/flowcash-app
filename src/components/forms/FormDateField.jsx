@@ -3,7 +3,7 @@ import { FormField } from "./FormField"
 import { AppSelect } from "@components/ui/AppSelect"
 import { useTheme } from "@hooks/useTheme"
 import { CalendarBottomSheet } from "./selectors/CalendarBottomSheet"
-import { useMemo } from "react"
+import { useMemo, useRef } from "react"
 import { StyleSheet } from "react-native"
 import { useFormContext } from "react-hook-form"
 
@@ -24,11 +24,13 @@ export function FormDateField({
     const formattedDate = useMemo(() => {
         if(!value) return ""
 
+        const [year, month, day] = value.split("-").map(Number)
+
         return Intl.DateTimeFormat("es-MX", {
             day: "numeric",
             month: "long",
             year: "numeric"
-        }).format(new Date(value))
+        }).format(new Date(year, month - 1, day))
     }, [value])
 
     const displayDateValue = useMemo(() => {
@@ -45,8 +47,7 @@ export function FormDateField({
             <AppSelect 
                 value={displayDateValue}
                 placeholder={placeholder}
-                disabled={disabled}
-                onPress={() => {}}
+                onPress={openSheet}
                 icon="calendar-outline"
             />
 
