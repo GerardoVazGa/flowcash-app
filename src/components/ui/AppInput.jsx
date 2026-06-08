@@ -54,5 +54,9 @@ const getStyles = (theme) => StyleSheet.create({
     },
     multilineInput: {
         minHeight: 100,
+        flex: 1,
+        paddingHorizontal: theme.spacing.md,
+        paddingVertical: theme.spacing.sm,
+        textAlignVertical: "top",
     }
 })
