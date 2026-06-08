@@ -1,13 +1,12 @@
 import { FormHeader } from "@components/forms/FormHeader";
-import { FormInput } from "@components/forms/FormInput";
 import { FormSection } from "@components/forms/FormSection";
-import { AppText } from "@components/ui/AppText";
 import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { useTheme } from "@hooks/useTheme";
 import { FormProvider, useForm } from "react-hook-form";
 import { StyleSheet, View } from "react-native";
 import { TransactionAmountField } from "./TransactionAmountField";
 import { TransactionTypeField } from "./TransactionTypeField";
+import { TransactionCategoryField } from "./TransactionCategoryField";
 
 export function TransactionsForm() {
     const form = useForm()
@@ -31,9 +30,17 @@ export function TransactionsForm() {
                         <TransactionAmountField name="amount" currency="MXN" />
                     </FormSection>
 
-                    <FormSection style={styles.toggle}>
+                    <FormSection>
                         <TransactionTypeField name="type" />
                     </FormSection>
+
+                    <View style={styles.details}>
+
+                        <FormSection>
+                            <TransactionCategoryField name="category" />
+                        </FormSection>
+
+                    </View>
 
                 </BottomSheetScrollView>
 
@@ -53,12 +60,15 @@ const getStyles = (theme) => StyleSheet.create({
         flex: 1
     },
     content: {
-        gap: theme.spacing.md
+        gap: theme.spacing.md,
+        paddingHorizontal: theme.spacing.sm
     },
     amountSection: {
         marginBottom: theme.spacing.sm
     },
-    toggle: {
-        paddingHorizontal: theme.spacing.sm
+    details: {
+        padding: theme.spacing.md,
+        gap: theme.spacing.md,
+        width: "100%",
     }
 })
