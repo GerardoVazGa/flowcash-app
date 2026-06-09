@@ -8,7 +8,7 @@ import { TransactionAmountField } from "./TransactionAmountField";
 import { TransactionTypeField } from "./TransactionTypeField";
 import { TransactionCategoryField } from "./TransactionCategoryField";
 import { TransactionDateField } from "./TransactionDateField";
-import { TransactionNoteField } from "./TransactionNoteField";
+import { TransactionDescriptionField } from "./TransactionDescriptionField";
 import { AppButton } from "@components/ui/AppButton";
 import { AppText } from "@components/ui/AppText";
 
@@ -53,7 +53,7 @@ export function TransactionsForm({onCloseSheet}) {
                         </FormSection>
 
                         <FormSection>
-                            <TransactionNoteField name="note" />
+                            <TransactionDescriptionField name="description" />
                         </FormSection>
                     </View>
 
