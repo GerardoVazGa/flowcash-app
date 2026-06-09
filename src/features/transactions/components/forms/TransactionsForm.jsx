@@ -11,12 +11,30 @@ import { TransactionDateField } from "./TransactionDateField";
 import { TransactionDescriptionField } from "./TransactionDescriptionField";
 import { AppButton } from "@components/ui/AppButton";
 import { AppText } from "@components/ui/AppText";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { transactionSchema } from "@features/transactions/schema/transactionSchema";
+import { TRANSACTION_TYPE } from "@features/transactions/constants/transactionType";
+import { getToday, getTodayString } from "@utils/date/getToday";
 
 export function TransactionsForm({onCloseSheet}) {
-    const form = useForm()
+    const form = useForm({
+        resolver: zodResolver(transactionSchema),
+        defaultValues: {
+            amount: 0,
+            type: TRANSACTION_TYPE.EXPENSE,
+            category: "",
+            date: getTodayString(),
+            description: ""
+        }
+    })
 
     const { theme } = useTheme()
     const styles = getStyles(theme)
+
+    const onSubmit = (data) => {
+        console.log(data)
+        onCloseSheet()
+    }
 
     return (
         <FormProvider {...form}>
@@ -25,7 +43,7 @@ export function TransactionsForm({onCloseSheet}) {
                     title="Nueva Transacción" 
                     submitLabel="Guardar"
                     onClose={onCloseSheet}
-                    onSubmit={form.handleSubmit(() => {})}
+                    onSubmit={form.handleSubmit(onSubmit)}
                 />
 
                 <BottomSheetScrollView
@@ -64,7 +82,7 @@ export function TransactionsForm({onCloseSheet}) {
                 <View style={styles.actions}>
                     <AppButton 
                         variant="gradient" 
-                        onAction={form.handleSubmit(() => {})}
+                        onAction={form.handleSubmit(onSubmit)}
                         rounded="md"
                         size="md"
                     >
