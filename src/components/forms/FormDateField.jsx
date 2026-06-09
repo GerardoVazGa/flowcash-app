@@ -4,7 +4,7 @@ import { AppSelect } from "@components/ui/AppSelect"
 import { useTheme } from "@hooks/useTheme"
 import { CalendarBottomSheet } from "./selectors/CalendarBottomSheet"
 import { useMemo, useRef } from "react"
-import { StyleSheet } from "react-native"
+import { Keyboard, StyleSheet } from "react-native"
 import { useFormContext } from "react-hook-form"
 
 export function FormDateField({
@@ -37,7 +37,10 @@ export function FormDateField({
         return formattedDate || placeholder
     }, [formattedDate, placeholder])
 
-    const openSheet = () => calendarSheetRef.current?.present()
+    const openSheet = () => {
+        Keyboard.dismiss()
+        calendarSheetRef.current?.present()
+    }
 
     return(
         <FormField
