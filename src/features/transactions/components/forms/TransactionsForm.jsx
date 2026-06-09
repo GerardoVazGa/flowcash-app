@@ -24,7 +24,8 @@ export function TransactionsForm({onCloseSheet}) {
             type: TRANSACTION_TYPE.EXPENSE,
             category: "",
             date: getTodayString(),
-            description: ""
+            description: "",
+            accountId: null
         }
     })
 

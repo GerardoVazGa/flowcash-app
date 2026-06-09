@@ -15,4 +15,5 @@ export const transactionSchema = z.object({
         .regex(/^\d{4}-\d{2}-\d{2}$/, "Formato de fecha inválido"),
     description: z.string({ required_error: "Ingresa una descripción" })
         .min(1, "Ingresa una descripción"),
+    accountId: z.number({required_error: "Selecciona una cuenta"}),
 })
