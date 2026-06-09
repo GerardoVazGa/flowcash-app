@@ -1,5 +1,6 @@
 import { StyleSheet, TextInput, View } from "react-native"
 import { useTheme } from "@hooks/useTheme"
+import { BottomSheetTextInput } from "@gorhom/bottom-sheet"
 
 
 export function AppInput({
@@ -12,15 +13,18 @@ export function AppInput({
     leftComponent,
     rightComponent,
     containerStyle,
-    style
+    style,
+    asBottomSheetInput = false
 }) {
     const  { theme } = useTheme()
     const styles = getStyles(theme)
 
+    const InputComponent = asBottomSheetInput ? BottomSheetTextInput : TextInput 
+
     return (
         <View style={[styles.container, multiline && styles.multilineContainer, containerStyle]}>
             {leftComponent && leftComponent}
-            <TextInput 
+            <InputComponent 
                 style={[styles.input, multiline && styles.multilineInput, style]}
                 value={value}
                 onChangeText={onChangeText}
@@ -30,6 +34,7 @@ export function AppInput({
                 multiline={multiline}
                 numberOfLines={numberOfLines}
                 textAlignVertical={multiline ? "top" : "center"}
+                nestedScrollEnabled={multiline}
             />
             {rightComponent && rightComponent}
         </View>

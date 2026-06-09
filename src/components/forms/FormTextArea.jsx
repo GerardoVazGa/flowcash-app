@@ -12,8 +12,8 @@ export function FormTextArea({
     numberOfLines = 4,
     containerStyle,
     style,
-    labelStyle
-
+    labelStyle,
+    asBottomSheetInput = false
 }) {
     const  { theme } =useTheme()
 
@@ -35,7 +35,7 @@ export function FormTextArea({
                 numberOfLines={numberOfLines}
                 style={style}
                 containerStyle={containerStyle}
-
+                asBottomSheetInput={asBottomSheetInput}
             />
 
         </FormField>
