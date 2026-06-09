@@ -1,5 +1,5 @@
 import { useTheme } from "@hooks/useTheme"
-import { StyleSheet } from "react-native"
+import { Keyboard, StyleSheet } from "react-native"
 import { FormField } from "./FormField"
 import { useFormField } from "@hooks/forms/useFormField"
 import { SelectorBottomSheet } from "./selectors/SelectorBottomSheet"
@@ -24,7 +24,10 @@ export function FormSelectField({name, label, placeholder = "Seleccione una opci
 
     const selectedOption = options.find(option => option.value === value)
 
-    const openSheet = () => bottomSheetRef.current?.present()
+    const openSheet = () => {
+        Keyboard.dismiss()
+        bottomSheetRef.current?.present()
+    }
 
     return (
         <FormField
