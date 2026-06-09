@@ -12,7 +12,9 @@ export function TransactionFormBottomSheet({sheetRef}) {
             snapPoints={snapPoints}
             enablePanDownToClose
             stackBehavior="push"
-            enableDynamicSizing = {false}
+            enableDynamicSizing={false}
+            keyboardBehavior="interactive"
+            keyboardBlurBehavior="restore"
         >
             <TransactionsForm />
         </BottomSheetModal>
