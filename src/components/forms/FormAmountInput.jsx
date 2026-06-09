@@ -6,6 +6,7 @@ import { AppInput } from "@components/ui/AppInput"
 import { createAmountInputVariants } from "@constants/amountInputVariant"
 import { AppText } from "@components/ui/AppText"
 import { parseAmount } from "@utils/parsers/parseAmount"
+import { useMemo, useState } from "react"
 
 export function FormAmountInput({
     name, 
@@ -22,14 +23,19 @@ export function FormAmountInput({
 
     const { value, onChange, onBlur, error } = useFormField(control, name)
 
+    const [displayValue, setDisplayValue] = useState("")
+
     const { theme } = useTheme()
     
-    const variants = createAmountInputVariants(theme)
+    const variants = useMemo(() => createAmountInputVariants(theme), [theme])
 
     const variantStyle = variants[variant] ?? variants.display
 
     const handleChange = (text) => {
         const parsedValue = parseAmount(text)
+        if(parsedValue !== displayValue) {
+            setDisplayValue(parsedValue)
+        }
         onChange(parsedValue)
     }
 
@@ -40,7 +46,7 @@ export function FormAmountInput({
             labelStyle={[variantStyle.label, labelStyle]}
         >
             <AppInput 
-                value={value ?? "0.00"}
+                value={displayValue}
                 onChangeText={handleChange}
                 placeholder={placeholder}
                 leftComponent={
