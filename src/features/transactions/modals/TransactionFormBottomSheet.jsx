@@ -5,6 +5,7 @@ import { TransactionsForm } from "../components/forms/TransactionsForm";
 export function TransactionFormBottomSheet({sheetRef}) {
     const snapPoints = useMemo(() => ["90%"], [])
 
+    const handleDismiss = () => sheetRef.current?.dismiss()
 
     return (
         <BottomSheetModal 
@@ -16,7 +17,7 @@ export function TransactionFormBottomSheet({sheetRef}) {
             keyboardBehavior="interactive"
             keyboardBlurBehavior="restore"
         >
-            <TransactionsForm />
+            <TransactionsForm onCloseSheet={handleDismiss}/>
         </BottomSheetModal>
     )
 }
