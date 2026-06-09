@@ -15,6 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { transactionSchema } from "@features/transactions/schema/transactionSchema";
 import { TRANSACTION_TYPE } from "@features/transactions/constants/transactionType";
 import { getToday, getTodayString } from "@utils/date/getToday";
+import { TransactionAccountField } from "./TransactionAccountField";
 
 export function TransactionsForm({onCloseSheet}) {
     const form = useForm({
@@ -69,6 +70,10 @@ export function TransactionsForm({onCloseSheet}) {
 
                         <FormSection>
                             <TransactionDateField name="date" />
+                        </FormSection>
+
+                        <FormSection>
+                            <TransactionAccountField name="accountId" />
                         </FormSection>
 
                         <FormSection>
