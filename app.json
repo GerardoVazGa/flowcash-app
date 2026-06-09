@@ -21,7 +21,8 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.anonymous.businnesApp"
+      "package": "com.anonymous.businnesApp",
+      "softwareKeyboardLayoutMode": "adjustRisize"
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
