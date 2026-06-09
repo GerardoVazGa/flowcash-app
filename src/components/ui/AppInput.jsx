@@ -51,6 +51,7 @@ const getStyles = (theme) => StyleSheet.create({
         alignItems: "flex-start",
     },
     input: {
+        flex: 1,
         borderWidth: 1,
         color: theme.colors.text,
         borderColor: theme.colors.outline,

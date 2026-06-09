@@ -10,11 +10,14 @@ export const createAmountInputVariants = (theme) => ({
             color: theme.colors.primary,
             ...theme.typography.display,
             textAlign: "center",
+            minWidth: 100,    // 👈
+            maxWidth: "70%"
         },
 
         container: {
             justifyContent: "center",
             gap: theme.spacing.xs,
+            width: "100%"
         },
 
         label: {
