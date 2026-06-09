@@ -11,6 +11,7 @@ export function TransactionAmountField({name, currency}) {
             label="Monto de Transacción"
             placeholder="0.00"
             variant="display"
+            asBottomSheetInput={true}
         />
     )
 }

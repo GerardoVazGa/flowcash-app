@@ -15,7 +15,8 @@ export function FormAmountInput({
     variant = "display",
     labelStyle,
     containerStyle,
-    inputStyle
+    inputStyle,
+    asBottomSheetInput = false
 }) {
     const { control } = useFormContext()
 
@@ -57,6 +58,7 @@ export function FormAmountInput({
                 }
                 style={[variantStyle.input, inputStyle]}
                 keyboardType="decimal-pad"
+                asBottomSheetInput={asBottomSheetInput}
             />
         </FormField>
     )
