@@ -1,11 +1,19 @@
-import { StyleSheet, View } from "react-native"
+import { StyleSheet, TouchableOpacity, View } from "react-native"
 import { AppText } from "@components/ui/AppText.jsx"
 import { AppIcon } from "@components/ui/AppIcon.jsx"
 import { useTheme } from "@hooks/useTheme.js"
 import { formatCurrency } from "@utils/formatters/formatCurrency.js"
 import { memo, useMemo } from "react"
+import ReanimatedSwipeable from "react-native-gesture-handler/ReanimatedSwipeable"
 
-export const TransactionItem = memo (({transaction, variant = "card", isFeatured = false}) => {
+export const TransactionItem = memo (({
+    transaction, 
+    variant = "card", 
+    isFeatured = false,
+    swipeable = false,
+    onEdit,
+    onDelete
+}) => {
     const { theme } = useTheme()
 
     const styles = useMemo(() => getStyles(theme), [theme])
@@ -14,7 +22,8 @@ export const TransactionItem = memo (({transaction, variant = "card", isFeatured
     const amountColor = isExpense ? theme.colors.expenses : theme.colors.income
 
     const isDense = variant === "dense"
-    return (
+
+    const content = (
         <View 
             style={
                 [
@@ -39,7 +48,55 @@ export const TransactionItem = memo (({transaction, variant = "card", isFeatured
             </View>
         </View>
     )
+
+    if(!swipeable) return content
+
+    return (
+        <ReanimatedSwipeable
+            renderRightActions={(progress, translation) => (
+                <RightActions 
+                    onDelete={onDelete} 
+                    onEdit={onEdit} 
+                    theme={theme}
+                />
+            )
+            }
+            overshootRight={false}
+        >
+            {content}
+        </ReanimatedSwipeable>
+    )
 })
+
+const RightActions = ({onDelete , onEdit, theme}) => {
+    const styles = getRightActionsStyles(theme)
+    return (
+        <View style={styles.container}>
+            <TouchableOpacity 
+                style={[styles.action, styles.editAction]}
+                onPress={onEdit}
+            >
+                <AppIcon 
+                    name="pencil-outline" 
+                    size={20} 
+                    color="onPrimary"
+                    background="transparent"
+                />
+            </TouchableOpacity>
+            <TouchableOpacity 
+                style={[styles.action, styles.deleteAction]}
+                onPress={onDelete}
+            >
+                <AppIcon 
+                    name="trash-outline" 
+                    size={20} 
+                    color="onPrimary" 
+                    background="transparent"
+                />
+            </TouchableOpacity>
+        </View>
+    )
+}
 
 const getStyles = (theme) => StyleSheet.create({
     container: {
@@ -56,7 +113,9 @@ const getStyles = (theme) => StyleSheet.create({
     },
     baseDense: {
         paddingVertical: theme.spacing.md,
-        paddingHorizontal: theme.spacing.xs
+        paddingHorizontal: theme.spacing.sm,
+        paddingRight: theme.spacing.md,
+        backgroundColor: theme.colors.surface,
     },
     baseCard: {
         padding: theme.spacing.md,
@@ -90,5 +149,28 @@ const getStyles = (theme) => StyleSheet.create({
     amountContainer: {
         justifyContent: "center",
         alignItems: "flex-end"
+    }
+})
+
+const getRightActionsStyles = (theme) => StyleSheet.create({
+    container: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginVertical: theme.spacing.xs,
+        gap: theme.spacing.xs,
+        paddingRight: theme.spacing.sm
+    },
+    action: {
+        justifyContent: "center",
+        alignItems: "center",
+        width: 64,
+        height: "100%",
+        borderRadius: theme.radius.lg,
+    },
+    editAction: {
+        backgroundColor: theme.colors.primary,
+    },
+    deleteAction: {
+        backgroundColor: theme.colors.error,
     }
 })
