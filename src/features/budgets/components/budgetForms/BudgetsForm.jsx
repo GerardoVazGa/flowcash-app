@@ -5,7 +5,7 @@ import { budgetSchema } from "@features/budgets/schema/budgetSchema";
 import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTheme } from "@hooks/useTheme";
-import { Form, FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { StyleSheet, View } from "react-native";
 import { BudgetLimitField } from "./BudgetLimitField";
 import { calculatePeriodDates } from "@features/budgets/utils/period/calculatePeriodDates";
@@ -13,6 +13,8 @@ import { BudgetCategoryField } from "./BudgetCategoryField";
 import { BudgetAccountField } from "./BudgetAccountField";
 import { BudgetPeriodField } from "./BudgetPeriodField";
 import { BudgetDescriptionField } from "./BudgetDescriptionField";
+import { AppButton } from "@components/ui/AppButton";
+import { AppText } from "@components/ui/AppText";
 
 export function BudgetsForm({ onClose }) {
     const form = useForm({
@@ -69,6 +71,10 @@ export function BudgetsForm({ onClose }) {
                     <View style={styles.details}>
                         <FormSection>
                             <BudgetCategoryField name="category" />
+                        </FormSection>
+
+                        <FormSection>
+                            <BudgetAccountField name="accountId" />
                         </FormSection>
 
                         <FormSection>
