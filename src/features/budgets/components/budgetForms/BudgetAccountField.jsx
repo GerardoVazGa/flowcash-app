@@ -1,4 +1,5 @@
 import { FormSelectField } from "@components/forms/FormSelectField"
+import { ACCOUNT_TYPE_ICONS } from "@features/accounts/constants/accounts"
 import { useAccountsStore } from "@features/accounts/store/useAccountStores"
 
 export function BudgetAccountField({ name }) {
