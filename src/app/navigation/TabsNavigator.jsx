@@ -55,6 +55,8 @@ export function TabsNavigator() {
 
             <TransactionFormBottomSheet  sheetRef={transactionModalRef}/>
 
+            <BudgetFormBottomSheet sheetRef={budgetModalRef}/>
+
             
         </View>
     )
