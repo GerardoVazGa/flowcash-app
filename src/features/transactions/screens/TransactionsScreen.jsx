@@ -41,6 +41,14 @@ export function TransactionsScreen() {
         modalRef.current?.dismiss()
     }
 
+    const handleEditTransaction = (transaction) => {
+        console.log("Edit transaction:", transaction)
+    }
+
+    const handleDeleteTransaction = (transaction) => {
+        console.log("Delete transaction:", transaction)
+    }
+
     return (
         <FiltersTrasactionProvider value={values}>
             <View style={styles.container}>
@@ -59,7 +67,11 @@ export function TransactionsScreen() {
                     balance={totalBalance}
                 />
 
-                <TransactionGroupList transactions={transactions} />
+                <TransactionGroupList 
+                    transactions={transactions} 
+                    onEdit={handleEditTransaction}
+                    onDelete={handleDeleteTransaction}
+                />
 
                 <BottomSheetModal
                     ref={modalRef}

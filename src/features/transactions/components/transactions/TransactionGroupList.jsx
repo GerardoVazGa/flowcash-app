@@ -4,13 +4,19 @@ import { TransactionItem } from "./TransactionItem.jsx";
 import { useTheme } from "@hooks/useTheme.js";
 import { useCallback, useMemo } from "react";
 
-export function TransactionGroupList({transactions}) {
+export function TransactionGroupList({transactions, onEdit, onDelete}) {
     const { theme } = useTheme()
     const styles = useMemo(() => getStyles(theme), [theme])
 
     const renderItem = useCallback(({item}) => (
-        <TransactionItem transaction={item} variant="dense"/>
-    ), [])
+        <TransactionItem 
+            transaction={item} 
+            variant="dense" 
+            swipeable={true} 
+            onEdit={() => onEdit(item)} 
+            onDelete={() => onDelete(item)} 
+        />
+    ), [onEdit, onDelete])
 
     const renderSectionHeader = useCallback(({section}) => (
         <View style={styles.sectionHeader}>
