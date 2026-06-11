@@ -32,12 +32,13 @@ export function BudgetsForm({ onClose }) {
     const styles = getStyles(theme)
 
     const onSubmit = (data) => {
+        const { periodType, ...rest } = data
         const {startDate, endDate} = calculatePeriodDates(data.periodType)
         
         const budget = {
-            ...data,
+            ...rest,
             period: {
-                type: data.periodType,
+                type: periodType,
                 startDate,
                 endDate
             }
