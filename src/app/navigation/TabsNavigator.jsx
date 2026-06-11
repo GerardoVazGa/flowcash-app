@@ -8,6 +8,7 @@ import { TransactionFormBottomSheet } from "@features/transactions/modals/Transa
 import { useRef, useState } from "react"
 import { FABButton } from "@components/ui/FABButton"
 import { View } from "react-native"
+import { BudgetFormBottomSheet } from "@features/budgets/modals/BudgetFormBottomSheet"
 
 const Tab = createBottomTabNavigator()
 
