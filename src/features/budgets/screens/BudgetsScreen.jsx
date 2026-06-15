@@ -10,9 +10,13 @@ import { useMemo, useRef } from "react";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import { BudgetFilterSheet } from "../components/budgetFilters/BudgetFilterSheet";
 import { FiltersBudgetProvider } from "../context/FiltersBudgetContext";
+import { OptionsBottomSheet } from "@components/ui/OptionsBottomSheet";
 
 export function BudgetsScreen() {
     const modalRef = useRef(null)
+    const optionsSheetRef = useRef(null)
+    const selectedBudget = useRef(null)
+
     const snapPoints = useMemo(() => ["90%"], [])
 
     const { theme } = useTheme()
@@ -33,6 +37,19 @@ export function BudgetsScreen() {
 
     const handleCloseFilters = () => {
         modalRef.current?.dismiss()
+    }
+
+    const handleLongPress = (budget) => {
+        selectedBudget.current = budget
+        optionsSheetRef.current?.present()
+    }
+
+    const handleBudgetEdit = () => {
+        console.log("Edit budget:", selectedBudget.current)
+    }
+
+    const handleBudgetDelete = () => {
+        console.log("Delete budget:", selectedBudget.current)
     }
 
     return (
@@ -59,11 +76,13 @@ export function BudgetsScreen() {
                     <BudgetItem 
                         budget={item}
                         showDelete = {false}
+                        onLongPress={() => handleLongPress(item)}
                     />
                 )}
                 ItemSeparatorComponent={() => <View style={{height: theme.spacing.md}}/>}
                 contentContainerStyle={styles.items}
                 showsVerticalScrollIndicator={false}
+                disableScrollViewPanResponder={true}
             />
 
             <BottomSheetModal 
@@ -71,6 +90,9 @@ export function BudgetsScreen() {
                 snapPoints={snapPoints}
                 enablePanDownToClose
                 enableDynamicSizing = {false}
+                keyboardBehavior="interactive"
+                keyboardBlurBehavior="restore"
+                stackBehavior="push"
             >
 
                 <FiltersBudgetProvider value={budgetValues}>
@@ -78,6 +100,14 @@ export function BudgetsScreen() {
                 </FiltersBudgetProvider>
 
             </BottomSheetModal>
+
+            <OptionsBottomSheet
+                sheetRef={optionsSheetRef}
+                options={[
+                    { label: "Editar", icon: "pencil-outline", onPress: handleBudgetEdit },
+                    { label: "Eliminar", icon: "trash-outline", onPress: handleBudgetDelete, destructive: true },
+                ]}
+            />
 
         </View>
     )
