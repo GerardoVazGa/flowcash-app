@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native"
+import { Pressable, StyleSheet, View } from "react-native"
 import { AppIcon } from "@components/ui/AppIcon"
 import { AppText } from "@components/ui/AppText"
 import { ProgressBar } from "@components/ui/ProgressBar"
@@ -11,7 +11,13 @@ import { BUDGETS_PERIODS_LABELS } from "../constants/budgetPeriod.js"
 
 
 
-export function BudgetItem({showDelete = true, onDelete, budget, isVisible = true}) {
+export function BudgetItem({
+    showDelete = true, 
+    onDelete, 
+    budget, 
+    isVisible = true,
+    onLongPress
+}) {
     const { theme } = useTheme()
     const currentTheme = theme
     const styles = getStyles(currentTheme)
@@ -26,9 +32,14 @@ export function BudgetItem({showDelete = true, onDelete, budget, isVisible = tru
     const textColor = currentTheme.colors[status.text]
 
     const periodLabel = BUDGETS_PERIODS_LABELS[budget.period.type] || budget.period.type
+
+    const Wrapper = onLongPress ? Pressable : View
     
     return (
-        <View style={styles.container}>
+        <Wrapper 
+            style={styles.container}
+            onLongPress={onLongPress}
+        >
             <View style={styles.header}>
                 <AppIcon 
                     name={budgetIcon}
@@ -83,7 +94,7 @@ export function BudgetItem({showDelete = true, onDelete, budget, isVisible = tru
                     }
                 </AppText>
             </View>
-        </View>
+        </Wrapper>
     )
 }
 
