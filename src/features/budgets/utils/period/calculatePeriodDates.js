@@ -1,7 +1,6 @@
 import { BUDGETS_PERIODS } from "@features/budgets/constants/budgetPeriod";
 import { getToday, getTodayString } from "@utils/date/getToday";
 import { formatDateString } from "@utils/formatters/formatDateString";
-import { get } from "react-native/Libraries/NativeComponent/NativeComponentRegistry";
 
 export function calculatePeriodDates(periodType) {
     const today = getToday()
